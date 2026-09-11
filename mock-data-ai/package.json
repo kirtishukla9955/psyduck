@@ -1,0 +1,29 @@
+{
+  "name": "dharaa-mock-data-ai",
+  "version": "1.0.0",
+  "description": "DHARAA (Bhu-DPI) Mock Data & Land Trust Engine AI Layer — Multi-Department State Adapters & Rule-Based Anomaly Detection for SIH 2026",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "dharaa-detect": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "detect": "node src/index.js",
+    "detect:summary": "node src/index.js --summary",
+    "detect:json": "node src/index.js --json",
+    "serve": "node src/index.js --serve",
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "dharaa",
+    "land-governance",
+    "ulpin",
+    "digital-public-infrastructure",
+    "state-adapter",
+    "anomaly-detection",
+    "smart-india-hackathon-2026"
+  ],
+  "author": "Presenter 1 (Mock Data & AI Layer) — DHARAA Team",
+  "license": "MIT"
+}

@@ -8,7 +8,10 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "mock-data:detect": "node mock-data-ai/src/index.js",
+    "mock-data:serve": "node mock-data-ai/src/index.js --serve",
+    "mock-data:test": "node --test mock-data-ai/test/detector.test.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
