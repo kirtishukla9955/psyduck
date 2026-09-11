@@ -63,12 +63,30 @@ export function areNamesEquivalent(nameA, nameB, coOwners = []) {
     }
   }
 
+  // Token set comparison
+  const tokensA = normA.split(' ').filter(Boolean);
+  const tokensB = normB.split(' ').filter(Boolean);
+  const setA = new Set(tokensA);
+  const setB = new Set(tokensB);
+
+  // If sorted tokens are identical (e.g. "sivakumar s" vs "s sivakumar")
+  const sortedA = [...tokensA].sort().join(' ');
+  const sortedB = [...tokensB].sort().join(' ');
+  if (sortedA === sortedB) return true;
+
+  // Significant tokens (words with >2 letters)
+  const sigA = tokensA.filter(t => t.length > 2);
+  const sigB = tokensB.filter(t => t.length > 2);
+
+  if (sigA.length > 0 && sigB.length > 0) {
+    const allSigMatch = sigA.every(t => setB.has(t)) || sigB.every(t => setA.has(t));
+    if (allSigMatch) return true;
+  }
+
   // Token set intersection check
-  const tokensA = new Set(normA.split(' '));
-  const tokensB = new Set(normB.split(' '));
   let matchCount = 0;
-  for (const t of tokensB) {
-    if (tokensA.has(t) && t.length > 2) {
+  for (const t of setB) {
+    if (setA.has(t) && t.length > 2) {
       matchCount++;
     }
   }

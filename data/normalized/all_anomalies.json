@@ -1,0 +1,438 @@
+[
+  {
+    "conflict_id": "CONF-IN-CH-022-00111-OWN-01",
+    "ulpin": "IN-CH-022-00111",
+    "conflict_type": "OWNER_MISMATCH",
+    "rule_id": "RULE-001",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Registration",
+      "Revenue"
+    ],
+    "title": "Ownership Divergence Between Registration and Revenue",
+    "description": "Sale deed #VAS-2024-2201 registered in favour of 'Sunita Sharma' at Sub-Registrar Office, Sector 17, Chandigarh UT, but Revenue record (JAM-CH-2024-111) remains registered under 'Harpreet Singh Sandhu'. Revenue mutation status is currently 'Bila-Intiqal'.",
+    "details": {
+      "registered_owner": "Sunita Sharma",
+      "revenue_owner": "Harpreet Singh Sandhu",
+      "registration_deed_number": "VAS-2024-2201",
+      "registration_date": "2024-05-10",
+      "revenue_record_id": "JAM-CH-2024-111",
+      "revenue_mutation_status": "NONE"
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Initiate auto-notice to Sub-Registrar and Revenue Tehsildar/VAO. Trigger digital mutation verification workflow to update Record of Rights.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "detected_at": "2026-09-11T07:36:34.838Z"
+  },
+  {
+    "conflict_id": "CONF-IN-CH-043-00112-OWN-01",
+    "ulpin": "IN-CH-043-00112",
+    "conflict_type": "OWNER_MISMATCH",
+    "rule_id": "RULE-001",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Registration",
+      "Revenue"
+    ],
+    "title": "Ownership Divergence Between Registration and Revenue",
+    "description": "Sale deed #VAS-2026-1940 registered in favour of 'Pradeep Kumar Gupta' at Sub-Registrar Office, Sector 17, Chandigarh UT, but Revenue record (JAM-CH-2024-112) remains registered under 'Ashok Kumar Jain'. Revenue mutation status is currently 'Zer-Tajweez'.",
+    "details": {
+      "registered_owner": "Pradeep Kumar Gupta",
+      "revenue_owner": "Ashok Kumar Jain",
+      "registration_deed_number": "VAS-2026-1940",
+      "registration_date": "2026-06-10",
+      "revenue_record_id": "JAM-CH-2024-112",
+      "revenue_mutation_status": "PENDING"
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Initiate auto-notice to Sub-Registrar and Revenue Tehsildar/VAO. Trigger digital mutation verification workflow to update Record of Rights.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "detected_at": "2026-09-11T07:36:34.838Z"
+  },
+  {
+    "conflict_id": "CONF-IN-CH-043-00112-SLA-01",
+    "ulpin": "IN-CH-043-00112",
+    "conflict_type": "MUTATION_SLA_BREACH",
+    "rule_id": "RULE-002",
+    "severity": "HIGH",
+    "departments_involved": [
+      "Revenue"
+    ],
+    "title": "Mutation Overdue by 55 Days Beyond Statutory SLA",
+    "description": "Mutation application initiated on 2026-06-15 has been pending for 85 days. Statutory SLA limit is 30 days. Application is currently 55 days overdue for disposal.",
+    "details": {
+      "application_date": "2026-06-15",
+      "statutory_sla_days": 30,
+      "elapsed_days": 85,
+      "overdue_days": 55,
+      "mutation_id": "Pending Application",
+      "current_status": "Zer-Tajweez"
+    },
+    "sla_days_overdue": 55,
+    "recommended_action": "Escalate to Sub-Divisional Magistrate (SDM) / Revenue Divisional Officer (RDO) under Right to Public Service Guarantee. Dispatch electronic pendency summons to field Tehsildar.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "detected_at": "2026-09-11T07:36:34.838Z"
+  },
+  {
+    "conflict_id": "CONF-IN-CH-017-00113-ZON-01",
+    "ulpin": "IN-CH-017-00113",
+    "conflict_type": "ZONING_INCONSISTENCY",
+    "rule_id": "RULE-003",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Revenue",
+      "Urban Development"
+    ],
+    "title": "Master Plan Zoning Inconsistency & Unauthorized Use",
+    "description": "Land designated as 'Green Belt / Leisure Valley' under Master Plan regulations (Department of Urban Planning, Chandigarh Administration), but Revenue records recognize activity as 'Commercial Plot'. Urban Authority remarks: 'Encroachment in Leisure Valley buffer zone'. Building sanction status: 'VIOLATION NOTICE ISSUED - SECTION 12'.",
+    "details": {
+      "master_plan_zoning": "Green Belt / Leisure Valley",
+      "normalized_zoning": "FOREST_GREEN_BELT",
+      "revenue_land_use": "Commercial Plot",
+      "normalized_land_use": "COMMERCIAL",
+      "planning_authority": "Department of Urban Planning, Chandigarh Administration",
+      "building_status": "VIOLATION NOTICE ISSUED - SECTION 12",
+      "violations_reported": true
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Issue immediate halt-construction / show-cause notice. Refer to Town & Country Planning Directorate and District Environmental Committee for zone verification.",
+    "suggested_routing_dept": "Urban Development Authority",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "detected_at": "2026-09-11T07:36:34.838Z"
+  },
+  {
+    "conflict_id": "CONF-IN-CH-034-00114-ARA-01",
+    "ulpin": "IN-CH-034-00114",
+    "conflict_type": "AREA_DISCREPANCY",
+    "rule_id": "RULE-004",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Survey",
+      "Revenue"
+    ],
+    "title": "Cadastral Boundary Discrepancy of 18.46%",
+    "description": "Demarcated survey boundary (Survey of India / UT Cadastral Wing) measures 1650 sq.m, diverging by 18.46% (373.4 sq.m) from Revenue declared area of 2023.43 sq.m. Boundary dispute marker: ACTIVE.",
+    "details": {
+      "survey_demarcated_sqm": 1650,
+      "revenue_declared_sqm": 2023.43,
+      "area_delta_sqm": 373.43,
+      "deviation_percent": 18.46,
+      "tolerance_threshold_percent": 5,
+      "survey_agency": "Survey of India / UT Cadastral Wing",
+      "survey_date": "2023-10-15",
+      "boundary_dispute_flag": true
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Order joint electronic boundary resurvey (ETS / DGPS) by Survey Inspector in presence of Revenue Patwari / VAO and recorded landholders.",
+    "suggested_routing_dept": "Survey and Land Records Department",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-CH-MMJ-00115-SAT-01",
+    "ulpin": "IN-CH-MMJ-00115",
+    "conflict_type": "SATELLITE_LAND_USE_DRIFT",
+    "rule_id": "RULE-005",
+    "severity": "HIGH",
+    "departments_involved": [
+      "Survey",
+      "Urban Development",
+      "Space Applications Center (ISRO)"
+    ],
+    "title": "Satellite Detected Unauthorized Land-Use Drift",
+    "description": "Multitemporal Sentinel-2 observation flagged structural anomaly: NDVI vegetation index change of -0.46 with built-up index shift of +0.38. Notes: 'Sentinel-2 alert: Major vegetation clearance & concrete warehouse slab detected on peri-urban agricultural parcel.' (Confidence: 96%).",
+    "details": {
+      "baseline_ndvi": 0.68,
+      "recent_ndvi": 0.22,
+      "ndvi_delta": -0.46,
+      "built_up_index_change": 0.38,
+      "confidence_score": 0.96,
+      "alert_notes": "Sentinel-2 alert: Major vegetation clearance & concrete warehouse slab detected on peri-urban agricultural parcel."
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Deploy Municipal Drone Verification Wing to ground-truth unauthorized development and serve Section 338 stop-work summons.",
+    "suggested_routing_dept": "Urban Development Authority",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-CH-043-00116-OWN-01",
+    "ulpin": "IN-CH-043-00116",
+    "conflict_type": "OWNER_MISMATCH",
+    "rule_id": "RULE-001",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Registration",
+      "Revenue"
+    ],
+    "title": "Ownership Divergence Between Registration and Revenue",
+    "description": "Sale deed #VAS-2026-1180 registered in favour of 'Rajesh Gupta' at Sub-Registrar Office, Sector 17, Chandigarh UT, but Revenue record (JAM-CH-2024-116) remains registered under 'Kuldeep Singh Sandhu'. Revenue mutation status is currently 'Zer-Tajweez'.",
+    "details": {
+      "registered_owner": "Rajesh Gupta",
+      "revenue_owner": "Kuldeep Singh Sandhu",
+      "registration_deed_number": "VAS-2026-1180",
+      "registration_date": "2026-05-20",
+      "revenue_record_id": "JAM-CH-2024-116",
+      "revenue_mutation_status": "PENDING"
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Initiate auto-notice to Sub-Registrar and Revenue Tehsildar/VAO. Trigger digital mutation verification workflow to update Record of Rights.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-CH-043-00116-SLA-01",
+    "ulpin": "IN-CH-043-00116",
+    "conflict_type": "MUTATION_SLA_BREACH",
+    "rule_id": "RULE-002",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Revenue"
+    ],
+    "title": "Mutation Overdue by 76 Days Beyond Statutory SLA",
+    "description": "Mutation application initiated on 2026-05-25 has been pending for 106 days. Statutory SLA limit is 30 days. Application is currently 76 days overdue for disposal.",
+    "details": {
+      "application_date": "2026-05-25",
+      "statutory_sla_days": 30,
+      "elapsed_days": 106,
+      "overdue_days": 76,
+      "mutation_id": "Pending Application",
+      "current_status": "Zer-Tajweez"
+    },
+    "sla_days_overdue": 76,
+    "recommended_action": "Escalate to Sub-Divisional Magistrate (SDM) / Revenue Divisional Officer (RDO) under Right to Public Service Guarantee. Dispatch electronic pendency summons to field Tehsildar.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-TN-CHN-00211-OWN-01",
+    "ulpin": "IN-TN-CHN-00211",
+    "conflict_type": "OWNER_MISMATCH",
+    "rule_id": "RULE-001",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Registration",
+      "Revenue"
+    ],
+    "title": "Ownership Divergence Between Registration and Revenue",
+    "description": "Sale deed #DOC-2025-4102 registered in favour of 'K. Annamalai' at Sub-Registrar Office, Sholinganallur, Registration Zone Chennai, but Revenue record (PATTA-TN-2024-211) remains registered under 'S. Muthuswamy'. Revenue mutation status is currently 'Application Rejected'.",
+    "details": {
+      "registered_owner": "K. Annamalai",
+      "revenue_owner": "S. Muthuswamy",
+      "registration_deed_number": "DOC-2025-4102",
+      "registration_date": "2025-08-14",
+      "revenue_record_id": "PATTA-TN-2024-211",
+      "revenue_mutation_status": "REJECTED"
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Initiate auto-notice to Sub-Registrar and Revenue Tehsildar/VAO. Trigger digital mutation verification workflow to update Record of Rights.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-TN-CHN-00212-OWN-01",
+    "ulpin": "IN-TN-CHN-00212",
+    "conflict_type": "OWNER_MISMATCH",
+    "rule_id": "RULE-001",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Registration",
+      "Revenue"
+    ],
+    "title": "Ownership Divergence Between Registration and Revenue",
+    "description": "Sale deed #DOC-2026-2840 registered in favour of 'C. Ravichandran' at Sub-Registrar Office, Tambaram, Registration Zone Chennai, but Revenue record (PATTA-TN-2024-212) remains registered under 'M. Sundaramurthy'. Revenue mutation status is currently 'Pending with Zonal Deputy Tahsildar'.",
+    "details": {
+      "registered_owner": "C. Ravichandran",
+      "revenue_owner": "M. Sundaramurthy",
+      "registration_deed_number": "DOC-2026-2840",
+      "registration_date": "2026-05-25",
+      "revenue_record_id": "PATTA-TN-2024-212",
+      "revenue_mutation_status": "PENDING"
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Initiate auto-notice to Sub-Registrar and Revenue Tehsildar/VAO. Trigger digital mutation verification workflow to update Record of Rights.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-TN-CHN-00212-SLA-01",
+    "ulpin": "IN-TN-CHN-00212",
+    "conflict_type": "MUTATION_SLA_BREACH",
+    "rule_id": "RULE-002",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Revenue"
+    ],
+    "title": "Mutation Overdue by 69 Days Beyond Statutory SLA",
+    "description": "Mutation application initiated on 2026-06-01 has been pending for 99 days. Statutory SLA limit is 30 days. Application is currently 69 days overdue for disposal.",
+    "details": {
+      "application_date": "2026-06-01",
+      "statutory_sla_days": 30,
+      "elapsed_days": 99,
+      "overdue_days": 69,
+      "mutation_id": "PATTA-1411",
+      "current_status": "Pending with Zonal Deputy Tahsildar"
+    },
+    "sla_days_overdue": 69,
+    "recommended_action": "Escalate to Sub-Divisional Magistrate (SDM) / Revenue Divisional Officer (RDO) under Right to Public Service Guarantee. Dispatch electronic pendency summons to field Tehsildar.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-TN-CHN-00213-ZON-01",
+    "ulpin": "IN-TN-CHN-00213",
+    "conflict_type": "ZONING_INCONSISTENCY",
+    "rule_id": "RULE-003",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Revenue",
+      "Urban Development"
+    ],
+    "title": "Master Plan Zoning Inconsistency & Unauthorized Use",
+    "description": "Land designated as 'Water Body Buffer Zone' under Master Plan regulations (Chennai Metropolitan Development Authority (CMDA)), but Revenue records recognize activity as 'Natham / Manai'. Urban Authority remarks: 'Buffer encroachment in Pallikaranai wetland zone'. Building sanction status: 'VIOLATION - STOP WORK NOTICE ISSUED'.",
+    "details": {
+      "master_plan_zoning": "Water Body Buffer Zone",
+      "normalized_zoning": "WATER_BODY",
+      "revenue_land_use": "Natham / Manai",
+      "normalized_land_use": "RESIDENTIAL",
+      "planning_authority": "Chennai Metropolitan Development Authority (CMDA)",
+      "building_status": "VIOLATION - STOP WORK NOTICE ISSUED",
+      "violations_reported": true
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Issue immediate halt-construction / show-cause notice. Refer to Town & Country Planning Directorate and District Environmental Committee for zone verification.",
+    "suggested_routing_dept": "Urban Development Authority",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-TN-CHN-00214-ARA-01",
+    "ulpin": "IN-TN-CHN-00214",
+    "conflict_type": "AREA_DISCREPANCY",
+    "rule_id": "RULE-004",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Survey",
+      "Revenue"
+    ],
+    "title": "Cadastral Boundary Discrepancy of 23.4%",
+    "description": "Demarcated survey boundary (Department of Survey and Settlement, Govt of Tamil Nadu) measures 310 sq.m, diverging by 23.4% (94.7 sq.m) from Revenue declared area of 404.69 sq.m. Boundary dispute marker: ACTIVE.",
+    "details": {
+      "survey_demarcated_sqm": 310,
+      "revenue_declared_sqm": 404.69,
+      "area_delta_sqm": 94.69,
+      "deviation_percent": 23.4,
+      "tolerance_threshold_percent": 5,
+      "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+      "survey_date": "2023-05-15",
+      "boundary_dispute_flag": true
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Order joint electronic boundary resurvey (ETS / DGPS) by Survey Inspector in presence of Revenue Patwari / VAO and recorded landholders.",
+    "suggested_routing_dept": "Survey and Land Records Department",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-TN-CHN-00215-SAT-01",
+    "ulpin": "IN-TN-CHN-00215",
+    "conflict_type": "SATELLITE_LAND_USE_DRIFT",
+    "rule_id": "RULE-005",
+    "severity": "HIGH",
+    "departments_involved": [
+      "Survey",
+      "Urban Development",
+      "Space Applications Center (ISRO)"
+    ],
+    "title": "Satellite Detected Unauthorized Land-Use Drift",
+    "description": "Multitemporal Sentinel-2 observation flagged structural anomaly: NDVI vegetation index change of -0.48 with built-up index shift of +0.41. Notes: 'Sentinel-2 alert: Water/Wetland drainage & heavy concrete metal structure erected on agricultural wetland.' (Confidence: 97%).",
+    "details": {
+      "baseline_ndvi": 0.72,
+      "recent_ndvi": 0.24,
+      "ndvi_delta": -0.48,
+      "built_up_index_change": 0.41,
+      "confidence_score": 0.97,
+      "alert_notes": "Sentinel-2 alert: Water/Wetland drainage & heavy concrete metal structure erected on agricultural wetland."
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Deploy Municipal Drone Verification Wing to ground-truth unauthorized development and serve Section 338 stop-work summons.",
+    "suggested_routing_dept": "Urban Development Authority",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-TN-CHN-00216-OWN-01",
+    "ulpin": "IN-TN-CHN-00216",
+    "conflict_type": "OWNER_MISMATCH",
+    "rule_id": "RULE-001",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Registration",
+      "Revenue"
+    ],
+    "title": "Ownership Divergence Between Registration and Revenue",
+    "description": "Sale deed #DOC-2026-1540 registered in favour of 'Meena Ramanathan' at Sub-Registrar Office, Tambaram, Registration Zone Chennai, but Revenue record (PATTA-TN-2024-216) remains registered under 'G. Venkatraman'. Revenue mutation status is currently 'Pending with Zonal Deputy Tahsildar'.",
+    "details": {
+      "registered_owner": "Meena Ramanathan",
+      "revenue_owner": "G. Venkatraman",
+      "registration_deed_number": "DOC-2026-1540",
+      "registration_date": "2026-04-12",
+      "revenue_record_id": "PATTA-TN-2024-216",
+      "revenue_mutation_status": "PENDING"
+    },
+    "sla_days_overdue": null,
+    "recommended_action": "Initiate auto-notice to Sub-Registrar and Revenue Tehsildar/VAO. Trigger digital mutation verification workflow to update Record of Rights.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  },
+  {
+    "conflict_id": "CONF-IN-TN-CHN-00216-SLA-01",
+    "ulpin": "IN-TN-CHN-00216",
+    "conflict_type": "MUTATION_SLA_BREACH",
+    "rule_id": "RULE-002",
+    "severity": "CRITICAL",
+    "departments_involved": [
+      "Revenue"
+    ],
+    "title": "Mutation Overdue by 113 Days Beyond Statutory SLA",
+    "description": "Mutation application initiated on 2026-04-18 has been pending for 143 days. Statutory SLA limit is 30 days. Application is currently 113 days overdue for disposal.",
+    "details": {
+      "application_date": "2026-04-18",
+      "statutory_sla_days": 30,
+      "elapsed_days": 143,
+      "overdue_days": 113,
+      "mutation_id": "PATTA-1415",
+      "current_status": "Pending with Zonal Deputy Tahsildar"
+    },
+    "sla_days_overdue": 113,
+    "recommended_action": "Escalate to Sub-Divisional Magistrate (SDM) / Revenue Divisional Officer (RDO) under Right to Public Service Guarantee. Dispatch electronic pendency summons to field Tehsildar.",
+    "suggested_routing_dept": "Revenue Department",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "detected_at": "2026-09-11T07:36:34.839Z"
+  }
+]

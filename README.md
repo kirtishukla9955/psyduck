@@ -60,6 +60,25 @@ land-stack/
 │   ├── requirements.txt          # Production & test dependencies
 │   └── README.md                 # Backend documentation
 │
+├── mock-data-ai/                  # Presenter 1: Mock Data & Land Trust Engine AI Layer
+│   ├── data/
+│   │   ├── raw/                  # Heterogeneous multi-department state datasets (CH & TN)
+│   │   └── normalized/           # Canonical ULPIN-indexed datasets & anomaly audit logs
+│   ├── src/
+│   │   ├── adapters/             # State-adapter normalization engine (Chandigarh & Tamil Nadu)
+│   │   ├── detector/             # Rule-based conflict detection engine (RULE-001 to RULE-005)
+│   │   ├── index.js              # Command-line dashboard runner & JSON exporter
+│   │   └── server.js             # High-performance REST API microservice (port 3005)
+│   ├── test/
+│   │   └── detector.test.js      # Automated test suite (17 tests, 100% pass)
+│   ├── docs/
+│   │   └── mock-data-schema.md   # Complete schema specification & API contract
+│   ├── package.json
+│   └── README.md
+│
+├── docs/
+│   └── mock-data-schema.md       # Root schema specification & API contract
+│
 ├── docker-compose.yml            # PostgreSQL 16 + PostGIS 3.4 database container
 ├── .env.example                  # Environment variable configuration template
 ├── .gitignore                    # Git tracking exclusions
@@ -213,14 +232,38 @@ The `seed.py` script provisions 5 distinct governance scenarios:
 
 ---
 
-## 7. Team Integration Contract
+## 7. Presenter 1: Mock Data & Land Trust Engine AI Layer
+
+The **Mock Data & AI Layer** (`mock-data-ai/`) simulates fragmented state land records across two pilot states (**Chandigarh** and **Tamil Nadu**), demonstrates the **State-Adapter concept**, and runs an automated **Rule-Based Anomaly Detection Engine**:
+
+- **Multi-Department Mock Datasets:** 32 parcels (16 CH + 16 TN) covering Revenue, Registration, Survey, and Urban Development with authentic state-specific terminology and regional land units (Kanal/Marla vs. Grounds/Cents).
+- **State-Adapter Normalization:** Standardizes heterogeneous state data into canonical ULPIN-indexed JSON records.
+- **Explainable Conflict Rules:** Automatically flags Owner Name Mismatches (`RULE-001`), Statutory Mutation SLA Breaches (`RULE-002`), Master Plan Zoning Inconsistencies (`RULE-003`), Cadastral Area Discrepancies (`RULE-004`), and Satellite Land-Use Drift (`RULE-005`).
+- **Schema & API Documentation:** Detailed contract in [`docs/mock-data-schema.md`](docs/mock-data-schema.md).
+
+### Quick Commands:
+```bash
+# Ingest raw records, evaluate conflicts, display executive dashboard & export JSON
+npm run mock-data:detect
+
+# Run automated test suite (17/17 tests passing)
+npm run mock-data:test
+
+# Launch high-performance REST microservice (port 3005)
+npm run mock-data:serve
+```
+
+---
+
+## 8. Team Integration Contract
 
 - **For P1 (GIS / Map):** Consume `GET /parcels?bbox=minLng,minLat,maxLng,maxLat` to render polygons with dynamic styling based on `mortgaged` and `trust_status`.
+- **For P2 (Backend & Trust Engine):** Reference `docs/mock-data-schema.md` to align FastAPI schemas or ingest `mock-data-ai/data/normalized/all_parcels.json`.
 - **For P3 (Citizen Portal):** Query `GET /parcel/{ulpin}` for instant title verification, ownership breakdown, and tax liability dues.
 - **For P4 (Admin Dashboard):** Call `GET /conflicts` to monitor integrity anomalies and `GET /mutations?overdue_only=true` to escalate delayed government files.
 
 ---
 
-## 8. License & Project Rights
+## 9. License & Project Rights
 
 Developed for **Smart India Hackathon 2026** by the Land Stack Development Team.
