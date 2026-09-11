@@ -1,0 +1,162 @@
+[
+  {
+    "ulpin": "IN-TN-CHN-00201",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Sholinganallur",
+    "master_plan_land_use": "Commercial Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/700",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00202",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Sholinganallur",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/701",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00203",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Sholinganallur",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/702",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00204",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Guindy",
+    "master_plan_land_use": "SIPCOT Industrial",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/703",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00205",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Guindy",
+    "master_plan_land_use": "Commercial Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/704",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00206",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Tambaram",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/705",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00207",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Tambaram",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/706",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00208",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Velachery",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/707",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00209",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Velachery",
+    "master_plan_land_use": "Commercial Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/708",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00210",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Karapakkam",
+    "master_plan_land_use": "Institutional",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/709",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00211",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Sholinganallur",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/710",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00212",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Tambaram",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/711",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00213",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Velachery",
+    "master_plan_land_use": "Water Body Buffer Zone",
+    "planning_permit_status": "Violation - Stop Work Notice Issued",
+    "pp_reference_no": null,
+    "violations_detected": true,
+    "remarks": "Buffer encroachment in Pallikaranai wetland zone"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00214",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Karapakkam",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/713",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00215",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Sholinganallur",
+    "master_plan_land_use": "Agricultural Zone",
+    "planning_permit_status": "Not Applied",
+    "pp_reference_no": null,
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  },
+  {
+    "ulpin": "IN-TN-CHN-00216",
+    "authority": "Chennai Metropolitan Development Authority (CMDA)",
+    "zone_locality": "Tambaram",
+    "master_plan_land_use": "Primary Residential Zone",
+    "planning_permit_status": "Approved",
+    "pp_reference_no": "PP/CMDA/2023/715",
+    "violations_detected": false,
+    "remarks": "Standard CMDA Master Plan II Compliance"
+  }
+]

@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: landstack-db
+    environment:
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: landstack
+    ports:
+      - "5432:5432"
+    volumes:
+      - landstack_pgdata:/var/lib/postgresql/data
+
+volumes:
+  landstack_pgdata:

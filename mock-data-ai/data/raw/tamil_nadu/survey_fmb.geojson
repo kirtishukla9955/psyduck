@@ -1,0 +1,661 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.226806,
+              12.90081
+            ],
+            [
+              80.227194,
+              12.90081
+            ],
+            [
+              80.227194,
+              12.90119
+            ],
+            [
+              80.226806,
+              12.90119
+            ],
+            [
+              80.226806,
+              12.90081
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00201",
+        "fmb_sketch_no": "FMB-TN-201",
+        "survey_number": "200",
+        "sub_division_number": "1A",
+        "village": "Sholinganallur",
+        "fmb_extent_sqm": 1783.74,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.228391,
+              12.902394
+            ],
+            [
+              80.228609,
+              12.902394
+            ],
+            [
+              80.228609,
+              12.902606
+            ],
+            [
+              80.228391,
+              12.902606
+            ],
+            [
+              80.228391,
+              12.902394
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00202",
+        "fmb_sketch_no": "FMB-TN-202",
+        "survey_number": "201",
+        "sub_division_number": "2A",
+        "village": "Sholinganallur",
+        "fmb_extent_sqm": 557.42,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.229931,
+              12.903933
+            ],
+            [
+              80.230069,
+              12.903933
+            ],
+            [
+              80.230069,
+              12.904067
+            ],
+            [
+              80.229931,
+              12.904067
+            ],
+            [
+              80.229931,
+              12.903933
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00203",
+        "fmb_sketch_no": "FMB-TN-203",
+        "survey_number": "202",
+        "sub_division_number": "3A",
+        "village": "Sholinganallur",
+        "fmb_extent_sqm": 222.57,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.202734,
+              13.00674
+            ],
+            [
+              80.203266,
+              13.00674
+            ],
+            [
+              80.203266,
+              13.00726
+            ],
+            [
+              80.202734,
+              13.00726
+            ],
+            [
+              80.202734,
+              13.00674
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00204",
+        "fmb_sketch_no": "FMB-TN-204",
+        "survey_number": "203",
+        "sub_division_number": "4A",
+        "village": "Guindy",
+        "fmb_extent_sqm": 3344.51,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.204283,
+              13.008288
+            ],
+            [
+              80.204717,
+              13.008288
+            ],
+            [
+              80.204717,
+              13.008712
+            ],
+            [
+              80.204283,
+              13.008712
+            ],
+            [
+              80.204283,
+              13.008288
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00205",
+        "fmb_sketch_no": "FMB-TN-205",
+        "survey_number": "204",
+        "sub_division_number": "1A",
+        "village": "Guindy",
+        "fmb_extent_sqm": 2229.67,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.117881,
+              12.922884
+            ],
+            [
+              80.118119,
+              12.922884
+            ],
+            [
+              80.118119,
+              12.923116
+            ],
+            [
+              80.117881,
+              12.923116
+            ],
+            [
+              80.117881,
+              12.922884
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00206",
+        "fmb_sketch_no": "FMB-TN-206",
+        "survey_number": "205",
+        "sub_division_number": "2A",
+        "village": "Tambaram",
+        "fmb_extent_sqm": 668.9,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.119442,
+              12.924443
+            ],
+            [
+              80.119558,
+              12.924443
+            ],
+            [
+              80.119558,
+              12.924557
+            ],
+            [
+              80.119442,
+              12.924557
+            ],
+            [
+              80.119442,
+              12.924443
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00207",
+        "fmb_sketch_no": "FMB-TN-207",
+        "survey_number": "206",
+        "sub_division_number": "3A",
+        "village": "Tambaram",
+        "fmb_extent_sqm": 161.87,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.218832,
+              12.977836
+            ],
+            [
+              80.219168,
+              12.977836
+            ],
+            [
+              80.219168,
+              12.978164
+            ],
+            [
+              80.218832,
+              12.978164
+            ],
+            [
+              80.218832,
+              12.977836
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00208",
+        "fmb_sketch_no": "FMB-TN-208",
+        "survey_number": "207",
+        "sub_division_number": "4A",
+        "village": "Velachery",
+        "fmb_extent_sqm": 1337.8,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.220354,
+              12.979358
+            ],
+            [
+              80.220646,
+              12.979358
+            ],
+            [
+              80.220646,
+              12.979642
+            ],
+            [
+              80.220354,
+              12.979642
+            ],
+            [
+              80.220354,
+              12.979358
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00209",
+        "fmb_sketch_no": "FMB-TN-209",
+        "survey_number": "208",
+        "sub_division_number": "1A",
+        "village": "Velachery",
+        "fmb_extent_sqm": 1003.35,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.230693,
+              12.9147
+            ],
+            [
+              80.231307,
+              12.9147
+            ],
+            [
+              80.231307,
+              12.9153
+            ],
+            [
+              80.230693,
+              12.9153
+            ],
+            [
+              80.230693,
+              12.9147
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00210",
+        "fmb_sketch_no": "FMB-TN-210",
+        "survey_number": "209",
+        "sub_division_number": "2A",
+        "village": "Karapakkam",
+        "fmb_extent_sqm": 4459.34,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.231863,
+              12.905866
+            ],
+            [
+              80.232137,
+              12.905866
+            ],
+            [
+              80.232137,
+              12.906134
+            ],
+            [
+              80.231863,
+              12.906134
+            ],
+            [
+              80.231863,
+              12.905866
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00211",
+        "fmb_sketch_no": "FMB-TN-211",
+        "survey_number": "210",
+        "sub_division_number": "3A",
+        "village": "Sholinganallur",
+        "fmb_extent_sqm": 891.87,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.120903,
+              12.925905
+            ],
+            [
+              80.121097,
+              12.925905
+            ],
+            [
+              80.121097,
+              12.926095
+            ],
+            [
+              80.120903,
+              12.926095
+            ],
+            [
+              80.120903,
+              12.925905
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00212",
+        "fmb_sketch_no": "FMB-TN-212",
+        "survey_number": "211",
+        "sub_division_number": "4A",
+        "village": "Tambaram",
+        "fmb_extent_sqm": 445.93,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.221847,
+              12.98085
+            ],
+            [
+              80.222153,
+              12.98085
+            ],
+            [
+              80.222153,
+              12.98115
+            ],
+            [
+              80.221847,
+              12.98115
+            ],
+            [
+              80.221847,
+              12.98085
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00213",
+        "fmb_sketch_no": "FMB-TN-213",
+        "survey_number": "212",
+        "sub_division_number": "1A",
+        "village": "Velachery",
+        "fmb_extent_sqm": 1114.84,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.232919,
+              12.916921
+            ],
+            [
+              80.233081,
+              12.916921
+            ],
+            [
+              80.233081,
+              12.917079
+            ],
+            [
+              80.232919,
+              12.917079
+            ],
+            [
+              80.232919,
+              12.916921
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00214",
+        "fmb_sketch_no": "FMB-TN-214",
+        "survey_number": "213",
+        "sub_division_number": "2A",
+        "village": "Karapakkam",
+        "fmb_extent_sqm": 310.0,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.233762,
+              12.907767
+            ],
+            [
+              80.234238,
+              12.907767
+            ],
+            [
+              80.234238,
+              12.908233
+            ],
+            [
+              80.233762,
+              12.908233
+            ],
+            [
+              80.233762,
+              12.907767
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00215",
+        "fmb_sketch_no": "FMB-TN-215",
+        "survey_number": "214",
+        "sub_division_number": "3A",
+        "village": "Sholinganallur",
+        "fmb_extent_sqm": 2675.6,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.122881,
+              12.927884
+            ],
+            [
+              80.123119,
+              12.927884
+            ],
+            [
+              80.123119,
+              12.928116
+            ],
+            [
+              80.122881,
+              12.928116
+            ],
+            [
+              80.122881,
+              12.927884
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-TN-CHN-00216",
+        "fmb_sketch_no": "FMB-TN-216",
+        "survey_number": "215",
+        "sub_division_number": "4A",
+        "village": "Tambaram",
+        "fmb_extent_sqm": 668.9,
+        "surveying_department": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "fmb_survey_date": "2023-05-15",
+        "boundary_dispute_flag": false
+      }
+    }
+  ]
+}

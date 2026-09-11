@@ -1,0 +1,4642 @@
+[
+  {
+    "ulpin": "IN-CH-017-00101",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.740971,
+      "lon": 76.784967
+    },
+    "polygon_coordinates": [
+      [
+        76.784834,
+        30.740857
+      ],
+      [
+        76.785166,
+        30.740857
+      ],
+      [
+        76.785166,
+        30.741143
+      ],
+      [
+        76.784834,
+        30.741143
+      ],
+      [
+        76.784834,
+        30.740857
+      ]
+    ],
+    "calculated_gis_area_sqm": 1010.45,
+    "master_owner": "Sanjay Singla",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-101",
+        "owner_name": "Sanjay Singla",
+        "co_owners": [],
+        "land_use_raw": "Commercial Plot",
+        "land_use_normalized": "COMMERCIAL",
+        "area_sqm": 1011.71,
+        "raw_units": {
+          "kanal": 2,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8800",
+        "mutation_date": "2024-02-15",
+        "application_date": "2024-01-10",
+        "identifiers": {
+          "khewat_no": "KHW-10",
+          "khatoni_no": "KHT-20",
+          "khasra_no": "101/Sector17",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 17"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2024-1102",
+        "registered_owner": "Sanjay Singla",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2024-01-05",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 25000000,
+        "stamp_duty_inr": 1500000,
+        "registration_fee_inr": 250000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "400"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-101",
+        "parcel_number": "101/Sector17",
+        "surveyed_area_sqm": 1011.71,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.784834,
+                30.740857
+              ],
+              [
+                76.785166,
+                30.740857
+              ],
+              [
+                76.785166,
+                30.741143
+              ],
+              [
+                76.784834,
+                30.741143
+              ],
+              [
+                76.784834,
+                30.740857
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Commercial Core",
+        "zoning_normalized": "COMMERCIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-550",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-017-00101",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.831Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-017-00102",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.742475,
+      "lon": 76.786471
+    },
+    "polygon_coordinates": [
+      [
+        76.786356,
+        30.742376
+      ],
+      [
+        76.786644,
+        30.742376
+      ],
+      [
+        76.786644,
+        30.742624
+      ],
+      [
+        76.786356,
+        30.742624
+      ],
+      [
+        76.786356,
+        30.742376
+      ]
+    ],
+    "calculated_gis_area_sqm": 760.06,
+    "master_owner": "Pooja Agarwal",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-102",
+        "owner_name": "Pooja Agarwal",
+        "co_owners": [],
+        "land_use_raw": "Commercial Plot",
+        "land_use_normalized": "COMMERCIAL",
+        "area_sqm": 758.79,
+        "raw_units": {
+          "kanal": 1.5,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8801",
+        "mutation_date": "2024-04-20",
+        "application_date": "2024-03-01",
+        "identifiers": {
+          "khewat_no": "KHW-11",
+          "khatoni_no": "KHT-21",
+          "khasra_no": "102/Sector17",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 17"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2024-1420",
+        "registered_owner": "Pooja Agarwal",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2024-02-25",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 18000000,
+        "stamp_duty_inr": 1080000,
+        "registration_fee_inr": 180000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "401"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-102",
+        "parcel_number": "102/Sector17",
+        "surveyed_area_sqm": 758.79,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.786356,
+                30.742376
+              ],
+              [
+                76.786644,
+                30.742376
+              ],
+              [
+                76.786644,
+                30.742624
+              ],
+              [
+                76.786356,
+                30.742624
+              ],
+              [
+                76.786356,
+                30.742376
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Commercial Core",
+        "zoning_normalized": "COMMERCIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-551",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-017-00102",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.832Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-022-00103",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.73198,
+      "lon": 76.771977
+    },
+    "polygon_coordinates": [
+      [
+        76.771883,
+        30.731899
+      ],
+      [
+        76.772117,
+        30.731899
+      ],
+      [
+        76.772117,
+        30.732101
+      ],
+      [
+        76.771883,
+        30.732101
+      ],
+      [
+        76.771883,
+        30.731899
+      ]
+    ],
+    "calculated_gis_area_sqm": 503.06,
+    "master_owner": "Gurpreet Singh Ahluwalia",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-103",
+        "owner_name": "Gurpreet Singh Ahluwalia",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 505.86,
+        "raw_units": {
+          "kanal": 1,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8802",
+        "mutation_date": "2023-03-12",
+        "application_date": "2023-02-15",
+        "identifiers": {
+          "khewat_no": "KHW-12",
+          "khatoni_no": "KHT-22",
+          "khasra_no": "103/Sector22",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 22"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2023-0941",
+        "registered_owner": "Gurpreet Singh Ahluwalia",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2023-02-02",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 9500000,
+        "stamp_duty_inr": 570000,
+        "registration_fee_inr": 95000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "402"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-103",
+        "parcel_number": "103/Sector22",
+        "surveyed_area_sqm": 505.86,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.771883,
+                30.731899
+              ],
+              [
+                76.772117,
+                30.731899
+              ],
+              [
+                76.772117,
+                30.732101
+              ],
+              [
+                76.771883,
+                30.732101
+              ],
+              [
+                76.771883,
+                30.731899
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-552",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-022-00103",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.832Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-022-00104",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.733486,
+      "lon": 76.773483
+    },
+    "polygon_coordinates": [
+      [
+        76.773417,
+        30.733428
+      ],
+      [
+        76.773583,
+        30.733428
+      ],
+      [
+        76.773583,
+        30.733572
+      ],
+      [
+        76.773417,
+        30.733572
+      ],
+      [
+        76.773417,
+        30.733428
+      ]
+    ],
+    "calculated_gis_area_sqm": 254.4,
+    "master_owner": "Manjit Kaur",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-104",
+        "owner_name": "Manjit Kaur",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 252.93,
+        "raw_units": {
+          "kanal": 0,
+          "marla": 10,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8803",
+        "mutation_date": "2023-11-05",
+        "application_date": "2023-10-10",
+        "identifiers": {
+          "khewat_no": "KHW-13",
+          "khatoni_no": "KHT-23",
+          "khasra_no": "104/Sector22",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 22"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2023-4122",
+        "registered_owner": "Manjit Kaur",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2023-10-01",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 6200000,
+        "stamp_duty_inr": 372000,
+        "registration_fee_inr": 62000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "403"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-104",
+        "parcel_number": "104/Sector22",
+        "surveyed_area_sqm": 252.9,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.773417,
+                30.733428
+              ],
+              [
+                76.773583,
+                30.733428
+              ],
+              [
+                76.773583,
+                30.733572
+              ],
+              [
+                76.773417,
+                30.733572
+              ],
+              [
+                76.773417,
+                30.733428
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-553",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-022-00104",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.832Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-022-00105",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.734983,
+      "lon": 76.77498
+    },
+    "polygon_coordinates": [
+      [
+        76.774902,
+        30.734915
+      ],
+      [
+        76.775098,
+        30.734915
+      ],
+      [
+        76.775098,
+        30.735085
+      ],
+      [
+        76.774902,
+        30.735085
+      ],
+      [
+        76.774902,
+        30.734915
+      ]
+    ],
+    "calculated_gis_area_sqm": 354.61,
+    "master_owner": "Rohit Varma",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-105",
+        "owner_name": "Rohit Varma",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 354.1,
+        "raw_units": {
+          "kanal": 0,
+          "marla": 14,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8804",
+        "mutation_date": "2024-01-19",
+        "application_date": "2023-12-22",
+        "identifiers": {
+          "khewat_no": "KHW-14",
+          "khatoni_no": "KHT-24",
+          "khasra_no": "105/Sector22",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 22"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2023-5819",
+        "registered_owner": "Rohit Varma",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2023-12-15",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 7800000,
+        "stamp_duty_inr": 468000,
+        "registration_fee_inr": 78000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "404"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-105",
+        "parcel_number": "105/Sector22",
+        "surveyed_area_sqm": 354.06,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.774902,
+                30.734915
+              ],
+              [
+                76.775098,
+                30.734915
+              ],
+              [
+                76.775098,
+                30.735085
+              ],
+              [
+                76.774902,
+                30.735085
+              ],
+              [
+                76.774902,
+                30.734915
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-554",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-022-00105",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.832Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-034-00106",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.720965,
+      "lon": 76.763959
+    },
+    "polygon_coordinates": [
+      [
+        76.763796,
+        30.720825
+      ],
+      [
+        76.764204,
+        30.720825
+      ],
+      [
+        76.764204,
+        30.721175
+      ],
+      [
+        76.763796,
+        30.721175
+      ],
+      [
+        76.763796,
+        30.720825
+      ]
+    ],
+    "calculated_gis_area_sqm": 1519.95,
+    "master_owner": "Apex Tech Infoways Pvt Ltd",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-106",
+        "owner_name": "Apex Tech Infoways Pvt Ltd",
+        "co_owners": [],
+        "land_use_raw": "Commercial Plot",
+        "land_use_normalized": "COMMERCIAL",
+        "area_sqm": 1517.57,
+        "raw_units": {
+          "kanal": 3,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8805",
+        "mutation_date": "2024-06-14",
+        "application_date": "2024-05-02",
+        "identifiers": {
+          "khewat_no": "KHW-15",
+          "khatoni_no": "KHT-25",
+          "khasra_no": "106/Sector34",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 34"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2024-2810",
+        "registered_owner": "Apex Tech Infoways Pvt Ltd",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2024-04-20",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 34000000,
+        "stamp_duty_inr": 2040000,
+        "registration_fee_inr": 340000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "405"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-106",
+        "parcel_number": "106/Sector34",
+        "surveyed_area_sqm": 1517.57,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.763796,
+                30.720825
+              ],
+              [
+                76.764204,
+                30.720825
+              ],
+              [
+                76.764204,
+                30.721175
+              ],
+              [
+                76.763796,
+                30.721175
+              ],
+              [
+                76.763796,
+                30.720825
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Commercial",
+        "zoning_normalized": "COMMERCIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-555",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-034-00106",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.832Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-034-00107",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.722471,
+      "lon": 76.765467
+    },
+    "polygon_coordinates": [
+      [
+        76.765334,
+        30.722357
+      ],
+      [
+        76.765666,
+        30.722357
+      ],
+      [
+        76.765666,
+        30.722643
+      ],
+      [
+        76.765334,
+        30.722643
+      ],
+      [
+        76.765334,
+        30.722357
+      ]
+    ],
+    "calculated_gis_area_sqm": 1010.64,
+    "master_owner": "DAV Educational Society",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-107",
+        "owner_name": "DAV Educational Society",
+        "co_owners": [],
+        "land_use_raw": "Institutional",
+        "land_use_normalized": "INSTITUTIONAL",
+        "area_sqm": 1011.71,
+        "raw_units": {
+          "kanal": 2,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8806",
+        "mutation_date": "2022-08-10",
+        "application_date": "2022-07-15",
+        "identifiers": {
+          "khewat_no": "KHW-16",
+          "khatoni_no": "KHT-26",
+          "khasra_no": "107/Sector34",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 34"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2022-1088",
+        "registered_owner": "DAV Educational Society",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2022-07-01",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 15000000,
+        "stamp_duty_inr": 900000,
+        "registration_fee_inr": 150000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "406"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-107",
+        "parcel_number": "107/Sector34",
+        "surveyed_area_sqm": 1011.71,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.765334,
+                30.722357
+              ],
+              [
+                76.765666,
+                30.722357
+              ],
+              [
+                76.765666,
+                30.722643
+              ],
+              [
+                76.765334,
+                30.722643
+              ],
+              [
+                76.765334,
+                30.722357
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Institutional",
+        "zoning_normalized": "INSTITUTIONAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-556",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-034-00107",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.832Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-043-00108",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.71498,
+      "lon": 76.747977
+    },
+    "polygon_coordinates": [
+      [
+        76.747883,
+        30.714899
+      ],
+      [
+        76.748117,
+        30.714899
+      ],
+      [
+        76.748117,
+        30.715101
+      ],
+      [
+        76.747883,
+        30.715101
+      ],
+      [
+        76.747883,
+        30.714899
+      ]
+    ],
+    "calculated_gis_area_sqm": 503.14,
+    "master_owner": "Anand Mohan Sharma",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-108",
+        "owner_name": "Anand Mohan Sharma",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 505.86,
+        "raw_units": {
+          "kanal": 1,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8807",
+        "mutation_date": "2024-02-28",
+        "application_date": "2024-01-14",
+        "identifiers": {
+          "khewat_no": "KHW-17",
+          "khatoni_no": "KHT-27",
+          "khasra_no": "108/Sector43",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 43"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2024-0419",
+        "registered_owner": "Anand Mohan Sharma",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2024-01-08",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 8900000,
+        "stamp_duty_inr": 534000,
+        "registration_fee_inr": 89000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "407"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-108",
+        "parcel_number": "108/Sector43",
+        "surveyed_area_sqm": 505.86,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.747883,
+                30.714899
+              ],
+              [
+                76.748117,
+                30.714899
+              ],
+              [
+                76.748117,
+                30.715101
+              ],
+              [
+                76.747883,
+                30.715101
+              ],
+              [
+                76.747883,
+                30.714899
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-557",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-043-00108",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.832Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-043-00109",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.71648,
+      "lon": 76.749477
+    },
+    "polygon_coordinates": [
+      [
+        76.749383,
+        30.716399
+      ],
+      [
+        76.749617,
+        30.716399
+      ],
+      [
+        76.749617,
+        30.716601
+      ],
+      [
+        76.749383,
+        30.716601
+      ],
+      [
+        76.749383,
+        30.716399
+      ]
+    ],
+    "calculated_gis_area_sqm": 503.14,
+    "master_owner": "Lt Col Devinder Singh",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-109",
+        "owner_name": "Lt Col Devinder Singh",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 505.86,
+        "raw_units": {
+          "kanal": 1,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8808",
+        "mutation_date": "2023-09-04",
+        "application_date": "2023-08-01",
+        "identifiers": {
+          "khewat_no": "KHW-18",
+          "khatoni_no": "KHT-28",
+          "khasra_no": "109/Sector43",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 43"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2023-3801",
+        "registered_owner": "Lt Col Devinder Singh",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2023-07-25",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 9200000,
+        "stamp_duty_inr": 552000,
+        "registration_fee_inr": 92000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "408"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-109",
+        "parcel_number": "109/Sector43",
+        "surveyed_area_sqm": 505.86,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.749383,
+                30.716399
+              ],
+              [
+                76.749617,
+                30.716399
+              ],
+              [
+                76.749617,
+                30.716601
+              ],
+              [
+                76.749383,
+                30.716601
+              ],
+              [
+                76.749383,
+                30.716399
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-558",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-043-00109",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.833Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-MMJ-00110",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.724986,
+      "lon": 76.844983
+    },
+    "polygon_coordinates": [
+      [
+        76.844917,
+        30.724928
+      ],
+      [
+        76.845083,
+        30.724928
+      ],
+      [
+        76.845083,
+        30.725072
+      ],
+      [
+        76.844917,
+        30.725072
+      ],
+      [
+        76.844917,
+        30.724928
+      ]
+    ],
+    "calculated_gis_area_sqm": 254.42,
+    "master_owner": "Ramesh Chand Garg",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-110",
+        "owner_name": "Ramesh Chand Garg",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 252.93,
+        "raw_units": {
+          "kanal": 0.5,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8809",
+        "mutation_date": "2023-12-11",
+        "application_date": "2023-11-15",
+        "identifiers": {
+          "khewat_no": "KHW-19",
+          "khatoni_no": "KHT-29",
+          "khasra_no": "110/Manimajra",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Manimajra"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2023-6110",
+        "registered_owner": "Ramesh Chand Garg",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2023-11-02",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 4500000,
+        "stamp_duty_inr": 270000,
+        "registration_fee_inr": 45000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "409"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-110",
+        "parcel_number": "110/Manimajra",
+        "surveyed_area_sqm": 252.93,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.844917,
+                30.724928
+              ],
+              [
+                76.845083,
+                30.724928
+              ],
+              [
+                76.845083,
+                30.725072
+              ],
+              [
+                76.844917,
+                30.725072
+              ],
+              [
+                76.844917,
+                30.724928
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-559",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-MMJ-00110",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.833Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-022-00111",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.73598,
+      "lon": 76.775977
+    },
+    "polygon_coordinates": [
+      [
+        76.775883,
+        30.735899
+      ],
+      [
+        76.776117,
+        30.735899
+      ],
+      [
+        76.776117,
+        30.736101
+      ],
+      [
+        76.775883,
+        30.736101
+      ],
+      [
+        76.775883,
+        30.735899
+      ]
+    ],
+    "calculated_gis_area_sqm": 503.04,
+    "master_owner": "Harpreet Singh Sandhu",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-111",
+        "owner_name": "Harpreet Singh Sandhu",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 505.86,
+        "raw_units": {
+          "kanal": 1,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "NONE",
+        "mutation_status_raw": "Bila-Intiqal",
+        "mutation_id": null,
+        "mutation_date": null,
+        "application_date": null,
+        "identifiers": {
+          "khewat_no": "KHW-20",
+          "khatoni_no": "KHT-30",
+          "khasra_no": "111/Sector22",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 22"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2024-2201",
+        "registered_owner": "Sunita Sharma",
+        "seller_name": "Harpreet Singh Sandhu",
+        "registration_date": "2024-05-10",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 11000000,
+        "stamp_duty_inr": 660000,
+        "registration_fee_inr": 110000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "410"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-111",
+        "parcel_number": "111/Sector22",
+        "surveyed_area_sqm": 505.86,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.775883,
+                30.735899
+              ],
+              [
+                76.776117,
+                30.735899
+              ],
+              [
+                76.776117,
+                30.736101
+              ],
+              [
+                76.775883,
+                30.736101
+              ],
+              [
+                76.775883,
+                30.735899
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-560",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-022-00111",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.833Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-043-00112",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.71798,
+      "lon": 76.750977
+    },
+    "polygon_coordinates": [
+      [
+        76.750883,
+        30.717899
+      ],
+      [
+        76.751117,
+        30.717899
+      ],
+      [
+        76.751117,
+        30.718101
+      ],
+      [
+        76.750883,
+        30.718101
+      ],
+      [
+        76.750883,
+        30.717899
+      ]
+    ],
+    "calculated_gis_area_sqm": 503.13,
+    "master_owner": "Ashok Kumar Jain",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-112",
+        "owner_name": "Ashok Kumar Jain",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 505.86,
+        "raw_units": {
+          "kanal": 1,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "PENDING",
+        "mutation_status_raw": "Zer-Tajweez",
+        "mutation_id": null,
+        "mutation_date": null,
+        "application_date": "2026-06-15",
+        "identifiers": {
+          "khewat_no": "KHW-21",
+          "khatoni_no": "KHT-31",
+          "khasra_no": "112/Sector43",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 43"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2026-1940",
+        "registered_owner": "Pradeep Kumar Gupta",
+        "seller_name": "Ashok Kumar Jain",
+        "registration_date": "2026-06-10",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 9800000,
+        "stamp_duty_inr": 588000,
+        "registration_fee_inr": 98000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "411"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-112",
+        "parcel_number": "112/Sector43",
+        "surveyed_area_sqm": 505.86,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.750883,
+                30.717899
+              ],
+              [
+                76.751117,
+                30.717899
+              ],
+              [
+                76.751117,
+                30.718101
+              ],
+              [
+                76.750883,
+                30.718101
+              ],
+              [
+                76.750883,
+                30.717899
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-561",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-043-00112",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.833Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-017-00113",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.743971,
+      "lon": 76.787967
+    },
+    "polygon_coordinates": [
+      [
+        76.787834,
+        30.743857
+      ],
+      [
+        76.788166,
+        30.743857
+      ],
+      [
+        76.788166,
+        30.744143
+      ],
+      [
+        76.787834,
+        30.744143
+      ],
+      [
+        76.787834,
+        30.743857
+      ]
+    ],
+    "calculated_gis_area_sqm": 1010.42,
+    "master_owner": "Capital Horizon Developers",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-113",
+        "owner_name": "Capital Horizon Developers",
+        "co_owners": [],
+        "land_use_raw": "Commercial Plot",
+        "land_use_normalized": "COMMERCIAL",
+        "area_sqm": 1011.71,
+        "raw_units": {
+          "kanal": 2,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8812",
+        "mutation_date": "2024-01-10",
+        "application_date": "2023-12-15",
+        "identifiers": {
+          "khewat_no": "KHW-22",
+          "khatoni_no": "KHT-32",
+          "khasra_no": "113/Sector17",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 17"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2023-7741",
+        "registered_owner": "Capital Horizon Developers",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2023-12-01",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 45000000,
+        "stamp_duty_inr": 2700000,
+        "registration_fee_inr": 450000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "412"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-113",
+        "parcel_number": "113/Sector17",
+        "surveyed_area_sqm": 1011.71,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.787834,
+                30.743857
+              ],
+              [
+                76.788166,
+                30.743857
+              ],
+              [
+                76.788166,
+                30.744143
+              ],
+              [
+                76.787834,
+                30.744143
+              ],
+              [
+                76.787834,
+                30.743857
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Green Belt / Leisure Valley",
+        "zoning_normalized": "FOREST_GREEN_BELT",
+        "building_permission_status": "VIOLATION NOTICE ISSUED - SECTION 12",
+        "sanction_no": null,
+        "violations_reported": true,
+        "remarks": "Encroachment in Leisure Valley buffer zone"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-017-00113",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.833Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-034-00114",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.723963,
+      "lon": 76.766958
+    },
+    "polygon_coordinates": [
+      [
+        76.766788,
+        30.723817
+      ],
+      [
+        76.767212,
+        30.723817
+      ],
+      [
+        76.767212,
+        30.724183
+      ],
+      [
+        76.766788,
+        30.724183
+      ],
+      [
+        76.766788,
+        30.723817
+      ]
+    ],
+    "calculated_gis_area_sqm": 1651.71,
+    "master_owner": "Balkar Singh Bajwa",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-114",
+        "owner_name": "Balkar Singh Bajwa",
+        "co_owners": [],
+        "land_use_raw": "Commercial Plot",
+        "land_use_normalized": "COMMERCIAL",
+        "area_sqm": 2023.43,
+        "raw_units": {
+          "kanal": 4,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8813",
+        "mutation_date": "2023-07-18",
+        "application_date": "2023-06-20",
+        "identifiers": {
+          "khewat_no": "KHW-23",
+          "khatoni_no": "KHT-33",
+          "khasra_no": "114/Sector34",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 34"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2023-3112",
+        "registered_owner": "Balkar Singh Bajwa",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2023-06-10",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 38000000,
+        "stamp_duty_inr": 2280000,
+        "registration_fee_inr": 380000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "413"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-114",
+        "parcel_number": "114/Sector34",
+        "surveyed_area_sqm": 1650,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": true,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.766788,
+                30.723817
+              ],
+              [
+                76.767212,
+                30.723817
+              ],
+              [
+                76.767212,
+                30.724183
+              ],
+              [
+                76.766788,
+                30.724183
+              ],
+              [
+                76.766788,
+                30.723817
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Commercial",
+        "zoning_normalized": "COMMERCIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-563",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-034-00114",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.833Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-MMJ-00115",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.726955,
+      "lon": 76.847947
+    },
+    "polygon_coordinates": [
+      [
+        76.847737,
+        30.726774
+      ],
+      [
+        76.848263,
+        30.726774
+      ],
+      [
+        76.848263,
+        30.727226
+      ],
+      [
+        76.847737,
+        30.727226
+      ],
+      [
+        76.847737,
+        30.726774
+      ]
+    ],
+    "calculated_gis_area_sqm": 2530.45,
+    "master_owner": "Jaswinder Kaur",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-115",
+        "owner_name": "Jaswinder Kaur",
+        "co_owners": [],
+        "land_use_raw": "Agricultural (Periphery)",
+        "land_use_normalized": "AGRICULTURAL",
+        "area_sqm": 2529.29,
+        "raw_units": {
+          "kanal": 5,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "Manzoor",
+        "mutation_id": "INT-8814",
+        "mutation_date": "2022-04-12",
+        "application_date": "2022-03-10",
+        "identifiers": {
+          "khewat_no": "KHW-24",
+          "khatoni_no": "KHT-34",
+          "khasra_no": "115/Manimajra",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Manimajra"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2022-2190",
+        "registered_owner": "Jaswinder Kaur",
+        "seller_name": "Chandigarh Housing Board / Allottee",
+        "registration_date": "2022-03-01",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 12000000,
+        "stamp_duty_inr": 720000,
+        "registration_fee_inr": 120000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "414"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-115",
+        "parcel_number": "115/Manimajra",
+        "surveyed_area_sqm": 2529.29,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.847737,
+                30.726774
+              ],
+              [
+                76.848263,
+                30.726774
+              ],
+              [
+                76.848263,
+                30.727226
+              ],
+              [
+                76.847737,
+                30.727226
+              ],
+              [
+                76.847737,
+                30.726774
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Agricultural",
+        "zoning_normalized": "AGRICULTURAL",
+        "building_permission_status": "NOT APPLICABLE",
+        "sanction_no": null,
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-MMJ-00115",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.68,
+        "recent_ndvi": 0.22,
+        "ndvi_delta": -0.46,
+        "built_up_index_change": 0.38,
+        "unauthorized_structure_flag": true,
+        "confidence_score": 0.96,
+        "notes": "Sentinel-2 alert: Major vegetation clearance & concrete warehouse slab detected on peri-urban agricultural parcel."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.833Z"
+    }
+  },
+  {
+    "ulpin": "IN-CH-043-00116",
+    "state": "Chandigarh (UT)",
+    "state_code": "CH",
+    "centroid": {
+      "lat": 30.71948,
+      "lon": 76.752477
+    },
+    "polygon_coordinates": [
+      [
+        76.752383,
+        30.719399
+      ],
+      [
+        76.752617,
+        30.719399
+      ],
+      [
+        76.752617,
+        30.719601
+      ],
+      [
+        76.752383,
+        30.719601
+      ],
+      [
+        76.752383,
+        30.719399
+      ]
+    ],
+    "calculated_gis_area_sqm": 503.13,
+    "master_owner": "Kuldeep Singh Sandhu",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "JAM-CH-2024-116",
+        "owner_name": "Kuldeep Singh Sandhu",
+        "co_owners": [],
+        "land_use_raw": "Residential",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 505.86,
+        "raw_units": {
+          "kanal": 1,
+          "marla": 0,
+          "sq_yards": 0
+        },
+        "mutation_status": "PENDING",
+        "mutation_status_raw": "Zer-Tajweez",
+        "mutation_id": null,
+        "mutation_date": null,
+        "application_date": "2026-05-25",
+        "identifiers": {
+          "khewat_no": "KHW-25",
+          "khatoni_no": "KHT-35",
+          "khasra_no": "116/Sector43",
+          "jamabandi_year": "2023-2024",
+          "patwar_circle": "Patwar Circle Sector 17/22/34"
+        },
+        "administrative_division": {
+          "state": "Chandigarh (UT)",
+          "district": "Chandigarh",
+          "sub_division": "Chandigarh Central",
+          "sector": "Sector 43"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "VAS-2026-1180",
+        "registered_owner": "Rajesh Gupta",
+        "seller_name": "Kuldeep Singh Sandhu",
+        "registration_date": "2026-05-20",
+        "deed_type": "Sale Deed / Conveyance",
+        "sro_office": "Sub-Registrar Office, Sector 17, Chandigarh UT",
+        "consideration_amount_inr": 10500000,
+        "stamp_duty_inr": 630000,
+        "registration_fee_inr": 105000,
+        "book_details": {
+          "bahi_no": "1",
+          "jild_no": "415"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "UT-CAD-CH-116",
+        "parcel_number": "116/Sector43",
+        "surveyed_area_sqm": 505.86,
+        "survey_date": "2023-10-15",
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.752383,
+                30.719399
+              ],
+              [
+                76.752617,
+                30.719399
+              ],
+              [
+                76.752617,
+                30.719601
+              ],
+              [
+                76.752383,
+                30.719601
+              ],
+              [
+                76.752383,
+                30.719399
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Department of Urban Planning, Chandigarh Administration",
+        "zoning_raw": "Residential",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "SANCTIONED",
+        "sanction_no": "SAN-UT-2023-565",
+        "violations_reported": false,
+        "remarks": "Standard UT Zoning Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-CH-043-00116",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.42,
+        "recent_ndvi": 0.4,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.93,
+        "notes": "Stable land cover profile consistent with authorized land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "ChandigarhAdapter",
+      "normalized_at": "2026-09-11T07:36:34.833Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00201",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.900962,
+      "lon": 80.226961
+    },
+    "polygon_coordinates": [
+      [
+        80.226806,
+        12.90081
+      ],
+      [
+        80.227194,
+        12.90081
+      ],
+      [
+        80.227194,
+        12.90119
+      ],
+      [
+        80.226806,
+        12.90119
+      ],
+      [
+        80.226806,
+        12.90081
+      ]
+    ],
+    "calculated_gis_area_sqm": 1779.44,
+    "master_owner": "Thiru S. Sivakumar",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-201",
+        "owner_name": "Thiru S. Sivakumar",
+        "co_owners": [],
+        "land_use_raw": "Varthaga Manai",
+        "land_use_normalized": "COMMERCIAL",
+        "area_sqm": 1783.74,
+        "raw_units": {
+          "grounds": 8,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1400",
+        "mutation_date": "2024-01-15",
+        "application_date": "2023-12-05",
+        "identifiers": {
+          "patta_number": "1400",
+          "survey_number": "200",
+          "sub_division_number": "1A",
+          "firka": "Sholinganallur Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Sholinganallur",
+          "village": "Sholinganallur"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2023-8911",
+        "registered_owner": "Thiru S. Sivakumar",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-11-28",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Sholinganallur, Registration Zone Chennai",
+        "consideration_amount_inr": 32000000,
+        "stamp_duty_inr": 2240000,
+        "registration_fee_inr": 640000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-201",
+        "parcel_number": "200/1A",
+        "surveyed_area_sqm": 1783.74,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.226806,
+                12.90081
+              ],
+              [
+                80.227194,
+                12.90081
+              ],
+              [
+                80.227194,
+                12.90119
+              ],
+              [
+                80.226806,
+                12.90119
+              ],
+              [
+                80.226806,
+                12.90081
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Commercial Zone",
+        "zoning_normalized": "COMMERCIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/700",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00201",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00202",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.902479,
+      "lon": 80.228478
+    },
+    "polygon_coordinates": [
+      [
+        80.228391,
+        12.902394
+      ],
+      [
+        80.228609,
+        12.902394
+      ],
+      [
+        80.228609,
+        12.902606
+      ],
+      [
+        80.228391,
+        12.902606
+      ],
+      [
+        80.228391,
+        12.902394
+      ]
+    ],
+    "calculated_gis_area_sqm": 557.77,
+    "master_owner": "Tmt. Lakshmi Narayanan",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-202",
+        "owner_name": "Tmt. Lakshmi Narayanan",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 557.42,
+        "raw_units": {
+          "grounds": 2.5,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1401",
+        "mutation_date": "2024-03-20",
+        "application_date": "2024-02-14",
+        "identifiers": {
+          "patta_number": "1401",
+          "survey_number": "201",
+          "sub_division_number": "2A",
+          "firka": "Sholinganallur Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Sholinganallur",
+          "village": "Sholinganallur"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2024-1240",
+        "registered_owner": "Tmt. Lakshmi Narayanan",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2024-02-01",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Sholinganallur, Registration Zone Chennai",
+        "consideration_amount_inr": 12500000,
+        "stamp_duty_inr": 875000,
+        "registration_fee_inr": 250000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-202",
+        "parcel_number": "201/2A",
+        "surveyed_area_sqm": 557.42,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.228391,
+                12.902394
+              ],
+              [
+                80.228609,
+                12.902394
+              ],
+              [
+                80.228609,
+                12.902606
+              ],
+              [
+                80.228391,
+                12.902606
+              ],
+              [
+                80.228391,
+                12.902394
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/701",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00202",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00203",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.903987,
+      "lon": 80.229986
+    },
+    "polygon_coordinates": [
+      [
+        80.229931,
+        12.903933
+      ],
+      [
+        80.230069,
+        12.903933
+      ],
+      [
+        80.230069,
+        12.904067
+      ],
+      [
+        80.229931,
+        12.904067
+      ],
+      [
+        80.229931,
+        12.903933
+      ]
+    ],
+    "calculated_gis_area_sqm": 223.17,
+    "master_owner": "K. Venkatesan",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-203",
+        "owner_name": "K. Venkatesan",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 222.58,
+        "raw_units": {
+          "grounds": 0,
+          "cents": 5.5,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1402",
+        "mutation_date": "2023-10-18",
+        "application_date": "2023-09-12",
+        "identifiers": {
+          "patta_number": "1402",
+          "survey_number": "202",
+          "sub_division_number": "3A",
+          "firka": "Sholinganallur Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Sholinganallur",
+          "village": "Sholinganallur"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2023-6401",
+        "registered_owner": "K. Venkatesan",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-09-01",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Sholinganallur, Registration Zone Chennai",
+        "consideration_amount_inr": 6500000,
+        "stamp_duty_inr": 455000,
+        "registration_fee_inr": 130000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-203",
+        "parcel_number": "202/3A",
+        "surveyed_area_sqm": 222.57,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.229931,
+                12.903933
+              ],
+              [
+                80.230069,
+                12.903933
+              ],
+              [
+                80.230069,
+                12.904067
+              ],
+              [
+                80.229931,
+                12.904067
+              ],
+              [
+                80.229931,
+                12.903933
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/702",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00203",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00204",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 13.006948,
+      "lon": 80.202947
+    },
+    "polygon_coordinates": [
+      [
+        80.202734,
+        13.00674
+      ],
+      [
+        80.203266,
+        13.00674
+      ],
+      [
+        80.203266,
+        13.00726
+      ],
+      [
+        80.202734,
+        13.00726
+      ],
+      [
+        80.202734,
+        13.00674
+      ]
+    ],
+    "calculated_gis_area_sqm": 3337.32,
+    "master_owner": "Lucas TVS Auto Components Ltd",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-204",
+        "owner_name": "Lucas TVS Auto Components Ltd",
+        "co_owners": [],
+        "land_use_raw": "SIPCOT Industrial",
+        "land_use_normalized": "INDUSTRIAL",
+        "area_sqm": 3344.51,
+        "raw_units": {
+          "grounds": 15,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1403",
+        "mutation_date": "2023-05-12",
+        "application_date": "2023-04-10",
+        "identifiers": {
+          "patta_number": "1403",
+          "survey_number": "203",
+          "sub_division_number": "4A",
+          "firka": "Guindy Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Guindy",
+          "village": "Guindy"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2023-3109",
+        "registered_owner": "Lucas TVS Auto Components Ltd",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-03-25",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Guindy, Registration Zone Chennai",
+        "consideration_amount_inr": 65000000,
+        "stamp_duty_inr": 4550000,
+        "registration_fee_inr": 1300000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-204",
+        "parcel_number": "203/4A",
+        "surveyed_area_sqm": 3344.51,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.202734,
+                13.00674
+              ],
+              [
+                80.203266,
+                13.00674
+              ],
+              [
+                80.203266,
+                13.00726
+              ],
+              [
+                80.202734,
+                13.00726
+              ],
+              [
+                80.202734,
+                13.00674
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "SIPCOT Industrial",
+        "zoning_normalized": "INDUSTRIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/703",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00204",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00205",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 13.008458,
+      "lon": 80.204457
+    },
+    "polygon_coordinates": [
+      [
+        80.204283,
+        13.008288
+      ],
+      [
+        80.204717,
+        13.008288
+      ],
+      [
+        80.204717,
+        13.008712
+      ],
+      [
+        80.204283,
+        13.008712
+      ],
+      [
+        80.204283,
+        13.008288
+      ]
+    ],
+    "calculated_gis_area_sqm": 2219.91,
+    "master_owner": "Prestige Tech Estates LLP",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-205",
+        "owner_name": "Prestige Tech Estates LLP",
+        "co_owners": [],
+        "land_use_raw": "Varthaga Manai",
+        "land_use_normalized": "COMMERCIAL",
+        "area_sqm": 2229.67,
+        "raw_units": {
+          "grounds": 10,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1404",
+        "mutation_date": "2024-02-18",
+        "application_date": "2024-01-10",
+        "identifiers": {
+          "patta_number": "1404",
+          "survey_number": "204",
+          "sub_division_number": "1A",
+          "firka": "Guindy Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Guindy",
+          "village": "Guindy"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2024-0992",
+        "registered_owner": "Prestige Tech Estates LLP",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-12-28",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Guindy, Registration Zone Chennai",
+        "consideration_amount_inr": 52000000,
+        "stamp_duty_inr": 3640000,
+        "registration_fee_inr": 1040000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-205",
+        "parcel_number": "204/1A",
+        "surveyed_area_sqm": 2229.67,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.204283,
+                13.008288
+              ],
+              [
+                80.204717,
+                13.008288
+              ],
+              [
+                80.204717,
+                13.008712
+              ],
+              [
+                80.204283,
+                13.008712
+              ],
+              [
+                80.204283,
+                13.008288
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Commercial Zone",
+        "zoning_normalized": "COMMERCIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/704",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00205",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00206",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.922977,
+      "lon": 80.117976
+    },
+    "polygon_coordinates": [
+      [
+        80.117881,
+        12.922884
+      ],
+      [
+        80.118119,
+        12.922884
+      ],
+      [
+        80.118119,
+        12.923116
+      ],
+      [
+        80.117881,
+        12.923116
+      ],
+      [
+        80.117881,
+        12.922884
+      ]
+    ],
+    "calculated_gis_area_sqm": 666.34,
+    "master_owner": "Dr. R. Balasubramanian",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-206",
+        "owner_name": "Dr. R. Balasubramanian",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 668.9,
+        "raw_units": {
+          "grounds": 3,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1405",
+        "mutation_date": "2023-11-25",
+        "application_date": "2023-10-20",
+        "identifiers": {
+          "patta_number": "1405",
+          "survey_number": "205",
+          "sub_division_number": "2A",
+          "firka": "Tambaram Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Tambaram",
+          "village": "Tambaram"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2023-7814",
+        "registered_owner": "Dr. R. Balasubramanian",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-10-10",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Tambaram, Registration Zone Chennai",
+        "consideration_amount_inr": 9800000,
+        "stamp_duty_inr": 686000,
+        "registration_fee_inr": 196000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-206",
+        "parcel_number": "205/2A",
+        "surveyed_area_sqm": 668.9,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.117881,
+                12.922884
+              ],
+              [
+                80.118119,
+                12.922884
+              ],
+              [
+                80.118119,
+                12.923116
+              ],
+              [
+                80.117881,
+                12.923116
+              ],
+              [
+                80.117881,
+                12.922884
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/705",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00206",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00207",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.924489,
+      "lon": 80.119488
+    },
+    "polygon_coordinates": [
+      [
+        80.119442,
+        12.924443
+      ],
+      [
+        80.119558,
+        12.924443
+      ],
+      [
+        80.119558,
+        12.924557
+      ],
+      [
+        80.119442,
+        12.924557
+      ],
+      [
+        80.119442,
+        12.924443
+      ]
+    ],
+    "calculated_gis_area_sqm": 159.58,
+    "master_owner": "Selvi D. Kavitha",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-207",
+        "owner_name": "Selvi D. Kavitha",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 161.87,
+        "raw_units": {
+          "grounds": 0,
+          "cents": 4,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1406",
+        "mutation_date": "2024-04-10",
+        "application_date": "2024-03-05",
+        "identifiers": {
+          "patta_number": "1406",
+          "survey_number": "206",
+          "sub_division_number": "3A",
+          "firka": "Tambaram Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Tambaram",
+          "village": "Tambaram"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2024-2104",
+        "registered_owner": "Selvi D. Kavitha",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2024-02-20",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Tambaram, Registration Zone Chennai",
+        "consideration_amount_inr": 4800000,
+        "stamp_duty_inr": 336000,
+        "registration_fee_inr": 96000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-207",
+        "parcel_number": "206/3A",
+        "surveyed_area_sqm": 161.87,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.119442,
+                12.924443
+              ],
+              [
+                80.119558,
+                12.924443
+              ],
+              [
+                80.119558,
+                12.924557
+              ],
+              [
+                80.119442,
+                12.924557
+              ],
+              [
+                80.119442,
+                12.924443
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/706",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00207",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00208",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.977967,
+      "lon": 80.218966
+    },
+    "polygon_coordinates": [
+      [
+        80.218832,
+        12.977836
+      ],
+      [
+        80.219168,
+        12.977836
+      ],
+      [
+        80.219168,
+        12.978164
+      ],
+      [
+        80.218832,
+        12.978164
+      ],
+      [
+        80.218832,
+        12.977836
+      ]
+    ],
+    "calculated_gis_area_sqm": 1329.68,
+    "master_owner": "Ceebros Habitat Promoters",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-208",
+        "owner_name": "Ceebros Habitat Promoters",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 1337.8,
+        "raw_units": {
+          "grounds": 6,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1407",
+        "mutation_date": "2023-08-14",
+        "application_date": "2023-07-02",
+        "identifiers": {
+          "patta_number": "1407",
+          "survey_number": "207",
+          "sub_division_number": "4A",
+          "firka": "Velachery Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Guindy",
+          "village": "Velachery"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2023-5201",
+        "registered_owner": "Ceebros Habitat Promoters",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-06-20",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Velachery, Registration Zone Chennai",
+        "consideration_amount_inr": 28000000,
+        "stamp_duty_inr": 1960000,
+        "registration_fee_inr": 560000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-208",
+        "parcel_number": "207/4A",
+        "surveyed_area_sqm": 1337.8,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.218832,
+                12.977836
+              ],
+              [
+                80.219168,
+                12.977836
+              ],
+              [
+                80.219168,
+                12.978164
+              ],
+              [
+                80.218832,
+                12.978164
+              ],
+              [
+                80.218832,
+                12.977836
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/707",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00208",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00209",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.979472,
+      "lon": 80.220471
+    },
+    "polygon_coordinates": [
+      [
+        80.220354,
+        12.979358
+      ],
+      [
+        80.220646,
+        12.979358
+      ],
+      [
+        80.220646,
+        12.979642
+      ],
+      [
+        80.220354,
+        12.979642
+      ],
+      [
+        80.220354,
+        12.979358
+      ]
+    ],
+    "calculated_gis_area_sqm": 1000.53,
+    "master_owner": "Grand Square Retails",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-209",
+        "owner_name": "Grand Square Retails",
+        "co_owners": [],
+        "land_use_raw": "Varthaga Manai",
+        "land_use_normalized": "COMMERCIAL",
+        "area_sqm": 1003.35,
+        "raw_units": {
+          "grounds": 4.5,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1408",
+        "mutation_date": "2024-01-28",
+        "application_date": "2023-12-15",
+        "identifiers": {
+          "patta_number": "1408",
+          "survey_number": "208",
+          "sub_division_number": "1A",
+          "firka": "Velachery Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Guindy",
+          "village": "Velachery"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2023-9520",
+        "registered_owner": "Grand Square Retails",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-12-01",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Velachery, Registration Zone Chennai",
+        "consideration_amount_inr": 36000000,
+        "stamp_duty_inr": 2520000,
+        "registration_fee_inr": 720000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-209",
+        "parcel_number": "208/1A",
+        "surveyed_area_sqm": 1003.35,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.220354,
+                12.979358
+              ],
+              [
+                80.220646,
+                12.979358
+              ],
+              [
+                80.220646,
+                12.979642
+              ],
+              [
+                80.220354,
+                12.979642
+              ],
+              [
+                80.220354,
+                12.979358
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Commercial Zone",
+        "zoning_normalized": "COMMERCIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/708",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00209",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00210",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.91494,
+      "lon": 80.230939
+    },
+    "polygon_coordinates": [
+      [
+        80.230693,
+        12.9147
+      ],
+      [
+        80.231307,
+        12.9147
+      ],
+      [
+        80.231307,
+        12.9153
+      ],
+      [
+        80.230693,
+        12.9153
+      ],
+      [
+        80.230693,
+        12.9147
+      ]
+    ],
+    "calculated_gis_area_sqm": 4445.93,
+    "master_owner": "KCG College of Technology Trust",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-210",
+        "owner_name": "KCG College of Technology Trust",
+        "co_owners": [],
+        "land_use_raw": "Institutional",
+        "land_use_normalized": "INSTITUTIONAL",
+        "area_sqm": 4459.35,
+        "raw_units": {
+          "grounds": 20,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1409",
+        "mutation_date": "2022-09-15",
+        "application_date": "2022-08-10",
+        "identifiers": {
+          "patta_number": "1409",
+          "survey_number": "209",
+          "sub_division_number": "2A",
+          "firka": "Karapakkam Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Sholinganallur",
+          "village": "Karapakkam"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2022-4819",
+        "registered_owner": "KCG College of Technology Trust",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2022-07-28",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Karapakkam, Registration Zone Chennai",
+        "consideration_amount_inr": 45000000,
+        "stamp_duty_inr": 3150000,
+        "registration_fee_inr": 900000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-210",
+        "parcel_number": "209/2A",
+        "surveyed_area_sqm": 4459.34,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.230693,
+                12.9147
+              ],
+              [
+                80.231307,
+                12.9147
+              ],
+              [
+                80.231307,
+                12.9153
+              ],
+              [
+                80.230693,
+                12.9153
+              ],
+              [
+                80.230693,
+                12.9147
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Institutional",
+        "zoning_normalized": "INSTITUTIONAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/709",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00210",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00211",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.905973,
+      "lon": 80.231973
+    },
+    "polygon_coordinates": [
+      [
+        80.231863,
+        12.905866
+      ],
+      [
+        80.232137,
+        12.905866
+      ],
+      [
+        80.232137,
+        12.906134
+      ],
+      [
+        80.231863,
+        12.906134
+      ],
+      [
+        80.231863,
+        12.905866
+      ]
+    ],
+    "calculated_gis_area_sqm": 886.23,
+    "master_owner": "S. Muthuswamy",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-211",
+        "owner_name": "S. Muthuswamy",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 891.87,
+        "raw_units": {
+          "grounds": 4,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "REJECTED",
+        "mutation_status_raw": "Application Rejected",
+        "mutation_id": "PATTA-1410",
+        "mutation_date": null,
+        "application_date": null,
+        "identifiers": {
+          "patta_number": "1410",
+          "survey_number": "210",
+          "sub_division_number": "3A",
+          "firka": "Sholinganallur Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Sholinganallur",
+          "village": "Sholinganallur"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2025-4102",
+        "registered_owner": "K. Annamalai",
+        "seller_name": "S. Muthuswamy",
+        "registration_date": "2025-08-14",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Sholinganallur, Registration Zone Chennai",
+        "consideration_amount_inr": 16000000,
+        "stamp_duty_inr": 1120000,
+        "registration_fee_inr": 320000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-211",
+        "parcel_number": "210/3A",
+        "surveyed_area_sqm": 891.87,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.231863,
+                12.905866
+              ],
+              [
+                80.232137,
+                12.905866
+              ],
+              [
+                80.232137,
+                12.906134
+              ],
+              [
+                80.231863,
+                12.906134
+              ],
+              [
+                80.231863,
+                12.905866
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/710",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00211",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00212",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.925981,
+      "lon": 80.120981
+    },
+    "polygon_coordinates": [
+      [
+        80.120903,
+        12.925905
+      ],
+      [
+        80.121097,
+        12.925905
+      ],
+      [
+        80.121097,
+        12.926095
+      ],
+      [
+        80.120903,
+        12.926095
+      ],
+      [
+        80.120903,
+        12.925905
+      ]
+    ],
+    "calculated_gis_area_sqm": 444.82,
+    "master_owner": "M. Sundaramurthy",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-212",
+        "owner_name": "M. Sundaramurthy",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 445.93,
+        "raw_units": {
+          "grounds": 2,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "PENDING",
+        "mutation_status_raw": "Pending with Zonal Deputy Tahsildar",
+        "mutation_id": "PATTA-1411",
+        "mutation_date": null,
+        "application_date": "2026-06-01",
+        "identifiers": {
+          "patta_number": "1411",
+          "survey_number": "211",
+          "sub_division_number": "4A",
+          "firka": "Tambaram Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Tambaram",
+          "village": "Tambaram"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2026-2840",
+        "registered_owner": "C. Ravichandran",
+        "seller_name": "M. Sundaramurthy",
+        "registration_date": "2026-05-25",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Tambaram, Registration Zone Chennai",
+        "consideration_amount_inr": 8200000,
+        "stamp_duty_inr": 574000,
+        "registration_fee_inr": 164000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-212",
+        "parcel_number": "211/4A",
+        "surveyed_area_sqm": 445.93,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.120903,
+                12.925905
+              ],
+              [
+                80.121097,
+                12.925905
+              ],
+              [
+                80.121097,
+                12.926095
+              ],
+              [
+                80.120903,
+                12.926095
+              ],
+              [
+                80.120903,
+                12.925905
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/711",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00212",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00213",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.98097,
+      "lon": 80.221969
+    },
+    "polygon_coordinates": [
+      [
+        80.221847,
+        12.98085
+      ],
+      [
+        80.222153,
+        12.98085
+      ],
+      [
+        80.222153,
+        12.98115
+      ],
+      [
+        80.221847,
+        12.98115
+      ],
+      [
+        80.221847,
+        12.98085
+      ]
+    ],
+    "calculated_gis_area_sqm": 1107.57,
+    "master_owner": "Delta Mega Infrastructures",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-213",
+        "owner_name": "Delta Mega Infrastructures",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 1114.84,
+        "raw_units": {
+          "grounds": 5,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1412",
+        "mutation_date": "2024-02-10",
+        "application_date": "2023-12-18",
+        "identifiers": {
+          "patta_number": "1412",
+          "survey_number": "212",
+          "sub_division_number": "1A",
+          "firka": "Velachery Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Guindy",
+          "village": "Velachery"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2023-9912",
+        "registered_owner": "Delta Mega Infrastructures",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-12-05",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Velachery, Registration Zone Chennai",
+        "consideration_amount_inr": 22000000,
+        "stamp_duty_inr": 1540000,
+        "registration_fee_inr": 440000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-213",
+        "parcel_number": "212/1A",
+        "surveyed_area_sqm": 1114.84,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.221847,
+                12.98085
+              ],
+              [
+                80.222153,
+                12.98085
+              ],
+              [
+                80.222153,
+                12.98115
+              ],
+              [
+                80.221847,
+                12.98115
+              ],
+              [
+                80.221847,
+                12.98085
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Water Body Buffer Zone",
+        "zoning_normalized": "WATER_BODY",
+        "building_permission_status": "VIOLATION - STOP WORK NOTICE ISSUED",
+        "sanction_no": null,
+        "violations_reported": true,
+        "remarks": "Buffer encroachment in Pallikaranai wetland zone"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00213",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00214",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.916984,
+      "lon": 80.232984
+    },
+    "polygon_coordinates": [
+      [
+        80.232919,
+        12.916921
+      ],
+      [
+        80.233081,
+        12.916921
+      ],
+      [
+        80.233081,
+        12.917079
+      ],
+      [
+        80.232919,
+        12.917079
+      ],
+      [
+        80.232919,
+        12.916921
+      ]
+    ],
+    "calculated_gis_area_sqm": 308.89,
+    "master_owner": "V. Dhanasekaran",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-214",
+        "owner_name": "V. Dhanasekaran",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 404.69,
+        "raw_units": {
+          "grounds": 0,
+          "cents": 10,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1413",
+        "mutation_date": "2023-06-18",
+        "application_date": "2023-05-10",
+        "identifiers": {
+          "patta_number": "1413",
+          "survey_number": "213",
+          "sub_division_number": "2A",
+          "firka": "Karapakkam Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Sholinganallur",
+          "village": "Karapakkam"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2023-4211",
+        "registered_owner": "V. Dhanasekaran",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2023-04-20",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Karapakkam, Registration Zone Chennai",
+        "consideration_amount_inr": 7500000,
+        "stamp_duty_inr": 525000,
+        "registration_fee_inr": 150000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-214",
+        "parcel_number": "213/2A",
+        "surveyed_area_sqm": 310,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": true,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.232919,
+                12.916921
+              ],
+              [
+                80.233081,
+                12.916921
+              ],
+              [
+                80.233081,
+                12.917079
+              ],
+              [
+                80.232919,
+                12.917079
+              ],
+              [
+                80.232919,
+                12.916921
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/713",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00214",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.836Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00215",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.907953,
+      "lon": 80.233952
+    },
+    "polygon_coordinates": [
+      [
+        80.233762,
+        12.907767
+      ],
+      [
+        80.234238,
+        12.907767
+      ],
+      [
+        80.234238,
+        12.908233
+      ],
+      [
+        80.233762,
+        12.908233
+      ],
+      [
+        80.233762,
+        12.907767
+      ]
+    ],
+    "calculated_gis_area_sqm": 2677,
+    "master_owner": "A. Periyasamy Gounder",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-215",
+        "owner_name": "A. Periyasamy Gounder",
+        "co_owners": [],
+        "land_use_raw": "Nanjai Agricultural",
+        "land_use_normalized": "AGRICULTURAL",
+        "area_sqm": 2675.61,
+        "raw_units": {
+          "grounds": 12,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "MUTATED",
+        "mutation_status_raw": "A-Register Updated",
+        "mutation_id": "PATTA-1414",
+        "mutation_date": "2022-07-20",
+        "application_date": "2022-06-15",
+        "identifiers": {
+          "patta_number": "1414",
+          "survey_number": "214",
+          "sub_division_number": "3A",
+          "firka": "Sholinganallur Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Sholinganallur",
+          "village": "Sholinganallur"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2022-3841",
+        "registered_owner": "A. Periyasamy Gounder",
+        "seller_name": "Tamil Nadu Slum Clearance / Original Allottee",
+        "registration_date": "2022-05-30",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Sholinganallur, Registration Zone Chennai",
+        "consideration_amount_inr": 18000000,
+        "stamp_duty_inr": 1260000,
+        "registration_fee_inr": 360000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-215",
+        "parcel_number": "214/3A",
+        "surveyed_area_sqm": 2675.6,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.233762,
+                12.907767
+              ],
+              [
+                80.234238,
+                12.907767
+              ],
+              [
+                80.234238,
+                12.908233
+              ],
+              [
+                80.233762,
+                12.908233
+              ],
+              [
+                80.233762,
+                12.907767
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Agricultural Zone",
+        "zoning_normalized": "AGRICULTURAL",
+        "building_permission_status": "NOT APPLIED",
+        "sanction_no": null,
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00215",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.72,
+        "recent_ndvi": 0.24,
+        "ndvi_delta": -0.48,
+        "built_up_index_change": 0.41,
+        "unauthorized_structure_flag": true,
+        "confidence_score": 0.97,
+        "notes": "Sentinel-2 alert: Water/Wetland drainage & heavy concrete metal structure erected on agricultural wetland."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.837Z"
+    }
+  },
+  {
+    "ulpin": "IN-TN-CHN-00216",
+    "state": "Tamil Nadu",
+    "state_code": "TN",
+    "centroid": {
+      "lat": 12.927977,
+      "lon": 80.122976
+    },
+    "polygon_coordinates": [
+      [
+        80.122881,
+        12.927884
+      ],
+      [
+        80.123119,
+        12.927884
+      ],
+      [
+        80.123119,
+        12.928116
+      ],
+      [
+        80.122881,
+        12.928116
+      ],
+      [
+        80.122881,
+        12.927884
+      ]
+    ],
+    "calculated_gis_area_sqm": 666.32,
+    "master_owner": "G. Venkatraman",
+    "departments": {
+      "revenue": {
+        "department": "Revenue",
+        "record_id": "PATTA-TN-2024-216",
+        "owner_name": "G. Venkatraman",
+        "co_owners": [],
+        "land_use_raw": "Natham / Manai",
+        "land_use_normalized": "RESIDENTIAL",
+        "area_sqm": 668.9,
+        "raw_units": {
+          "grounds": 3,
+          "cents": 0,
+          "hectares": 0,
+          "ares": 0,
+          "sq_ft": 0
+        },
+        "mutation_status": "PENDING",
+        "mutation_status_raw": "Pending with Zonal Deputy Tahsildar",
+        "mutation_id": "PATTA-1415",
+        "mutation_date": null,
+        "application_date": "2026-04-18",
+        "identifiers": {
+          "patta_number": "1415",
+          "survey_number": "215",
+          "sub_division_number": "4A",
+          "firka": "Tambaram Revenue Firka"
+        },
+        "administrative_division": {
+          "state": "Tamil Nadu",
+          "district": "Chennai",
+          "taluk": "Tambaram",
+          "village": "Tambaram"
+        }
+      },
+      "registration": {
+        "department": "Registration",
+        "deed_number": "DOC-2026-1540",
+        "registered_owner": "Meena Ramanathan",
+        "seller_name": "G. Venkatraman",
+        "registration_date": "2026-04-12",
+        "deed_type": "Absolute Sale Deed",
+        "sro_office": "Sub-Registrar Office, Tambaram, Registration Zone Chennai",
+        "consideration_amount_inr": 11200000,
+        "stamp_duty_inr": 784000,
+        "registration_fee_inr": 224000,
+        "book_details": {
+          "book_number": "Book 1"
+        }
+      },
+      "survey": {
+        "department": "Survey",
+        "sketch_id": "FMB-TN-216",
+        "parcel_number": "215/4A",
+        "surveyed_area_sqm": 668.9,
+        "survey_date": "2023-05-15",
+        "survey_agency": "Department of Survey and Settlement, Govt of Tamil Nadu",
+        "boundary_dispute": false,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80.122881,
+                12.927884
+              ],
+              [
+                80.123119,
+                12.927884
+              ],
+              [
+                80.123119,
+                12.928116
+              ],
+              [
+                80.122881,
+                12.928116
+              ],
+              [
+                80.122881,
+                12.927884
+              ]
+            ]
+          ]
+        }
+      },
+      "urban_development": {
+        "department": "Urban Development",
+        "authority": "Chennai Metropolitan Development Authority (CMDA)",
+        "zoning_raw": "Primary Residential Zone",
+        "zoning_normalized": "RESIDENTIAL",
+        "building_permission_status": "APPROVED",
+        "sanction_no": "PP/CMDA/2023/715",
+        "violations_reported": false,
+        "remarks": "Standard CMDA Master Plan II Compliance"
+      },
+      "satellite": {
+        "ulpin": "IN-TN-CHN-00216",
+        "epoch_baseline": "2024-01-01",
+        "epoch_recent": "2026-06-01",
+        "baseline_ndvi": 0.48,
+        "recent_ndvi": 0.46,
+        "ndvi_delta": -0.02,
+        "built_up_index_change": 0.01,
+        "unauthorized_structure_flag": false,
+        "confidence_score": 0.94,
+        "notes": "Stable land cover profile consistent with CMDA permitted land use."
+      }
+    },
+    "metadata": {
+      "adapter_used": "TamilNaduAdapter",
+      "normalized_at": "2026-09-11T07:36:34.837Z"
+    }
+  }
+]

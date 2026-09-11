@@ -1,0 +1,101 @@
+{
+  "app": {
+    "title": "LAND STACK",
+    "subtitle": "Integrated GIS-Based Digital Public Infrastructure for Land Governance",
+    "tagline": "One parcel. One ULPIN. One connected view across departments."
+  },
+  "nav": {
+    "home": "Home",
+    "search": "Parcel Search",
+    "myParcels": "My Parcels",
+    "transactions": "Transactions",
+    "serviceRequests": "Service Requests",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "conflictQueue": "Conflict Queue",
+    "decisionMaker": "Decision-Maker Analytics",
+    "settings": "Settings",
+    "help": "Help & FAQ",
+    "login": "Login",
+    "logout": "Logout",
+    "citizenPortal": "Citizen Portal",
+    "adminDashboard": "Admin & Department Portal"
+  },
+  "search": {
+    "placeholder": "Enter ULPIN (e.g. CH-SEC17-0402) or locality...",
+    "searchBtn": "Search Records",
+    "resultsFound": "parcels found",
+    "noResults": "No parcels match your search criteria.",
+    "filters": "Filter by State / District"
+  },
+  "parcel": {
+    "ulpin": "ULPIN",
+    "district": "District",
+    "locality": "Locality",
+    "area": "Area Extent",
+    "landUse": "Land-Use Classification",
+    "dataFreshness": "Data Freshness",
+    "lastUpdated": "Last Reconciled",
+    "recordsTitle": "Integrated Department Records",
+    "cadastralView": "Cadastral Boundary Map",
+    "viewVerification": "View Ownership Verification",
+    "viewTransactions": "Track Mutations / Transactions"
+  },
+  "verification": {
+    "title": "Ownership Verification Status",
+    "subtitle": "Cross-departmental title reconciliation powered by the Land Trust Engine",
+    "verified": "Verified & Reconciled",
+    "pending": "Verification In Progress",
+    "conflict_detected": "Conflict Detected Across Departments",
+    "unavailable": "Record Unavailable",
+    "recordedOwner": "Recorded Titleholder",
+    "sourceDept": "Primary Source Department",
+    "verifiedAt": "Last Verified Date",
+    "conflictDetails": "Conflict Investigation Notice",
+    "nextStepsTitle": "What you should do next",
+    "nextStepsVerified": "Your title records are completely synchronized across Revenue, Registration, Survey, and Urban Development departments. No citizen action is required.",
+    "nextStepsConflict": "A mismatch has been flagged by the automated Trust Engine. The responsible Department Officer is reviewing the records. You may file a service request or monitor progress under your active transactions.",
+    "nextStepsPending": "Verification procedures are currently scheduled. Please check back after departmental field inspections conclude.",
+    "nextStepsUnavailable": "Please visit your local Sub-Registrar or Tehsildar office with proof of ownership to link your ULPIN."
+  },
+  "conflict": {
+    "queueTitle": "Departmental Conflict Queue",
+    "queueSubtitle": "Real-time discrepancies and SLA breaches flagged for cross-departmental resolution",
+    "id": "Conflict ID",
+    "type": "Conflict Type",
+    "departments": "Source Departments",
+    "severity": "Severity",
+    "status": "Workflow Status",
+    "sla": "SLA Timeline",
+    "assignedTo": "Assigned Officer",
+    "priority": "Priority",
+    "evidenceTitle": "Departmental Reconciliation Evidence",
+    "neutralExplanation": "Trust Engine Mismatch Summary",
+    "workflowTimeline": "Resolution Workflow Timeline",
+    "actions": "Resolution Actions",
+    "assignSelf": "Assign to Self",
+    "requestVerification": "Request Field Demarcation",
+    "addNote": "Add Investigation Note",
+    "escalate": "Escalate to Supervisor",
+    "resolve": "Reconcile & Resolve Conflict",
+    "reject": "Dismiss / Reject Case",
+    "auditTrail": "Audit Trail & Chain of Custody",
+    "notePlaceholder": "Enter justification or departmental order reference..."
+  },
+  "sla": {
+    "healthy": "SLA Compliant",
+    "nearing": "Nearing SLA Deadline",
+    "breached": "SLA Breached"
+  },
+  "actions": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "view": "View Details",
+    "filter": "Filter",
+    "reset": "Reset to Default",
+    "markRead": "Mark as Read",
+    "markAllRead": "Mark All as Read",
+    "createNew": "Create New Request"
+  }
+}
