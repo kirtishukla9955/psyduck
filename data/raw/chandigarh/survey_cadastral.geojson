@@ -1,0 +1,645 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.784834,
+              30.740857
+            ],
+            [
+              76.785166,
+              30.740857
+            ],
+            [
+              76.785166,
+              30.741143
+            ],
+            [
+              76.784834,
+              30.741143
+            ],
+            [
+              76.784834,
+              30.740857
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-017-00101",
+        "parcel_id": "UT-CAD-CH-101",
+        "khasra_no": "101/Sector17",
+        "sector": "Sector 17",
+        "surveyed_area_sqm": 1011.71,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.786356,
+              30.742376
+            ],
+            [
+              76.786644,
+              30.742376
+            ],
+            [
+              76.786644,
+              30.742624
+            ],
+            [
+              76.786356,
+              30.742624
+            ],
+            [
+              76.786356,
+              30.742376
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-017-00102",
+        "parcel_id": "UT-CAD-CH-102",
+        "khasra_no": "102/Sector17",
+        "sector": "Sector 17",
+        "surveyed_area_sqm": 758.79,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.771883,
+              30.731899
+            ],
+            [
+              76.772117,
+              30.731899
+            ],
+            [
+              76.772117,
+              30.732101
+            ],
+            [
+              76.771883,
+              30.732101
+            ],
+            [
+              76.771883,
+              30.731899
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-022-00103",
+        "parcel_id": "UT-CAD-CH-103",
+        "khasra_no": "103/Sector22",
+        "sector": "Sector 22",
+        "surveyed_area_sqm": 505.86,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.773417,
+              30.733428
+            ],
+            [
+              76.773583,
+              30.733428
+            ],
+            [
+              76.773583,
+              30.733572
+            ],
+            [
+              76.773417,
+              30.733572
+            ],
+            [
+              76.773417,
+              30.733428
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-022-00104",
+        "parcel_id": "UT-CAD-CH-104",
+        "khasra_no": "104/Sector22",
+        "sector": "Sector 22",
+        "surveyed_area_sqm": 252.9,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.774902,
+              30.734915
+            ],
+            [
+              76.775098,
+              30.734915
+            ],
+            [
+              76.775098,
+              30.735085
+            ],
+            [
+              76.774902,
+              30.735085
+            ],
+            [
+              76.774902,
+              30.734915
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-022-00105",
+        "parcel_id": "UT-CAD-CH-105",
+        "khasra_no": "105/Sector22",
+        "sector": "Sector 22",
+        "surveyed_area_sqm": 354.06,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.763796,
+              30.720825
+            ],
+            [
+              76.764204,
+              30.720825
+            ],
+            [
+              76.764204,
+              30.721175
+            ],
+            [
+              76.763796,
+              30.721175
+            ],
+            [
+              76.763796,
+              30.720825
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-034-00106",
+        "parcel_id": "UT-CAD-CH-106",
+        "khasra_no": "106/Sector34",
+        "sector": "Sector 34",
+        "surveyed_area_sqm": 1517.57,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.765334,
+              30.722357
+            ],
+            [
+              76.765666,
+              30.722357
+            ],
+            [
+              76.765666,
+              30.722643
+            ],
+            [
+              76.765334,
+              30.722643
+            ],
+            [
+              76.765334,
+              30.722357
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-034-00107",
+        "parcel_id": "UT-CAD-CH-107",
+        "khasra_no": "107/Sector34",
+        "sector": "Sector 34",
+        "surveyed_area_sqm": 1011.71,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.747883,
+              30.714899
+            ],
+            [
+              76.748117,
+              30.714899
+            ],
+            [
+              76.748117,
+              30.715101
+            ],
+            [
+              76.747883,
+              30.715101
+            ],
+            [
+              76.747883,
+              30.714899
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-043-00108",
+        "parcel_id": "UT-CAD-CH-108",
+        "khasra_no": "108/Sector43",
+        "sector": "Sector 43",
+        "surveyed_area_sqm": 505.86,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.749383,
+              30.716399
+            ],
+            [
+              76.749617,
+              30.716399
+            ],
+            [
+              76.749617,
+              30.716601
+            ],
+            [
+              76.749383,
+              30.716601
+            ],
+            [
+              76.749383,
+              30.716399
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-043-00109",
+        "parcel_id": "UT-CAD-CH-109",
+        "khasra_no": "109/Sector43",
+        "sector": "Sector 43",
+        "surveyed_area_sqm": 505.86,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.844917,
+              30.724928
+            ],
+            [
+              76.845083,
+              30.724928
+            ],
+            [
+              76.845083,
+              30.725072
+            ],
+            [
+              76.844917,
+              30.725072
+            ],
+            [
+              76.844917,
+              30.724928
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-MMJ-00110",
+        "parcel_id": "UT-CAD-CH-110",
+        "khasra_no": "110/Manimajra",
+        "sector": "Manimajra",
+        "surveyed_area_sqm": 252.93,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.775883,
+              30.735899
+            ],
+            [
+              76.776117,
+              30.735899
+            ],
+            [
+              76.776117,
+              30.736101
+            ],
+            [
+              76.775883,
+              30.736101
+            ],
+            [
+              76.775883,
+              30.735899
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-022-00111",
+        "parcel_id": "UT-CAD-CH-111",
+        "khasra_no": "111/Sector22",
+        "sector": "Sector 22",
+        "surveyed_area_sqm": 505.86,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.750883,
+              30.717899
+            ],
+            [
+              76.751117,
+              30.717899
+            ],
+            [
+              76.751117,
+              30.718101
+            ],
+            [
+              76.750883,
+              30.718101
+            ],
+            [
+              76.750883,
+              30.717899
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-043-00112",
+        "parcel_id": "UT-CAD-CH-112",
+        "khasra_no": "112/Sector43",
+        "sector": "Sector 43",
+        "surveyed_area_sqm": 505.86,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.787834,
+              30.743857
+            ],
+            [
+              76.788166,
+              30.743857
+            ],
+            [
+              76.788166,
+              30.744143
+            ],
+            [
+              76.787834,
+              30.744143
+            ],
+            [
+              76.787834,
+              30.743857
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-017-00113",
+        "parcel_id": "UT-CAD-CH-113",
+        "khasra_no": "113/Sector17",
+        "sector": "Sector 17",
+        "surveyed_area_sqm": 1011.71,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.766788,
+              30.723817
+            ],
+            [
+              76.767212,
+              30.723817
+            ],
+            [
+              76.767212,
+              30.724183
+            ],
+            [
+              76.766788,
+              30.724183
+            ],
+            [
+              76.766788,
+              30.723817
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-034-00114",
+        "parcel_id": "UT-CAD-CH-114",
+        "khasra_no": "114/Sector34",
+        "sector": "Sector 34",
+        "surveyed_area_sqm": 1650.0,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.847737,
+              30.726774
+            ],
+            [
+              76.848263,
+              30.726774
+            ],
+            [
+              76.848263,
+              30.727226
+            ],
+            [
+              76.847737,
+              30.727226
+            ],
+            [
+              76.847737,
+              30.726774
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-MMJ-00115",
+        "parcel_id": "UT-CAD-CH-115",
+        "khasra_no": "115/Manimajra",
+        "sector": "Manimajra",
+        "surveyed_area_sqm": 2529.29,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.752383,
+              30.719399
+            ],
+            [
+              76.752617,
+              30.719399
+            ],
+            [
+              76.752617,
+              30.719601
+            ],
+            [
+              76.752383,
+              30.719601
+            ],
+            [
+              76.752383,
+              30.719399
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "ulpin": "IN-CH-043-00116",
+        "parcel_id": "UT-CAD-CH-116",
+        "khasra_no": "116/Sector43",
+        "sector": "Sector 43",
+        "surveyed_area_sqm": 505.86,
+        "survey_agency": "Survey of India / UT Cadastral Wing",
+        "survey_date": "15/10/2023",
+        "dispute_flag": false
+      }
+    }
+  ]
+}

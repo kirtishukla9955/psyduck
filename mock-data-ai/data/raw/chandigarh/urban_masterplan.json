@@ -1,0 +1,162 @@
+[
+  {
+    "ulpin": "IN-CH-017-00101",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 17",
+    "master_plan_2031_zoning": "Commercial Core",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-550",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-017-00102",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 17",
+    "master_plan_2031_zoning": "Commercial Core",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-551",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-022-00103",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 22",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-552",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-022-00104",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 22",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-553",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-022-00105",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 22",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-554",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-034-00106",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 34",
+    "master_plan_2031_zoning": "Commercial",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-555",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-034-00107",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 34",
+    "master_plan_2031_zoning": "Institutional",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-556",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-043-00108",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 43",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-557",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-043-00109",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 43",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-558",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-MMJ-00110",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Manimajra",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-559",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-022-00111",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 22",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-560",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-043-00112",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 43",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-561",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-017-00113",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 17",
+    "master_plan_2031_zoning": "Green Belt / Leisure Valley",
+    "building_plan_status": "Violation Notice Issued - Section 12",
+    "sanction_no": null,
+    "violations_reported": true,
+    "remarks": "Encroachment in Leisure Valley buffer zone"
+  },
+  {
+    "ulpin": "IN-CH-034-00114",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 34",
+    "master_plan_2031_zoning": "Commercial",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-563",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-MMJ-00115",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Manimajra",
+    "master_plan_2031_zoning": "Agricultural",
+    "building_plan_status": "Not Applicable",
+    "sanction_no": null,
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  },
+  {
+    "ulpin": "IN-CH-043-00116",
+    "authority": "Department of Urban Planning, Chandigarh Administration",
+    "sector": "Sector 43",
+    "master_plan_2031_zoning": "Residential",
+    "building_plan_status": "Sanctioned",
+    "sanction_no": "SAN-UT-2023-565",
+    "violations_reported": false,
+    "remarks": "Standard UT Zoning Compliance"
+  }
+]
