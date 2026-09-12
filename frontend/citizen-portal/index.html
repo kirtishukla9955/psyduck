@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DHARAA — Citizen Land Record & Transparency Portal (P3)</title>
+
+    <!-- Inter & JetBrains Mono Fonts (Matching P4 Admin Dashboard) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Design System Stylesheet & Citizen Portal Extensions -->
+    <link rel="stylesheet" href="../admin-dashboard/styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- 1. TOP GOVERNANCE IDENTIFICATION RIBBON -->
+    <header class="top-gov-ribbon">
+        <div class="gov-flag-mark">
+            <span class="tricolor-dot"></span>
+            <span>Department of Land Resources &bull; Ministry of Rural Development</span>
+        </div>
+        <div>Project DHARAA (Land Stack) &bull; Citizen Public Interface</div>
+    </header>
+
+    <!-- 2. STICKY APP HEADER -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="brand-title-wrap">
+                <div class="brand-name">
+                    <i data-lucide="layers" style="width: 24px; height: 24px; color: #38bdf8;"></i>
+                    <span>DHARAA</span>
+                    <span class="brand-tag">CITIZEN PORTAL</span>
+                </div>
+                <span class="brand-sub">Unified Parcel Transparency, Ownership Verification & Mutation Tracking</span>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <!-- CITIZEN PROFILE PILL -->
+            <div class="citizen-identity-pill" id="citizenPill" onclick="openAuthModal()" title="Click to switch citizen profile">
+                <span class="citizen-avatar" id="citizenAvatarLetter">G</span>
+                <span id="citizenHeaderName">Gurpreet Singh</span>
+                <i data-lucide="chevron-down" style="width: 14px; height: 14px; color: #94a3b8;"></i>
+            </div>
+
+            <!-- PROFILE / DEMO IDENTITY SWITCHER -->
+            <button class="profile-switcher-btn" onclick="openAuthModal()" title="Demo Switcher">
+                <i data-lucide="user-check" style="width: 15px; height: 15px;"></i>
+                <span>Switch Citizen</span>
+            </button>
+
+            <!-- NOTIFICATIONS BELL -->
+            <button class="notif-bell-btn" id="notifBellBtn" onclick="switchTab('notifications')" title="Notifications & Alerts">
+                <i data-lucide="bell" style="width: 19px; height: 19px;"></i>
+                <span class="notif-badge" id="notifBadgeCount">2</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 3. TOP CITIZEN NAVIGATION (DESKTOP) -->
+    <nav class="citizen-nav-bar">
+        <div class="citizen-nav-inner">
+            <a class="c-nav-link active" data-tab="home" onclick="switchTab('home')">
+                <i data-lucide="inbox" style="width: 17px; height: 17px;"></i>
+                <span>Home Dashboard</span>
+            </a>
+            <a class="c-nav-link" data-tab="search" onclick="switchTab('search')">
+                <i data-lucide="search" style="width: 17px; height: 17px;"></i>
+                <span>Search Parcel</span>
+            </a>
+            <a class="c-nav-link" data-tab="parcel" onclick="switchTab('parcel')">
+                <i data-lucide="file-text" style="width: 17px; height: 17px;"></i>
+                <span>Parcel Details</span>
+            </a>
+            <a class="c-nav-link" data-tab="verification" onclick="switchTab('verification')">
+                <i data-lucide="shield-check" style="width: 17px; height: 17px;"></i>
+                <span>Ownership Trust</span>
+            </a>
+            <a class="c-nav-link" data-tab="transactions" onclick="switchTab('transactions')">
+                <i data-lucide="git-pull-request" style="width: 17px; height: 17px;"></i>
+                <span>Mutation Tracking</span>
+            </a>
+            <a class="c-nav-link" data-tab="requests" onclick="switchTab('requests')">
+                <i data-lucide="send" style="width: 17px; height: 17px;"></i>
+                <span>Service Requests</span>
+                <span class="c-nav-badge" id="requestsCountBadge">1</span>
+            </a>
+            <a class="c-nav-link" data-tab="notifications" onclick="switchTab('notifications')">
+                <i data-lucide="bell" style="width: 17px; height: 17px;"></i>
+                <span>Notifications</span>
+            </a>
+            <a class="c-nav-link" data-tab="glossary" onclick="switchTab('glossary')">
+                <i data-lucide="book-open" style="width: 17px; height: 17px;"></i>
+                <span>Land Terms & Help</span>
+            </a>
+            <a class="c-nav-link" data-tab="profile" onclick="switchTab('profile')">
+                <i data-lucide="user" style="width: 17px; height: 17px;"></i>
+                <span>My Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 4. MAIN WORKSPACE WRAPPER -->
+    <main class="main-wrapper">
+        <div class="content-area">
+
+            <!-- VIEW 1: CITIZEN HOME DASHBOARD -->
+            <section class="view-container active" id="tab-home">
+                
+                <!-- HERO SEARCH ENTRY CARD -->
+                <div class="citizen-hero-search-card">
+                    <div class="hero-title">Verify Any Land Parcel in Seconds</div>
+                    <div class="hero-sub">
+                        Enter a Unique Land Parcel Identification Number (ULPIN), Khasra, or Patta number to inspect multi-departmental consensus across Revenue, SRO Deeds, and Cadastral GIS.
+                    </div>
+                    <form class="hero-search-box" onsubmit="handleHeroSearch(event)">
+                        <input type="text" id="heroSearchInput" class="hero-search-input mono"
+                            placeholder="Enter 14-digit ULPIN (e.g. CH-04-0012-8821-9041)" required autocomplete="off">
+                        <select id="heroStateFilter" class="hero-state-filter">
+                            <option value="ALL">All States / UTs</option>
+                            <option value="CH">Chandigarh (UT)</option>
+                            <option value="TN">Tamil Nadu</option>
+                        </select>
+                        <button type="submit" class="hero-search-btn">
+                            <i data-lucide="search" style="width: 18px; height: 18px;"></i>
+                            <span>Inspect Parcel</span>
+                        </button>
+                    </form>
+                    <div class="hero-quick-chips">
+                        <span>Try Sample ULPINs:</span>
+                        <button type="button" class="quick-chip mono" onclick="quickLoadParcel('CH-04-0012-8821-9041')">
+                            CH-04-0012-8821-9041 (Discrepancy Demo)
+                        </button>
+                        <button type="button" class="quick-chip mono" onclick="quickLoadParcel('CH-01-1002-3344-5566')">
+                            CH-01-1002-3344-5566 (Verified Demo)
+                        </button>
+                        <button type="button" class="quick-chip mono" onclick="quickLoadParcel('TN-12-4091-7712-3302')">
+                            TN-12-4091-7712-3302 (Tamil Nadu)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TELEMETRY METRIC CARDS -->
+                <div class="metric-grid">
+                    <div class="metric-card teal">
+                        <div class="metric-top">
+                            <span>Linked Land Parcels</span>
+                            <i data-lucide="map-pin" style="width: 19px; height: 19px; color: var(--teal-600);"></i>
+                        </div>
+                        <div class="metric-value">
+                            <span id="statLinkedParcels">2</span>
+                        </div>
+                        <div class="metric-sub">
+                            <i data-lucide="check-circle" style="width: 14px; height: 14px; color: var(--emerald-600);"></i>
+                            <span>Indexed to your Citizen ID</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card amber">
+                        <div class="metric-top">
+                            <span>Ownership Trust Index</span>
+                            <i data-lucide="shield-alert" style="width: 19px; height: 19px; color: var(--amber-600);"></i>
+                        </div>
+                        <div class="metric-value">
+                            <span id="statTrustScore">48</span>
+                            <span style="font-size: 16px; color: var(--slate-500); font-weight: 500;">/ 100</span>
+                        </div>
+                        <div class="metric-sub" style="color: var(--amber-600);">
+                            <i data-lucide="alert-triangle" style="width: 14px; height: 14px;"></i>
+                            <span id="statTrustLabel">Spatial Overlap Under Review</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card red">
+                        <div class="metric-top">
+                            <span>Active Mutation SLA</span>
+                            <i data-lucide="clock" style="width: 19px; height: 19px; color: var(--red-500);"></i>
+                        </div>
+                        <div class="metric-value">
+                            <span id="statSlaTimer">14h</span>
+                            <span style="font-size: 14px; color: var(--slate-500); font-weight: 500;">left</span>
+                        </div>
+                        <div class="metric-sub" style="color: var(--red-600);">
+                            <i data-lucide="alert-octagon" style="width: 14px; height: 14px;"></i>
+                            <span>Demarcation Notice Active</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card navy">
+                        <div class="metric-top">
+                            <span>Service Requests</span>
+                            <i data-lucide="send" style="width: 19px; height: 19px; color: var(--navy-600);"></i>
+                        </div>
+                        <div class="metric-value">
+                            <span id="statServiceRequests">1</span>
+                        </div>
+                        <div class="metric-sub">
+                            <i data-lucide="activity" style="width: 14px; height: 14px; color: var(--navy-600);"></i>
+                            <span>1 in progress (Kanungo Circle)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PENDING CITIZEN ACTION CALLOUT (DYNAMIC INJECTION) -->
+                <div id="homePendingActionContainer" style="display: none;"></div>
+
+                <!-- ACTIVE DISCREPANCY ALERT BANNER -->
+                <div class="trust-status-banner conflict" id="homeAlertBanner">
+                    <div class="trust-icon-box">
+                        <i data-lucide="alert-circle" style="width: 26px; height: 26px;"></i>
+                    </div>
+                    <div class="trust-banner-info">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                            <div class="trust-banner-title">Active Parcel Discrepancy Detected &bull; Khasra 142/2</div>
+                            <span class="badge badge-critical">ACTION UNDERWAY</span>
+                        </div>
+                        <div class="trust-banner-desc">
+                            A <strong>52 sq.yd spatial divergence</strong> was detected between your registered sale deed (450 sq.yd) and the digital cadastral drone boundary (398 sq.yd). Assigned Nodal Officer <strong>Harvinder Singh (Field Kanungo)</strong> has scheduled joint demarcation for 15-Sep-2026.
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="btn-action btn-primary" onclick="inspectParcelFromHome('CH-04-0012-8821-9041')">
+                                Inspect Parcel Details &rarr;
+                            </button>
+                            <button class="btn-action" onclick="switchTab('transactions')">
+                                Track Mutation SLA
+                            </button>
+                            <button class="btn-action" onclick="openNewRequestModal('CH-04-0012-8821-9041')">
+                                File Supporting Notice
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINKED PARCELS SECTION -->
+                <div class="queue-panel">
+                    <div class="queue-toolbar">
+                        <div class="toolbar-left">
+                            <i data-lucide="layers" style="width: 20px; height: 20px; color: var(--navy-700);"></i>
+                            <div>
+                                <strong style="font-size: 16px; color: var(--navy-900);">My Linked Land Parcels</strong>
+                                <div style="font-size: 13px; color: var(--slate-500);">Parcels legally indexed to your authenticated Aadhaar / Land Holder profile</div>
+                            </div>
+                        </div>
+                        <div class="toolbar-right">
+                            <button class="btn-action" onclick="switchTab('search')">
+                                <i data-lucide="search" style="width: 15px; height: 15px;"></i> Search Additional Land
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;" id="linkedParcelsContainer">
+                        <!-- Dynamic parcel cards will be injected by app.js -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 2: PARCEL SEARCH & RESULTS -->
+            <section class="view-container" id="tab-search">
+                <div class="queue-panel">
+                    <div class="queue-toolbar">
+                        <div class="toolbar-left">
+                            <div class="search-input-wrap" style="max-width: 480px;">
+                                <i data-lucide="search"></i>
+                                <input type="text" id="mainSearchInput" class="search-input mono"
+                                    placeholder="Search by ULPIN, Owner Name, Khasra, or Village..."
+                                    oninput="handleSearchInputChange(this.value)">
+                            </div>
+                            <select id="searchStateFilter" class="filter-select" onchange="filterSearchResults()">
+                                <option value="ALL">All States / UTs</option>
+                                <option value="CH">Chandigarh (UT)</option>
+                                <option value="TN">Tamil Nadu</option>
+                            </select>
+                        </div>
+                        <div class="toolbar-right">
+                            <span style="font-size: 13.5px; color: var(--slate-500);" id="searchResultCount">5 parcels indexed</span>
+                        </div>
+                    </div>
+
+                    <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;" id="searchResultsList">
+                        <!-- Search result cards will be rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 3: PARCEL DETAILS (FLAGSHIP PROGRESSIVE DISCLOSURE VIEW) -->
+            <section class="view-container" id="tab-parcel">
+                
+                <!-- PARCEL HERO DOSSIER HEADER -->
+                <div class="queue-panel" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                <span class="ulpin-code mono" id="detailUlpinDisplay">CH-04-0012-8821-9041</span>
+                                <span id="detailStatusBadge" class="badge badge-critical">CONFLICT DETECTED</span>
+                                <span id="detailStateBadge" class="badge badge-state-ch">CH UT</span>
+                            </div>
+                            <div style="font-size: 15px; color: var(--slate-600); margin-top: 6px;" id="detailLocationDisplay">
+                                Khasra 142/2 &bull; Sector 17, Chandigarh &bull; Registered to <strong>Gurpreet Singh</strong>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="text-align: right;">
+                                <div style="font-size: 12px; font-weight: 600; color: var(--slate-400); text-transform: uppercase;">Consensus Trust Score</div>
+                                <div style="font-size: 26px; font-weight: 700; color: var(--navy-900);" id="detailTrustScoreDisplay">48 / 100</div>
+                            </div>
+                            <button class="btn-action btn-primary" onclick="openNewRequestModal()">
+                                <i data-lucide="send" style="width: 15px; height: 15px;"></i> File Service Request
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- METADATA STRIP -->
+                    <div class="parcel-meta-grid" style="margin-top: 20px;">
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Primary Recorded Owner</span>
+                            <span class="meta-val" id="detailOwnerVal">Gurpreet Singh</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Total Land Area</span>
+                            <span class="meta-val" id="detailAreaVal">450 sq.yd (376.26 sq.m)</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Master Plan Land Use</span>
+                            <span class="meta-val" id="detailLandUseVal">Residential (R-2 Low Density)</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Encumbrance & Liens</span>
+                            <span class="meta-val" id="detailEncumbranceVal">Nil Mortgages &bull; 1 Active Caveat</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Active Mutation</span>
+                            <span class="meta-val" id="detailMutationVal">MUT-2026-CH-8821 (Under Review)</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Data Freshness</span>
+                            <span class="meta-val" id="detailFreshnessVal">2 hours ago (Auto-synced)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P1 GIS CADASTRAL MAP VIEWPORT (SWAPPABLE INTEGRATION BOUNDARY) -->
+                <div class="gis-viewport-wrapper">
+                    <div style="padding: 14px 20px; background: var(--slate-50); border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="compass" style="width: 18px; height: 18px; color: var(--navy-700);"></i>
+                            <strong style="font-size: 15px; color: var(--navy-900);">Cadastral GIS Boundary Overlay (P1 Integration Seam)</strong>
+                        </div>
+                        <div style="font-size: 13px; color: var(--slate-500);">Interactive Boundary Comparison &bull; DGPS Resurvey vs SRO Deed</div>
+                    </div>
+                    <!-- P1 GIS Viewport Component Target -->
+                    <div id="p1-gis-container"></div>
+                </div>
+
+                <!-- PROGRESSIVE DISCLOSURE: DEPARTMENT RECONCILIATION ACCORDION -->
+                <div class="queue-panel" style="padding: 20px;">
+                    <button class="drawer-toggle-btn" onclick="toggleParcelDrawer('dept-drawer')">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="layers" style="width: 17px; height: 17px; color: var(--navy-700);"></i>
+                            <span>4-Department Record Reconciliation Snapshot (Revenue, SRO, Survey, ULB)</span>
+                        </div>
+                        <i data-lucide="chevron-down" id="drawer-chevron-dept-drawer" style="width: 18px; height: 18px; color: var(--slate-400);"></i>
+                    </button>
+
+                    <div class="citizen-detail-drawer is-open" id="dept-drawer">
+                        <div style="font-size: 13.5px; color: var(--slate-500); margin-bottom: 12px;">
+                            Cross-departmental records ingested by the Land Trust Engine for this ULPIN:
+                        </div>
+                        <div class="dept-reconciliation-grid" id="detailDeptGrid">
+                            <!-- Injected dynamically by app.js -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROGRESSIVE DISCLOSURE: ENCUMBRANCE & CAVEAT DETAILS -->
+                <div class="queue-panel" style="padding: 20px;">
+                    <button class="drawer-toggle-btn" onclick="toggleParcelDrawer('encumbrance-drawer')">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="shield" style="width: 17px; height: 17px; color: var(--navy-700);"></i>
+                            <span>Encumbrance, Mortgages & Legal Caveats</span>
+                        </div>
+                        <i data-lucide="chevron-down" id="drawer-chevron-encumbrance-drawer" style="width: 18px; height: 18px; color: var(--slate-400);"></i>
+                    </button>
+
+                    <div class="citizen-detail-drawer" id="encumbrance-drawer">
+                        <div id="detailEncumbranceContent" style="padding: 10px 0; font-size: 14.5px; color: var(--slate-700);">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROGRESSIVE DISCLOSURE: PROVENANCE & AUDIT HASH -->
+                <div class="queue-panel" style="padding: 20px;">
+                    <button class="drawer-toggle-btn" onclick="toggleParcelDrawer('provenance-drawer')">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="check-circle-2" style="width: 17px; height: 17px; color: var(--navy-700);"></i>
+                            <span>DPI Cryptographic Provenance & Audit Trail</span>
+                        </div>
+                        <i data-lucide="chevron-down" id="drawer-chevron-provenance-drawer" style="width: 18px; height: 18px; color: var(--slate-400);"></i>
+                    </button>
+
+                    <div class="citizen-detail-drawer" id="provenance-drawer">
+                        <div style="padding: 10px 0; font-size: 14px; color: var(--slate-600); line-height: 1.6;">
+                            <div><strong style="color: var(--slate-800);">Consensus State:</strong> Multi-registry consensus evaluated via Open Land API v2.4</div>
+                            <div style="margin-top: 4px;"><strong style="color: var(--slate-800);">Chained Cryptographic Hash:</strong> <span class="mono" style="font-size: 13px; color: var(--navy-700);">0x8f2a91b2c4091e8471bb920147ae55321f8a892b49c001</span></div>
+                            <div style="margin-top: 4px;"><strong style="color: var(--slate-800);">Audit Signer:</strong> DHARAA Land Trust Engine Nodal Authority</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 4: OWNERSHIP VERIFICATION & TRUST ANALYSIS -->
+            <section class="view-container" id="tab-verification">
+                <div class="queue-panel" style="padding: 24px;">
+                    <div style="margin-bottom: 20px;">
+                        <h2 style="font-size: 22px; font-weight: 700; color: var(--navy-900);">Ownership Trust Analysis</h2>
+                        <div style="font-size: 14.5px; color: var(--slate-500); margin-top: 4px;">
+                            Neutral, plain-language assessment of land ownership validity across all four statutory registries.
+                        </div>
+                    </div>
+
+                    <!-- DYNAMIC TRUST BANNER -->
+                    <div id="verificationBannerContainer">
+                        <!-- Injected dynamically -->
+                    </div>
+
+                    <!-- DEPARTMENTAL AGREEMENT STATUS BREAKDOWN -->
+                    <div style="margin-top: 24px;">
+                        <h3 style="font-size: 16px; font-weight: 600; color: var(--navy-900); margin-bottom: 12px;">
+                            Departmental Consensus Matrix
+                        </h3>
+                        <div class="table-container">
+                            <table class="conflict-table">
+                                <thead>
+                                    <tr>
+                                        <th>Department Registry</th>
+                                        <th>Recorded Title Holder</th>
+                                        <th>Recorded Area</th>
+                                        <th>Consensus Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="verificationMatrixBody">
+                                    <!-- Injected dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- WHAT HAPPENS NEXT (CITIZEN GUIDANCE) -->
+                    <div class="trust-action-guidance" style="margin-top: 24px;" id="verificationNextSteps">
+                        <!-- Injected dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 5: TRANSACTION & MUTATION TRACKING -->
+            <section class="view-container" id="tab-transactions">
+                <div class="transaction-dossier-card">
+                    <!-- TRANSACTION SELECTOR PILLS -->
+                    <div id="txSelectorContainer" class="tx-pills-bar" style="display: none;"></div>
+
+                    <div class="tx-header-strip">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                <span class="tx-ref-no mono" id="txRefNo">MUT-2026-CH-8821</span>
+                                <span class="badge badge-major" id="txStageBadge">FIELD INSPECTION</span>
+                                <span class="mono" style="font-size: 13px; color: var(--navy-700); background: var(--slate-100); padding: 2px 8px; border-radius: 4px;" id="txUlpinDisplay">CH-04-0012-8821-9041</span>
+                            </div>
+                            <div style="font-size: 14px; color: var(--slate-500); margin-top: 4px;" id="txTypeDateDisplay">
+                                Joint Demarcation & Boundary Harmonization &bull; Applied: 20-Aug-2026
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div id="txSlaContainer">
+                                <span class="sla-timer warning">
+                                    <i data-lucide="clock" style="width: 15px; height: 15px;"></i>
+                                    <span id="txSlaText">14 Hours Remaining (Statutory SLA: 30 Days)</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANIMATED REUSABLE STEPPER COMPONENT (FILED -> UNDER VERIFICATION -> FIELD INSPECTION -> APPROVED / REJECTED) -->
+                    <div class="stepper-container" style="margin: 32px 0;">
+                        <div class="stepper-track-bg"></div>
+                        <div class="stepper-track-fill" id="citizenStepperTrack" style="width: 66%;"></div>
+
+                        <div class="step-item completed" id="cstep1">
+                            <div class="step-circle"><i data-lucide="check" style="width: 18px; height: 18px;"></i></div>
+                            <div class="step-title" id="cstep1Title">1. Filed</div>
+                            <div class="step-meta" id="cstep1Meta">Auto-Triggered</div>
+                        </div>
+
+                        <div class="step-item completed" id="cstep2">
+                            <div class="step-circle"><i data-lucide="check" style="width: 18px; height: 18px;"></i></div>
+                            <div class="step-title" id="cstep2Title">2. Under Verification</div>
+                            <div class="step-meta" id="cstep2Meta">Notice Dispatched</div>
+                        </div>
+
+                        <div class="step-item current" id="cstep3">
+                            <div class="step-circle">3</div>
+                            <div class="step-title" id="cstep3Title">3. Field Inspection</div>
+                            <div class="step-meta" id="cstep3Meta">In Progress</div>
+                        </div>
+
+                        <div class="step-item" id="cstep4">
+                            <div class="step-circle">4</div>
+                            <div class="step-title" id="cstep4Title">4. Approved / Rejected</div>
+                            <div class="step-meta" id="cstep4Meta">Pending Resolution</div>
+                        </div>
+                    </div>
+
+                    <!-- TRANSACTION ACCOUNTABILITY DETAILS -->
+                    <div class="parcel-meta-grid" style="margin-top: 24px;">
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Current Nodal Officer</span>
+                            <span class="meta-val" id="txOfficerVal">Harvinder Singh, Field Kanungo</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Current Handling Department</span>
+                            <span class="meta-val" id="txDeptVal">Revenue & Survey Office, Sector 17</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Statutory SLA Window</span>
+                            <span class="meta-val" id="txSlaWindowVal">30 Days (Right to Service Guarantee)</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Procedural Workflow State</span>
+                            <span class="meta-val" id="txStateSummaryVal">Step 3: Joint Rover Demarcation</span>
+                        </div>
+                    </div>
+
+                    <!-- PENDING CITIZEN ACTION CALLOUT (IF ACTION REQUIRED) -->
+                    <div id="txPendingActionBox" style="margin-top: 20px; display: none;"></div>
+
+                    <!-- DOCUMENT & STATUTORY COMPLIANCE CHECKLIST (RECEIVED VS PENDING) -->
+                    <div class="doc-checklist-card" id="txDocChecklistCard">
+                        <div class="doc-checklist-header">
+                            <div>
+                                <div class="doc-checklist-title">
+                                    <i data-lucide="file-check" style="width: 18px; height: 18px; color: var(--navy-800);"></i>
+                                    <span>Document & Statutory Compliance Checklist</span>
+                                </div>
+                                <div class="doc-checklist-sub">
+                                    Reconciled multi-departmental records and prerequisites required for statutory mutation
+                                </div>
+                            </div>
+                            <div class="doc-checklist-progress" id="txDocProgressBadge">
+                                <i data-lucide="check-circle" style="width: 14px; height: 14px;"></i>
+                                <span id="txDocProgressText">4 of 6 Verified</span>
+                            </div>
+                        </div>
+
+                        <div class="doc-checklist-grid" id="txDocChecklistGrid">
+                            <!-- Injected dynamically by app.js -->
+                        </div>
+                    </div>
+
+                    <!-- RECENT TRANSACTION ACTIVITY LOG -->
+                    <div style="margin-top: 28px;">
+                        <h4 style="font-size: 15px; font-weight: 600; color: var(--navy-900); margin-bottom: 12px;">
+                            Timestamped Procedural Audit History
+                        </h4>
+                        <div class="audit-trail-container" id="txActivityLog">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 6: SERVICE REQUESTS -->
+            <section class="view-container" id="tab-requests">
+                <div class="queue-panel">
+                    <div class="queue-toolbar">
+                        <div class="toolbar-left">
+                            <i data-lucide="send" style="width: 20px; height: 20px; color: var(--navy-700);"></i>
+                            <div>
+                                <strong style="font-size: 16px; color: var(--navy-900);">Citizen Service Requests</strong>
+                                <div style="font-size: 13px; color: var(--slate-500);">Track demarcation requests, non-encumbrance certificates, and title grievance filings</div>
+                            </div>
+                        </div>
+                        <div class="toolbar-right">
+                            <button class="btn-action btn-primary" onclick="openNewRequestModal()">
+                                <i data-lucide="send" style="width: 15px; height: 15px;"></i> File New Request
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;" id="serviceRequestsList">
+                        <!-- Dynamic SR cards will be rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 7: NOTIFICATIONS & ALERTS -->
+            <section class="view-container" id="tab-notifications">
+                <div class="queue-panel">
+                    <div class="queue-toolbar">
+                        <div class="toolbar-left">
+                            <i data-lucide="bell" style="width: 20px; height: 20px; color: var(--navy-700);"></i>
+                            <div>
+                                <strong style="font-size: 16px; color: var(--navy-900);">Notification & Alert Center</strong>
+                                <div style="font-size: 13px; color: var(--slate-500);">Statutory notices, SLA alerts, and verification progress updates</div>
+                            </div>
+                        </div>
+                        <div class="toolbar-right">
+                            <button class="btn-action" onclick="markAllNotificationsRead()">
+                                <i data-lucide="check-circle" style="width: 15px; height: 15px;"></i> Mark All Read
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;" id="notificationsList">
+                        <!-- Notifications rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 8: GLOSSARY & HELP -->
+            <section class="view-container" id="tab-glossary">
+                <div class="queue-panel" style="padding: 24px;">
+                    <div style="margin-bottom: 20px;">
+                        <h2 style="font-size: 22px; font-weight: 700; color: var(--navy-900);">Plain-Language Land Terms Glossary</h2>
+                        <div style="font-size: 14.5px; color: var(--slate-500); margin-top: 4px;">
+                            Clear explanations of Indian land governance terminology across northern and southern state jurisdictions.
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px;" id="glossaryGrid">
+                        <!-- Injected dynamically from data.js -->
+                    </div>
+
+                    <!-- HELP DESK / GRIEVANCE REDRESSAL -->
+                    <div style="margin-top: 32px; padding: 20px; background: var(--slate-50); border: 1px solid var(--border-subtle); border-radius: var(--radius);">
+                        <h3 style="font-size: 16px; font-weight: 600; color: var(--navy-900); margin-bottom: 6px;">
+                            Need In-Person Support or Sub-Divisional Grievance Redressal?
+                        </h3>
+                        <p style="font-size: 14px; color: var(--slate-600); line-height: 1.5; margin-bottom: 12px;">
+                            If your land parcel has an unresolved dispute or notice of caveat, you may visit your local Sub-Divisional Magistrate (SDM) / Revenue Divisional Officer (RDO) office or submit an online grievance under the Right to Public Service Guarantee.
+                        </p>
+                        <div style="font-size: 13.5px; color: var(--slate-700); display: flex; gap: 20px; flex-wrap: wrap;">
+                            <div><strong>National Land Toll-Free:</strong> 1800-180-xxxx</div>
+                            <div><strong>State Revenue Desk:</strong> dolr.gov.in/support</div>
+                            <div><strong>DHARAA Engine Status:</strong> Operational (v2.4.1)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 9: CITIZEN PROFILE -->
+            <section class="view-container" id="tab-profile">
+                <div class="queue-panel" style="padding: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 20px; margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <div class="citizen-avatar" style="width: 52px; height: 52px; font-size: 22px;" id="profileAvatarLarge">G</div>
+                            <div>
+                                <h2 style="font-size: 20px; font-weight: 700; color: var(--navy-900);" id="profileFullName">Gurpreet Singh</h2>
+                                <div style="font-size: 14px; color: var(--slate-500);" id="profileIdSub">Citizen ID: CIT-CH-8821 &bull; Aadhaar Masked: XXXX-XXXX-9041</div>
+                            </div>
+                        </div>
+                        <button class="btn-action" onclick="openAuthModal()">
+                            <i data-lucide="user-check" style="width: 15px; height: 15px;"></i> Switch Demo Citizen
+                        </button>
+                    </div>
+
+                    <div class="parcel-meta-grid">
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Father / Spouse Name</span>
+                            <span class="meta-val" id="profileFatherVal">S. Jaswant Singh</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Registered Mobile</span>
+                            <span class="meta-val" id="profileMobileVal">+91 98765-XXXXX (OTP Verified)</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Registered Email</span>
+                            <span class="meta-val" id="profileEmailVal">gurpreet.singh@example.in</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Permanent Residence</span>
+                            <span class="meta-val" id="profileAddressVal"># 142/2, Sector 17, Chandigarh</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Jurisdiction / State</span>
+                            <span class="meta-val" id="profileStateVal">Chandigarh (UT)</span>
+                        </div>
+                        <div class="parcel-meta-cell">
+                            <span class="meta-label">Linked Parcels</span>
+                            <span class="meta-val" id="profileLinkedCountVal">2 Land Parcels</span>
+                        </div>
+                    </div>
+
+                    <!-- CITIZEN PREFERENCES & I18N READINESS -->
+                    <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-subtle);">
+                        <h3 style="font-size: 16px; font-weight: 700; color: var(--navy-900); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="settings" style="width: 17px; height: 17px; color: var(--navy-700);"></i>
+                            <span>Portal Preferences & Statutory Alert Channels</span>
+                        </h3>
+
+                        <div class="pref-row">
+                            <div>
+                                <div class="pref-title">Portal Display Language (I18n Seam)</div>
+                                <div class="pref-sub">Select preferred language for statutory land notices and Record of Rights extracts</div>
+                            </div>
+                            <div class="lang-btn-group">
+                                <button type="button" class="lang-pill active" id="langBtnEn" onclick="setPortalLanguage('en')">English</button>
+                                <button type="button" class="lang-pill" id="langBtnHi" onclick="setPortalLanguage('hi')">हिन्दी (Hindi)</button>
+                                <button type="button" class="lang-pill" id="langBtnTa" onclick="setPortalLanguage('ta')">தமிழ் (Tamil)</button>
+                            </div>
+                        </div>
+
+                        <div class="pref-row">
+                            <div>
+                                <div class="pref-title">Statutory SMS & Telemetry Alerts</div>
+                                <div class="pref-sub">Receive instant SMS alerts when mutation SLAs or field demarcation dates are scheduled</div>
+                            </div>
+                            <label class="switch-toggle">
+                                <input type="checkbox" id="prefSmsToggle" checked onchange="handlePreferenceToggle('sms', this.checked)">
+                                <span class="slider-round"></span>
+                            </label>
+                        </div>
+
+                        <div class="pref-row">
+                            <div>
+                                <div class="pref-title">WhatsApp Digital Records Gateway</div>
+                                <div class="pref-sub">Send certified Non-Encumbrance Certificates and RoR extracts directly to verified WhatsApp</div>
+                            </div>
+                            <label class="switch-toggle">
+                                <input type="checkbox" id="prefWaToggle" checked onchange="handlePreferenceToggle('whatsapp', this.checked)">
+                                <span class="slider-round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 5. MOBILE FIXED BOTTOM NAVIGATION BAR -->
+    <nav class="mobile-bottom-nav">
+        <a class="m-nav-item active" data-tab="home" onclick="switchTab('home')">
+            <i data-lucide="inbox"></i>
+            <span>Home</span>
+        </a>
+        <a class="m-nav-item" data-tab="search" onclick="switchTab('search')">
+            <i data-lucide="search"></i>
+            <span>Search</span>
+        </a>
+        <a class="m-nav-item" data-tab="parcel" onclick="switchTab('parcel')">
+            <i data-lucide="file-text"></i>
+            <span>Parcel</span>
+        </a>
+        <a class="m-nav-item" data-tab="transactions" onclick="switchTab('transactions')">
+            <i data-lucide="git-pull-request"></i>
+            <span>Track</span>
+        </a>
+        <a class="m-nav-item" data-tab="requests" onclick="switchTab('requests')">
+            <i data-lucide="send"></i>
+            <span>Requests</span>
+            <span class="m-nav-badge" id="mRequestsCountBadge">1</span>
+        </a>
+    </nav>
+
+    <!-- 6. MODALS -->
+
+    <!-- MODAL: FILE SERVICE REQUEST -->
+    <div class="modal-overlay" id="modalServiceRequest" style="display: none;">
+        <div class="modal-box" style="max-width: 560px;">
+            <div class="modal-header">
+                <div>
+                    <h3 style="font-size: 18px; font-weight: 700; color: var(--navy-900);">File Citizen Service Request</h3>
+                    <div style="font-size: 13px; color: var(--slate-500);">Registered under Right to Public Service Guarantee</div>
+                </div>
+                <button class="btn-action" style="padding: 4px 8px;" onclick="closeModal('modalServiceRequest')">
+                    <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleServiceRequestSubmit(event)" class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Target Land Parcel (ULPIN)</label>
+                    <select id="srFormUlpin" class="form-select mono" required>
+                        <!-- Injected dynamically -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Service Request Category</label>
+                    <select id="srFormCategory" class="form-select" required>
+                        <option value="Boundary Demarcation & Area Correction">Joint Boundary Demarcation & Area Correction</option>
+                        <option value="Certified Non-Encumbrance Certificate (NEC)">Certified Non-Encumbrance Certificate (NEC)</option>
+                        <option value="Deed Transliteration & Name Spelling Correction">Deed Transliteration & Name Spelling Correction</option>
+                        <option value="Grievance: Overdue Mutation Pendency">Grievance: Overdue Mutation Pendency</option>
+                        <option value="Certified Cadastral Map Extract (FMB)">Certified Cadastral Map Extract (FMB)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Detailed Description of Discrepancy or Grievance</label>
+                    <textarea id="srFormDesc" class="form-textarea" rows="4" required
+                        placeholder="Please detail the issue, specific boundary dispute, or reason for certificate request..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Supporting Document (Deed Copy / Jamabandi Extract)</label>
+                    <div class="form-file-drop" onclick="document.getElementById('srFileHidden').click()">
+                        <i data-lucide="download" style="width: 24px; height: 24px; color: var(--slate-400); margin-bottom: 4px;"></i>
+                        <div style="font-size: 13.5px; font-weight: 500; color: var(--slate-700);" id="srFileDisplay">
+                            Click to attach PDF / Scan (Simulated Upload)
+                        </div>
+                        <div style="font-size: 12px; color: var(--slate-400);">Max 10MB &bull; Digitally hashed into audit log</div>
+                    </div>
+                    <input type="file" id="srFileHidden" style="display: none;" onchange="handleFileSelected(event)">
+                </div>
+
+                <div class="modal-footer" style="padding: 16px 0 0; margin-top: 16px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="button" class="btn-action" onclick="closeModal('modalServiceRequest')">Cancel</button>
+                    <button type="submit" class="btn-action btn-primary">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: CITIZEN AUTHENTICATION / DEMO PROFILE SWITCHER -->
+    <div class="modal-overlay" id="modalAuth" style="display: none;">
+        <div class="modal-box" style="max-width: 480px;">
+            <div class="modal-header">
+                <div>
+                    <h3 style="font-size: 18px; font-weight: 700; color: var(--navy-900);">Citizen Identity Verification (Mock)</h3>
+                    <div style="font-size: 13px; color: var(--slate-500);">Switch demo profiles or simulate mobile OTP verification</div>
+                </div>
+                <button class="btn-action" style="padding: 4px 8px;" onclick="closeModal('modalAuth')">
+                    <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+                </button>
+            </div>
+
+            <div class="modal-body" style="padding: 16px 0;">
+                <!-- AUTH MODAL TABS -->
+                <div class="auth-tab-nav">
+                    <button type="button" class="auth-tab-btn active" id="authTabBtnPersonas" onclick="switchAuthTab('personas')">
+                        <i data-lucide="users" style="width: 15px; height: 15px; vertical-align: middle;"></i> Demo Personas
+                    </button>
+                    <button type="button" class="auth-tab-btn" id="authTabBtnOtp" onclick="switchAuthTab('otp')">
+                        <i data-lucide="shield-check" style="width: 15px; height: 15px; vertical-align: middle;"></i> Mobile / Aadhaar OTP
+                    </button>
+                </div>
+
+                <!-- TAB 1: DEMO PERSONAS -->
+                <div id="authPanelPersonas" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 4px;">
+                        Select an authenticated citizen identity to inspect land records across different jurisdictions and status states:
+                    </div>
+
+                    <!-- PROFILE 1: GURPREET SINGH -->
+                    <div class="parcel-card-item" style="cursor: pointer; border-left: 4px solid var(--navy-600); padding: 14px 16px;"
+                        onclick="switchCitizenProfile('gurpreet')">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong style="font-size: 15.5px; color: var(--navy-900);">Gurpreet Singh</strong>
+                                <div style="font-size: 12.5px; color: var(--slate-500);">Chandigarh (UT) &bull; 3 Linked Parcels</div>
+                            </div>
+                            <span class="badge badge-state-ch">CH UT</span>
+                        </div>
+                        <div style="font-size: 12px; color: var(--slate-600); margin-top: 4px;">
+                            Flagship 52 sq.yd spatial divergence &bull; Active Step 3 joint demarcation SLA (14h)
+                        </div>
+                    </div>
+
+                    <!-- PROFILE 2: RAMESH KUMAR (CLEAN TITLE DEMO) -->
+                    <div class="parcel-card-item" style="cursor: pointer; border-left: 4px solid var(--emerald-600); padding: 14px 16px;"
+                        onclick="switchCitizenProfile('ramesh')">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong style="font-size: 15.5px; color: var(--navy-900);">Ramesh Kumar</strong>
+                                <div style="font-size: 12.5px; color: var(--slate-500);">Chandigarh (UT) &bull; Commercial Sector 17-C</div>
+                            </div>
+                            <span class="badge badge-verified"><i data-lucide="check-circle" style="width:12px;height:12px;"></i> CLEAN TITLE</span>
+                        </div>
+                        <div style="font-size: 12px; color: var(--slate-600); margin-top: 4px;">
+                            100% Multi-Departmental Consensus &bull; Trust Score 98/100 &bull; Mutated & Harmonized
+                        </div>
+                    </div>
+
+                    <!-- PROFILE 3: ANNAMALAI MUTHUVEL -->
+                    <div class="parcel-card-item" style="cursor: pointer; border-left: 4px solid var(--teal-600); padding: 14px 16px;"
+                        onclick="switchCitizenProfile('annamalai')">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong style="font-size: 15.5px; color: var(--navy-900);">Annamalai Muthuvel</strong>
+                                <div style="font-size: 12.5px; color: var(--slate-500);">Tamil Nadu &bull; 3 Linked Parcels</div>
+                            </div>
+                            <span class="badge badge-state-tn">TN</span>
+                        </div>
+                        <div style="font-size: 12px; color: var(--slate-600); margin-top: 4px;">
+                            Patta/Deed transliteration alias &bull; Overdue mutation SLA breach (>28 days)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: OTP VERIFICATION SIMULATION -->
+                <div id="authPanelOtp" style="display: none; flex-direction: column; gap: 14px;">
+                    <div style="font-size: 13.5px; color: var(--slate-600);">
+                        Simulate citizen authentication via Aadhaar-linked mobile number:
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Registered Mobile or 12-Digit Aadhaar</label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="otpMobileInput" class="search-input mono" style="flex: 1;"
+                                placeholder="Enter Mobile (+91) or Aadhaar" value="+91 98765-43210">
+                            <button type="button" class="btn-action" onclick="simulateSendOtp()">
+                                <i data-lucide="send" style="width: 14px; height: 14px;"></i> Send OTP
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="otpInputArea" style="display: none; background: var(--slate-50); padding: 14px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+                        <div style="font-size: 13px; color: var(--slate-600); text-align: center;">
+                            Enter 6-digit OTP sent to registered mobile (Simulated code: <strong>123456</strong>):
+                        </div>
+                        <div class="otp-box-row">
+                            <input type="text" maxlength="1" class="otp-digit" value="1">
+                            <input type="text" maxlength="1" class="otp-digit" value="2">
+                            <input type="text" maxlength="1" class="otp-digit" value="3">
+                            <input type="text" maxlength="1" class="otp-digit" value="4">
+                            <input type="text" maxlength="1" class="otp-digit" value="5">
+                            <input type="text" maxlength="1" class="otp-digit" value="6">
+                        </div>
+                        <div style="display: flex; justify-content: center; margin-top: 8px;">
+                            <button type="button" class="btn-action btn-primary" style="width: 100%; justify-content: center;" onclick="simulateVerifyOtp()">
+                                <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i> Verify & Authenticate Citizen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="display: flex; justify-content: flex-end;">
+                <button type="button" class="btn-action" onclick="closeModal('modalAuth')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. TOAST NOTIFICATION POPUP (IDENTICAL TO P4) -->
+    <div class="toast-popup" id="toastBox">
+        <i data-lucide="check-circle-2" style="width: 20px; height: 20px; color: #34d399;" id="toastIcon"></i>
+        <span id="toastMsg" style="font-weight: 500;">Notification message</span>
+    </div>
+
+    <!-- MODULE SCRIPTS -->
+    <script src="data.js"></script>
+    <script src="p1GisAdapter.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
