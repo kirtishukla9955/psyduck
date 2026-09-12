@@ -1,4 +1,5 @@
-# LAND STACK — GIS-Based Digital Public Infrastructure for Land Governance
+*DHARAA-Digital Hub for Aggregated Records And Administration
+GIS-Based Digital Public Infrastructure for Land Governance
 
 **Smart India Hackathon (SIH) 2026**  
 **Module:** **P2 — Backend & Land Trust Engine**  
@@ -8,7 +9,7 @@
 
 ## 1. Executive Summary
 
-**LAND STACK (Bhu-DPI)** is an open, interoperable Digital Public Infrastructure for modern land administration and governance. 
+**DHARAA** is an open, interoperable Digital Public Infrastructure for modern land administration and governance. 
 
 This repository houses the **P2: Backend & Trust Engine** core module, providing:
 1. **Deterministic ULPIN Indexing:** 14-digit Unique Land Parcel Identification Numbers generated directly from centroid geometry and state codes.
