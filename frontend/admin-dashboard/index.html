@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DHARAA — Land Trust Engine Admin & Resolution Dashboard</title>
+
+    <!-- Inter & JetBrains Mono Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- GOVERNMENT IDENTIFICATION RIBBON -->
+    <header class="top-gov-ribbon">
+        <div class="gov-flag-mark">
+            <span class="tricolor-dot"></span>
+            <span>Department of Land Resources &bull; Ministry of Rural Development</span>
+        </div>
+        <div>Project DHARAA (Land Stack)</div>
+    </header>
+
+    <!-- APP NAVIGATION & PERSPECTIVE CONTROL -->
+    <nav class="app-header">
+        <div class="header-left">
+            <div class="brand-title-wrap">
+                <div class="brand-name">
+                    <i data-lucide="layers" style="width: 26px; height: 26px; color: #38bdf8;"></i>
+                    <span>DHARAA</span>
+                    <span class="brand-tag">LAND TRUST ENGINE</span>
+                </div>
+                <span class="brand-sub">Unified Parcel Reconciliation & Conflict Resolution DPI</span>
+            </div>
+        </div>
+
+        <!-- ROLE-BASED VIEW SELECTOR -->
+        <div style="display: flex; align-items: center; gap: 14px;">
+            <div class="pilot-jurisdiction-badge" id="jurisdictionBadge">
+                <i data-lucide="map-pin" style="width: 17px; height: 17px;"></i>
+                <span>Assigned: <strong>Harvinder Singh (Kanungo)</strong></span>
+            </div>
+
+            <div class="role-switcher-group">
+                <span class="role-label">VIEW PERSPECTIVE:</span>
+                <button class="role-btn active" data-role="officer" onclick="switchRole('officer', event)">
+                    <i data-lucide="user-check" style="width: 16px; height: 16px;"></i> Nodal Officer
+                </button>
+                <button class="role-btn" data-role="admin" onclick="switchRole('admin', event)">
+                    <i data-lucide="shield" style="width: 16px; height: 16px;"></i> District Admin
+                </button>
+                <button class="role-btn" data-role="policymaker" onclick="switchRole('policymaker', event)">
+                    <i data-lucide="bar-chart-3" style="width: 16px; height: 16px;"></i> Decision Maker
+                </button>
+            </div>
+
+            <!-- NOTIFICATION BELL -->
+            <button class="notif-bell-btn" id="notifBellBtn" onclick="handleNotificationClick()"
+                title="Active Anomalies & SLA Breaches">
+                <i data-lucide="bell" style="width: 20px; height: 20px;"></i>
+                <span class="notif-badge" id="notifBadgeCount">2</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- WORKSPACE BODY -->
+    <div class="main-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="side-nav">
+            <div class="nav-category" id="coreWorkflowsCategory">Core Workflows</div>
+            <a class="nav-item active" data-tab="queue" onclick="switchTab('queue')">
+                <div class="nav-item-left">
+                    <i data-lucide="inbox" style="width: 19px; height: 19px;"></i>
+                    <span>Conflict Queue</span>
+                </div>
+                <span class="nav-badge" id="queueBadgeCount">5</span>
+            </a>
+            <a class="nav-item" data-tab="detail" onclick="switchTab('detail')">
+                <div class="nav-item-left">
+                    <i data-lucide="git-pull-request" style="width: 19px; height: 19px;"></i>
+                    <span>Resolution Stepper</span>
+                </div>
+            </a>
+            <a class="nav-item" data-tab="analytics" onclick="switchTab('analytics')">
+                <div class="nav-item-left">
+                    <i data-lucide="pie-chart" style="width: 19px; height: 19px;"></i>
+                    <span>Governance Analytics</span>
+                </div>
+            </a>
+
+            <div class="nav-category">Registry Health</div>
+            <a class="nav-item" onclick="showToast('Re-indexing spatial coordinates for Chandigarh Sector 17...')">
+                <div class="nav-item-left">
+                    <i data-lucide="map" style="width: 19px; height: 19px;"></i>
+                    <span>GIS Cadastral Layer</span>
+                </div>
+            </a>
+            <a class="nav-item" onclick="showToast('Cross-checking 4-system ULPIN cryptographic hashes...')">
+                <div class="nav-item-left">
+                    <i data-lucide="hash" style="width: 19px; height: 19px;"></i>
+                    <span>ULPIN Hash Ledger</span>
+                </div>
+            </a>
+
+            <!-- ENGINE TELEMETRY WIDGET -->
+            <div class="engine-status-widget">
+                <div class="engine-status-title">
+                    <span>Land Trust Engine</span>
+                    <span class="pulse-dot-green" title="Engine Online - Ingesting Stream"></span>
+                </div>
+                <div style="font-size: 13px; color: var(--slate-500); line-height: 1.4;">
+                    Reconciling live webhooks across <strong style="color: var(--slate-700);">Revenue, SRO, Survey &amp;
+                        ULB</strong>.
+                </div>
+                <div
+                    style="font-size: 12px; color: var(--teal-700); font-weight: 600; padding-top: 4px; border-top: 1px solid var(--border-subtle);">
+                    Last Sync: 12 seconds ago
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTENT SCREENS -->
+        <main class="content-area">
+
+            <!-- TAB 1: CONFLICT RESOLUTION QUEUE -->
+            <section id="tab-queue" class="view-container active">
+
+                <!-- KPI COUNTERS -->
+                <div class="metric-grid">
+                    <div class="metric-card red">
+                        <div class="metric-top">
+                            <span>Active Discrepancies</span>
+                            <i data-lucide="alert-triangle"
+                                style="width: 20px; height: 20px; color: var(--red-500);"></i>
+                        </div>
+                        <div class="metric-value">
+                            <span class="counter" data-target="184">0</span>
+                            <span style="font-size: 14px; color: var(--red-600); font-weight: 600;">+8 today</span>
+                        </div>
+                        <div class="metric-sub">
+                            <span>Auto-flagged by Land Trust Engine</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card amber">
+                        <div class="metric-top">
+                            <span>SLA At Risk (&lt; 24h)</span>
+                            <i data-lucide="clock" style="width: 20px; height: 20px; color: var(--amber-500);"></i>
+                        </div>
+                        <div class="metric-value">
+                            <span class="counter" data-target="29">0</span>
+                            <span style="font-size: 14px; color: var(--amber-600); font-weight: 600;">Action Req</span>
+                        </div>
+                        <div class="metric-sub">
+                            <span>Mandated 7-day Citizen Guarantee</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card teal">
+                        <div class="metric-top">
+                            <span>Resolved (This Month)</span>
+                            <i data-lucide="check-circle-2"
+                                style="width: 20px; height: 20px; color: var(--teal-600);"></i>
+                        </div>
+                        <div class="metric-value">
+                            <span class="counter" data-target="612">0</span>
+                            <span style="font-size: 14px; color: var(--emerald-600); font-weight: 600;">94.2%</span>
+                        </div>
+                        <div class="metric-sub">
+                            <span>Harmonized to Gold Registry</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card navy">
+                        <div class="metric-top">
+                            <span>Avg Resolution Velocity</span>
+                            <i data-lucide="zap" style="width: 20px; height: 20px; color: var(--navy-600);"></i>
+                        </div>
+                        <div class="metric-value">
+                            <span class="counter" data-target="3.8">0</span><span style="font-size: 22px;">d</span>
+                            <span style="font-size: 14px; color: var(--slate-500); font-weight: 500;">down from
+                                42d</span>
+                        </div>
+                        <div class="metric-sub">
+                            <span>Pre-DHARAA baseline: 42 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUEUE TABLE PANEL -->
+                <div class="queue-panel">
+                    <div class="queue-toolbar">
+                        <div class="toolbar-left">
+                            <div class="search-input-wrap">
+                                <i data-lucide="search"></i>
+                                <input type="text" id="queueSearch" class="search-input"
+                                    placeholder="Search by ULPIN, Khasra, Owner..." oninput="filterQueue()">
+                            </div>
+                            <select class="filter-select" id="stateFilter" onchange="filterQueue()">
+                                <option value="all">All Pilot States</option>
+                                <option value="CH">Chandigarh (UT)</option>
+                                <option value="TN">Tamil Nadu</option>
+                            </select>
+                            <select class="filter-select" id="conflictTypeFilter" onchange="filterQueue()">
+                                <option value="all">All Conflict Types</option>
+                                <option value="owner_mismatch">Owner Name Mismatch</option>
+                                <option value="spatial_overlap">Cadastral Boundary Overlap</option>
+                                <option value="overdue_mutation">Overdue Mutation Pending</option>
+                                <option value="land_use_drift">Master Plan Land-Use Drift</option>
+                            </select>
+                        </div>
+                        <div class="toolbar-right">
+                            <button class="btn-action" onclick="simulateNewConflict()">
+                                <i data-lucide="sparkles"
+                                    style="width: 17px; height: 17px; color: var(--amber-600);"></i>
+                                Simulate Ingestion
+                            </button>
+                            <button class="btn-action btn-primary"
+                                onclick="showToast('Exporting reconciled conflict manifest for audit...')">
+                                <i data-lucide="download" style="width: 17px; height: 17px;"></i> Export Manifest
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- DATA TABLE -->
+                    <div class="table-container">
+                        <table class="conflict-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 32px;"></th>
+                                    <th>ULPIN &amp; Location</th>
+                                    <th>Conflict Anomaly</th>
+                                    <th>Silos Involved</th>
+                                    <th>Severity</th>
+                                    <th>SLA Status</th>
+                                    <th>Workflow Stage</th>
+                                    <th style="text-align: right;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="queueTableBody">
+                                <!-- Injected via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: CONFLICT DETAIL & STEPPER -->
+            <section id="tab-detail" class="view-container">
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <div>
+                            <div class="ulpin-title-row">
+                                <span class="ulpin-code mono" id="detailUlpin">ULPIN: CH-04-0012-8821-9041</span>
+                                <span class="badge badge-critical" id="detailSeverity">CRITICAL SEVERITY</span>
+                                <span class="badge badge-state-ch">Chandigarh UT</span>
+                            </div>
+                            <p style="font-size: 15.5px; color: var(--slate-600);" id="detailSummary">
+                                Spatial Boundary Inconsistency: SRO Deed mentions 450 sq.yd, Cadastral GIS reads 398
+                                sq.yd (52 sq.yd overlap with Khasra 142/1).
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn-action" onclick="switchTab('queue')">
+                                <i data-lucide="arrow-left" style="width: 17px; height: 17px;"></i> Back to Queue
+                            </button>
+                            <button class="btn-action btn-primary" onclick="advanceActiveWorkflow()">
+                                <i data-lucide="check" style="width: 17px; height: 17px;"></i> Advance Workflow Step
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TRUST SCORE GAUGE -->
+                    <div class="trust-gauge-card" id="trustGaugeCard">
+                        <div class="trust-gauge-visual">
+                            <div class="gauge-circle">
+                                <svg width="80" height="80" viewBox="0 0 68 68">
+                                    <circle cx="34" cy="34" r="29" stroke="#e2e8f0" stroke-width="6" fill="none" />
+                                    <circle id="gaugeArc" cx="34" cy="34" r="29" stroke="var(--red-500)"
+                                        stroke-width="6" fill="none" stroke-dasharray="182.2" stroke-dashoffset="94"
+                                        stroke-linecap="round" transform="rotate(-90 34 34)"
+                                        style="transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s ease;" />
+                                </svg>
+                                <div class="gauge-value mono" id="gaugeVal">48</div>
+                            </div>
+                        </div>
+                        <div class="trust-gauge-info">
+                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                <div class="trust-gauge-title" id="trustTitle">Trust Index: Compromised (48/100)</div>
+                                <span class="badge badge-critical" id="trustBadge"><i data-lucide="shield-alert"
+                                        style="width:13px;height:13px;"></i> MUTATION ON HOLD</span>
+                            </div>
+                            <div class="trust-gauge-desc" id="trustDesc">
+                                Mutation hold triggered. Land Trust Engine flagged -52 sq.yd spatial deviation against
+                                surveyed Cadastre.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ANIMATED STEPPER -->
+                    <div>
+                        <div
+                            style="font-size: 14.5px; font-weight: 600; text-transform: uppercase; color: var(--slate-500); margin-bottom: 14px;">
+                            DHARAA Standard Resolution Pipeline (Statutory SLA: 7 Days)
+                        </div>
+                        <div class="stepper-container">
+                            <div class="stepper-track-bg"></div>
+                            <div class="stepper-track-fill" id="stepperTrack"></div>
+
+                            <div class="step-item completed" id="step1">
+                                <div class="step-circle"><i data-lucide="check" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div class="step-title">1. Detected</div>
+                                <div class="step-meta">Auto-flagged 10-Sep</div>
+                            </div>
+
+                            <div class="step-item completed" id="step2">
+                                <div class="step-circle"><i data-lucide="check" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div class="step-title">2. Assigned</div>
+                                <div class="step-meta">Tehsildar South CH</div>
+                            </div>
+
+                            <div class="step-item current" id="step3">
+                                <div class="step-circle">3</div>
+                                <div class="step-title">3. Field Review</div>
+                                <div class="step-meta">Joint Survey Ordered</div>
+                            </div>
+
+                            <div class="step-item" id="step4">
+                                <div class="step-circle">4</div>
+                                <div class="step-title">4. Harmonized</div>
+                                <div class="step-meta">Gold Record Write</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CADASTRAL MAP VISUALIZATION -->
+                    <div class="cadastral-panel">
+                        <div class="cadastral-header">
+                            <div class="cadastral-title-group">
+                                <div class="cadastral-title">
+                                    <i data-lucide="map" style="width: 18px; height: 18px; color: var(--navy-600);"></i>
+                                    <span>Cadastral GIS Spatial Overlap Layer (DGPS Re-survey)</span>
+                                </div>
+                                <div style="font-size: 14px; color: var(--slate-500);">
+                                    Interactive cadastral polygon comparison: Registered SRO Deed boundary vs. On-ground
+                                    Drone DGPS boundary
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <button class="btn-action" id="btnOverlay" onclick="toggleOverlay()">
+                                    <i data-lucide="layers"
+                                        style="width: 16px; height: 16px; color: var(--navy-600);"></i>
+                                    <span>Drone Resurvey Diff (Active)</span>
+                                </button>
+                                <button class="btn-action"
+                                    onclick="showToast('Re-centering GIS cadastral layer to parcel centroid...')">
+                                    <i data-lucide="maximize" style="width: 16px; height: 16px;"></i>
+                                    <span>Fit Cadastre</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- MAP CANVAS -->
+                        <div class="cadastral-canvas-wrap">
+                            <svg class="cadastral-svg" viewBox="0 0 500 300">
+                                <defs>
+                                    <!-- Hazard Stripe Pattern (FILE A red: #ef4444) -->
+                                    <pattern id="hazardStripeLight" width="8" height="8"
+                                        patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                                        <line x1="0" y1="0" x2="0" y2="8" stroke="#ef4444" stroke-width="2.5" />
+                                    </pattern>
+                                </defs>
+
+                                <!-- Adjacent Parcel: Khasra 142/1 (Govt Land) -->
+                                <polygon points="40,40 180,40 170,260 30,240" class="poly-base" />
+                                <text x="52" y="150" fill="#64748b" font-size="13" font-family="'Inter', sans-serif"
+                                    font-weight="500">Khasra 142/1 (Govt Land)</text>
+
+                                <!-- Registered Deed Boundary (450 sq.yd) -->
+                                <polygon points="180,40 440,60 410,270 170,260" class="poly-sro" />
+                                <text x="255" y="145" fill="#1e40af" font-size="15" font-family="'Inter', sans-serif"
+                                    font-weight="600">Deed Claim: 450 sq.yd</text>
+
+                                <!-- Overlap / Encroached Polygon Area (-52 sq.yd) -->
+                                <polygon id="hazardPolygon" points="170,120 220,125 210,265 170,260" class="poly-hazard"
+                                    onclick="showToast('Selected Conflict Node: 52 sq.yd boundary encroachment (Khasra 142/2 vs 142/1)')" />
+                                <text id="hazardText" x="178" y="200" fill="#dc2626" font-size="13" font-weight="700"
+                                    font-family="'JetBrains Mono', monospace">⚠️ -52 sq.yd Overlap</text>
+                            </svg>
+
+                            <!-- Legend -->
+                            <div class="cadastral-legend">
+                                <div class="legend-chip">
+                                    <span class="legend-swatch"
+                                        style="background: #edf2f7; border: 1px dashed #94a3b8;"></span>
+                                    <span>Adjacent Parcel (Khasra 142/1)</span>
+                                </div>
+                                <div class="legend-chip">
+                                    <span class="legend-swatch"
+                                        style="background: rgba(37, 99, 235, 0.12); border: 1.5px solid var(--navy-600);"></span>
+                                    <span>Registered Deed Boundary (450 sq.yd)</span>
+                                </div>
+                                <div class="legend-chip">
+                                    <span class="legend-swatch"
+                                        style="background: #fee2e2; border: 1.5px solid var(--red-600);"></span>
+                                    <span>Encroached Overlap (-52 sq.yd)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GIS TELEMETRY BADGE -->
+                        <div class="cadastral-telemetry metric-sub">
+                            <div
+                                style="display: flex; align-items: center; gap: 8px; color: var(--slate-700); font-weight: 600;">
+                                <i data-lucide="compass" style="width: 16px; height: 16px; color: var(--teal-700);"></i>
+                                <span>GIS TELEMETRY: HIGH PRECISION DGPS</span>
+                            </div>
+                            <div style="color: var(--slate-500);">
+                                Coordinates: <span class="mono" style="color: var(--slate-700);">30.7333° N, 76.7794°
+                                    E</span> &bull; Horizontal Accuracy: <span class="mono"
+                                    style="color: var(--emerald-700); font-weight: 600;">±1.8cm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COMPARISON MATRIX -->
+                    <div>
+                        <div style="font-size: 15px; font-weight: 600; color: var(--navy-900); margin-bottom: 12px;">
+                            Cross-Department Discrepancy Matrix (ULPIN Harmonization Layer)
+                        </div>
+                        <div class="dept-reconciliation-grid">
+                            <div class="dept-cell">
+                                <div class="dept-cell-header">
+                                    <span>Revenue Jamabandi</span>
+                                    <i data-lucide="book-open"
+                                        style="width: 16px; height: 16px; color: var(--slate-400);"></i>
+                                </div>
+                                <div style="font-size: 13px; color: var(--slate-500);">Khasra 142/2</div>
+                                <div class="dept-cell-value">Owner: Gurpreet Singh</div>
+                                <div class="dept-cell-value">Area: 450 sq.yd</div>
+                            </div>
+
+                            <div class="dept-cell">
+                                <div class="dept-cell-header">
+                                    <span>Registration (SRO)</span>
+                                    <i data-lucide="file-text"
+                                        style="width: 16px; height: 16px; color: var(--slate-400);"></i>
+                                </div>
+                                <div style="font-size: 13px; color: var(--slate-500);">Deed #2024/8891</div>
+                                <div class="dept-cell-value mismatch">Owner: Gurpreet Singh &amp; Bros</div>
+                                <div class="dept-cell-value">Area: 450 sq.yd</div>
+                            </div>
+
+                            <div class="dept-cell" style="border: 1px solid #fecaca; background: #fff5f5;">
+                                <div class="dept-cell-header">
+                                    <span style="color: var(--red-600);">GIS Cadastral Survey</span>
+                                    <i data-lucide="map" style="width: 16px; height: 16px; color: var(--red-500);"></i>
+                                </div>
+                                <div style="font-size: 13px; color: var(--slate-500);">Polygon #CAD-4410</div>
+                                <div class="dept-cell-value mismatch">Plotted: 398 sq.yd (-52 sq.yd)</div>
+                                <div class="dept-cell-value" style="color: var(--red-600); font-size: 13px;">
+                                    Encroachment flag active</div>
+                            </div>
+
+                            <div class="dept-cell">
+                                <div class="dept-cell-header">
+                                    <span>Urban Dev (ULB)</span>
+                                    <i data-lucide="building-2"
+                                        style="width: 16px; height: 16px; color: var(--slate-400);"></i>
+                                </div>
+                                <div style="font-size: 13px; color: var(--slate-500);">Municipal Zone R-2</div>
+                                <div class="dept-cell-value">Property Tax ID: CH-MC-908</div>
+                                <div class="dept-cell-value">Commercial Use Flag: None</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AUDIT TRAIL LOG -->
+                    <div>
+                        <div style="font-size: 15px; font-weight: 600; color: var(--navy-900); margin-bottom: 14px;">
+                            Immutable DPI Audit Trail (Cryptographically Chained)
+                        </div>
+                        <div class="audit-timeline" id="auditTrailBox">
+                            <div class="timeline-node">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-header">
+                                        <span>Field Verification Assigned</span>
+                                        <span class="mono" style="font-size: 13px; color: var(--slate-400);">11-Sep-2026
+                                            14:20 IST</span>
+                                    </div>
+                                    <div style="font-size: 14.5px; color: var(--slate-600);">Kanungo Office dispatched
+                                        with DGPS equipment
+                                        for boundary demarcation with adjacent Khasra 142/1.</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-node">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-header">
+                                        <span>ULPIN Anomaly Flagged by Land Trust Engine</span>
+                                        <span class="mono" style="font-size: 13px; color: var(--slate-400);">10-Sep-2026
+                                            09:12 IST</span>
+                                    </div>
+                                    <div style="font-size: 14.5px; color: var(--slate-600);">Automated GIS
+                                        reconciliation detected polygon
+                                        area divergence greater than 5% tolerance against SRO deed.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- TAB 3: GOVERNANCE ANALYTICS -->
+            <section id="tab-analytics" class="view-container">
+
+                <div class="analytics-row-2">
+                    <!-- RESOLUTION HOTSPOT MAP SUMMARY -->
+                    <div class="chart-card">
+                        <div class="chart-title">
+                            <span>Pilot Jurisdictions: Conflict Categorization &amp; Hotspots</span>
+                            <span class="badge badge-state-ch">Live Telemetry</span>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 14px;">
+                            <div>
+                                <h4
+                                    style="font-size: 14px; color: var(--slate-500); margin-bottom: 10px; text-transform: uppercase;">
+                                    Chandigarh UT (Urban/Peri-Urban)</h4>
+
+                                <div class="drift-bar-item">
+                                    <div class="drift-label-row">
+                                        <span>Cadastral Boundary Divergence</span>
+                                        <span class="mono">42% (51 cases)</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 42%; background: var(--red-500);">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="drift-bar-item">
+                                    <div class="drift-label-row">
+                                        <span>Pending Mutations (&gt; 15 days)</span>
+                                        <span class="mono">33% (40 cases)</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 33%; background: var(--amber-500);">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="drift-bar-item">
+                                    <div class="drift-label-row">
+                                        <span>Ownership Name / Transliteration Mismatch</span>
+                                        <span class="mono">25% (30 cases)</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 25%; background: var(--teal-600);">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4
+                                    style="font-size: 14px; color: var(--slate-500); margin-bottom: 10px; text-transform: uppercase;">
+                                    Tamil Nadu (Rural / Agricultural Patta)</h4>
+
+                                <div class="drift-bar-item">
+                                    <div class="drift-label-row">
+                                        <span>Sub-Division FMB Mismatch</span>
+                                        <span class="mono">54% (89 cases)</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 54%; background: var(--red-500);">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="drift-bar-item">
+                                    <div class="drift-label-row">
+                                        <span>Unreconciled Joint Patta Shares</span>
+                                        <span class="mono">28% (46 cases)</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 28%; background: var(--amber-500);">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="drift-bar-item">
+                                    <div class="drift-label-row">
+                                        <span>Land-Use Drift (Agri &rarr; Unapproved Layout)</span>
+                                        <span class="mono">18% (30 cases)</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 18%; background: var(--navy-600);">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SYSTEMIC BOTTLENECK RADAR -->
+                    <div class="chart-card">
+                        <div class="chart-title">
+                            <span>Department Bottleneck Index</span>
+                            <i data-lucide="activity" style="width: 19px; height: 19px; color: var(--slate-400);"></i>
+                        </div>
+                        <p style="font-size: 14px; color: var(--slate-500); margin-bottom: 14px;">
+                            Average latency introduced per department during cross-verification requests:
+                        </p>
+
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px;">
+                                    <span style="font-weight: 600;">Survey &amp; Settlement</span>
+                                    <span class="mono" style="color: var(--red-600); font-weight: 600;">5.2 Days
+                                        avg</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 78%; background: var(--red-500);"></div>
+                                </div>
+                                <span style="font-size: 12.5px; color: var(--slate-400);">Bottleneck: Physical DGPS
+                                    resurvey queue</span>
+                            </div>
+
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px;">
+                                    <span style="font-weight: 600;">Revenue Tehsildar Office</span>
+                                    <span class="mono" style="color: var(--amber-600); font-weight: 600;">2.1 Days
+                                        avg</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 35%; background: var(--amber-500);"></div>
+                                </div>
+                                <span style="font-size: 12.5px; color: var(--slate-400);">Bottleneck: Legal heir
+                                    verification</span>
+                            </div>
+
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px;">
+                                    <span style="font-weight: 600;">SRO Sub-Registrar Office</span>
+                                    <span class="mono" style="color: var(--emerald-600); font-weight: 600;">0.4 Days
+                                        avg</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 12%; background: var(--emerald-600);">
+                                    </div>
+                                </div>
+                                <span style="font-size: 12.5px; color: var(--slate-400);">Automated digital encumbrance
+                                    feed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-popup" id="toastBox">
+        <i data-lucide="check-circle" style="width: 22px; height: 22px; color: var(--emerald-500);"></i>
+        <span id="toastMsg">Action executed successfully.</span>
+    </div>
+
+    <!-- RESOLUTION MODAL -->
+    <div class="modal-overlay" id="resolutionModal">
+        <div class="modal-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3 style="font-size: 19px; font-weight: 700; color: var(--navy-900);">Order Field Demarcation</h3>
+                <button onclick="closeModal()"
+                    style="border: none; background: none; cursor: pointer; color: var(--slate-400);">
+                    <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+                </button>
+            </div>
+            <p style="font-size: 14.5px; color: var(--slate-600); margin-bottom: 16px;">
+                Dispatch a joint verification notice under Section 14 of the Land Revenue Act to reconcile the 52 sq.yd
+                variance for ULPIN: <strong class="mono">CH-04-0012-8821-9041</strong>.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                <label style="font-size: 14px; font-weight: 600; color: var(--slate-700);">Assigned Officer</label>
+                <select class="filter-select" style="width: 100%;">
+                    <option>Harvinder Singh, Field Kanungo (South Division)</option>
+                    <option>S. Meenakshi, Head Surveyor (TN Chengalpattu)</option>
+                </select>
+
+                <label style="font-size: 14px; font-weight: 600; color: var(--slate-700);">Statutory Resolution
+                    Window</label>
+                <input type="text" class="search-input" value="48 Hours (Guaranteed Citizen SLA)" readonly>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn-action" onclick="closeModal()">Cancel</button>
+                <button class="btn-action btn-primary" onclick="confirmModalAction()">Confirm &amp; Issue
+                    Notice</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- REASSIGN OFFICER MODAL (ADMIN ONLY) -->
+    <div class="modal-overlay" id="assignModal">
+        <div class="modal-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3
+                    style="font-size: 19px; font-weight: 700; color: var(--navy-900); display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="user-plus" style="width: 21px; height: 21px; color: var(--navy-600);"></i>
+                    Reassign Conflict Case
+                </h3>
+                <button onclick="closeAssignModal()"
+                    style="border: none; background: none; cursor: pointer; color: var(--slate-400);">
+                    <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+                </button>
+            </div>
+            <p style="font-size: 14.5px; color: var(--slate-600); margin-bottom: 16px;">
+                Designate statutory nodal officer responsible for field inspection and boundary reconciliation on ULPIN:
+                <strong class="mono" id="assignModalUlpin">CH-04-0012-8821-9041</strong>.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+                <div>
+                    <label
+                        style="font-size: 14px; font-weight: 600; color: var(--slate-700); display: block; margin-bottom: 4px;">Select
+                        Nodal Officer</label>
+                    <select class="filter-select" id="assignOfficerSelect" style="width: 100%;">
+                        <option value="Harvinder Singh, Field Kanungo">Harvinder Singh, Field Kanungo (Revenue - CH)
+                        </option>
+                        <option value="S. Meenakshi, Head Surveyor">S. Meenakshi, Head Surveyor (Survey - TN)</option>
+                        <option value="K. Ramanathan, Tahsildar">K. Ramanathan, Tahsildar (Revenue - TN)</option>
+                        <option value="Priya Sharma, Revenue Inspector">Priya Sharma, Revenue Inspector (Revenue - CH)
+                        </option>
+                        <option value="M. Selvam, Land Surveyor">M. Selvam, Land Surveyor (Survey - TN)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label
+                        style="font-size: 14px; font-weight: 600; color: var(--slate-700); display: block; margin-bottom: 4px;">Resolution
+                        Target Stage</label>
+                    <select class="filter-select" id="assignStageSelect" style="width: 100%;">
+                        <option value="Assigned">Assigned (Nodal Officer Assigned)</option>
+                        <option value="Under Review">Under Review (Field Demarcation / Joint Review)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn-action" onclick="closeAssignModal()">Cancel</button>
+                <button class="btn-action btn-primary" onclick="confirmAssignModalAction()">Confirm Assignment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>
