@@ -29,16 +29,21 @@ import {
   HttpDashboardService,
 } from './http/httpService';
 
-const isMockMode = (import.meta.env.VITE_DATA_MODE || 'mock') === 'mock';
+const globalMode = import.meta.env.VITE_DATA_MODE || 'mock';
+
+function useReal(serviceName: string): boolean {
+  const override = import.meta.env[`VITE_DATA_MODE_${serviceName.toUpperCase()}`];
+  return (override || globalMode) === 'real';
+}
 
 // Singleton service instances
-export const authService: AuthService = isMockMode ? new MockAuthService() : new HttpAuthService();
-export const citizenService: CitizenService = isMockMode ? new MockCitizenService() : new HttpCitizenService();
-export const parcelService: ParcelService = isMockMode ? new MockParcelService() : new HttpParcelService();
-export const conflictService: ConflictService = isMockMode ? new MockConflictService() : new HttpConflictService();
-export const transactionService: TransactionService = isMockMode ? new MockTransactionService() : new HttpTransactionService();
-export const serviceRequestService: ServiceRequestService = isMockMode ? new MockServiceRequestService() : new HttpServiceRequestService();
-export const notificationService: NotificationService = isMockMode ? new MockNotificationService() : new HttpNotificationService();
-export const dashboardService: DashboardService = isMockMode ? new MockDashboardService() : new HttpDashboardService();
+export const authService: AuthService = useReal('auth') ? new HttpAuthService() : new MockAuthService();
+export const citizenService: CitizenService = useReal('citizen') ? new HttpCitizenService() : new MockCitizenService();
+export const parcelService: ParcelService = useReal('parcel') ? new HttpParcelService() : new MockParcelService();
+export const conflictService: ConflictService = useReal('conflict') ? new HttpConflictService() : new MockConflictService();
+export const transactionService: TransactionService = useReal('transaction') ? new HttpTransactionService() : new MockTransactionService();
+export const serviceRequestService: ServiceRequestService = useReal('servicerequest') ? new HttpServiceRequestService() : new MockServiceRequestService();
+export const notificationService: NotificationService = useReal('notification') ? new HttpNotificationService() : new MockNotificationService();
+export const dashboardService: DashboardService = useReal('dashboard') ? new HttpDashboardService() : new MockDashboardService();
 
-export const isDataModeMock = isMockMode;
+export const isDataModeMock = globalMode === 'mock';
