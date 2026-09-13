@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 .env
 .env
+# Python
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environment files (backend)
+backend/.env
