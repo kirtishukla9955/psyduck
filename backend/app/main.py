@@ -37,10 +37,17 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Standard permissive CORS for team cross-module integration
+# Permissive local dev & production CORS allowlist (wildcard '*' is invalid with allow_credentials=True)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173",
+        # PLACEHOLDER: Replace with your actual production Netlify deployment URL once deployed
+        "https://YOUR-NETLIFY-URL-HERE.netlify.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
