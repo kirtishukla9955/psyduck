@@ -32,7 +32,7 @@ import {
   ULPIN,
 } from '@/types';
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const token = localStorage.getItem('land_stack_auth_token');
@@ -97,17 +97,37 @@ export class HttpCitizenService implements CitizenService {
     });
   }
 }
+function mapBackendParcelToFrontend(raw: any): Parcel {
+  return {
+    ulpin: raw.ulpin,
+    state: raw.state,
+    district: raw.village_or_city || '',
+    locality: raw.village_or_city || '',
+    areaValue: raw.area_sqm ?? 0,
+    areaUnit: 'sqm',
+    landUseClassification: raw.land_use || '',
+    boundaryGeoJson: raw.geometry,
+    lastUpdated: new Date().toISOString(),
+    dataFreshness: 'current',
+  };
+}
 
 export class HttpParcelService implements ParcelService {
   searchParcels(params: ParcelSearchParams): Promise<Parcel[]> {
+    const query = params.query || params.ulpin;
+    // Real backend has no /parcels/search route — it only supports
+    // GET /parcels/{ulpin} for an exact ULPIN, or GET /parcels?owner_name=... for a name search.
+    if (query && /^\d{14}$/.test(query)) {
+      return this.getParcelByUlpin(query).then((p) => (p ? [p] : []));
+    }
     const q = new URLSearchParams();
-    if (params.query) q.set('query', params.query);
-    if (params.ulpin) q.set('ulpin', params.ulpin);
+    if (query) q.set('owner_name', query);
     if (params.state) q.set('state', params.state);
-    return request<Parcel[]>(`/parcels/search?${q.toString()}`);
-  }
+    return request<any[]>(`/parcels?${q.toString()}`).then((list) => list.map(mapBackendParcelToFrontend));  }
+  
+
   getParcelByUlpin(ulpin: ULPIN): Promise<Parcel | null> {
-    return request<Parcel>(`/parcels/${encodeURIComponent(ulpin)}`);
+    return request<any>(`/parcels/${encodeURIComponent(ulpin)}`).then(mapBackendParcelToFrontend);
   }
   getOwnershipVerification(ulpin: ULPIN): Promise<OwnershipVerification | null> {
     return request<OwnershipVerification>(`/parcels/${encodeURIComponent(ulpin)}/ownership-verification`);
