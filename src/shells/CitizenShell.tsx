@@ -71,7 +71,7 @@ export const CitizenShell: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           <Link to="/citizen/dashboard" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded bg-primary text-white flex items-center justify-center font-bold text-sm shadow-subtle">
-              LS
+              D
             </div>
             <div>
               <div className="text-sm font-extrabold text-primary leading-tight">dharaa</div>

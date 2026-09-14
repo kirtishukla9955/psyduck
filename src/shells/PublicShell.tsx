@@ -30,7 +30,7 @@ export const PublicShell: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded bg-primary text-white flex items-center justify-center font-bold text-lg shadow-subtle group-hover:bg-primary-dark transition-colors">
-              LS
+              D
             </div>
             <div>
               <div className="text-base font-extrabold tracking-tight text-primary leading-tight">

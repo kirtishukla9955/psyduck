@@ -66,7 +66,7 @@ export const AdminShell: React.FC = () => {
           <div className="flex items-center gap-4">
             <Link to="/admin/dashboard" className="flex items-center gap-2">
               <div className="w-7 h-7 rounded bg-gis text-white flex items-center justify-center font-bold text-xs">
-                LS
+                D
               </div>
               <div>
                 <div className="text-xs font-extrabold tracking-wider uppercase text-white">
