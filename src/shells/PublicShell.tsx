@@ -34,7 +34,7 @@ export const PublicShell: React.FC = () => {
             </div>
             <div>
               <div className="text-base font-extrabold tracking-tight text-primary leading-tight">
-                LAND STACK
+                dharaa
               </div>
               <div className="text-[10px] font-medium text-neutral-500 line-clamp-1">
                 Integrated GIS-Based Land Public Infrastructure
@@ -140,7 +140,7 @@ export const PublicShell: React.FC = () => {
       <footer className="bg-neutral-900 text-neutral-400 text-xs py-8 border-t border-neutral-800 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <div className="text-white font-bold text-sm">LAND STACK</div>
+            <div className="text-white font-bold text-sm">dharaa</div>
             <div className="text-[11px] text-neutral-500 mt-0.5">
               Integrated GIS-Based Digital Public Infrastructure for Land Governance
             </div>

@@ -70,7 +70,7 @@ export const AdminShell: React.FC = () => {
               </div>
               <div>
                 <div className="text-xs font-extrabold tracking-wider uppercase text-white">
-                  LAND STACK <span className="text-neutral-400 font-normal">ADMIN</span>
+                  dharaa <span className="text-neutral-400 font-normal">ADMIN</span>
                 </div>
               </div>
             </Link>

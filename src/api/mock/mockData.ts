@@ -64,7 +64,7 @@ export const MOCK_USERS: User[] = [
     id: 'user_adm_01',
     name: 'Vikramaditya Rathore',
     role: 'SYSTEM_ADMIN',
-    email: 'admin@landstack.gov.in',
+    email: 'admin@dharaa.gov.in',
   },
 ];
 
@@ -191,7 +191,7 @@ export const INITIAL_PARCELS: Parcel[] = [
         type: 'nlp_normalized_text',
         label: 'Revenue Text Normalization',
         description:
-          'Normalized legacy Urdu-Punjabi revenue notation into standardized National Land Stack Schema v2.0.',
+          'Normalized legacy Urdu-Punjabi revenue notation into standardized National dharaa Schema v2.0.',
         confidence: 0.96,
         sourceLayer: 'Presenter-1 NLP Normalizer',
         detectedAt: '2026-08-10T11:00:00Z',

@@ -1,6 +1,6 @@
 import type { Geometry } from 'geojson';
 
-// Core Data Models as specified in Land Stack Spec Section 15
+// Core Data Models as specified in dharaa Spec Section 15
 
 export type ULPIN = string;
 

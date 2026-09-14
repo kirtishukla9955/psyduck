@@ -10,7 +10,7 @@ interface ErrorStateProps {
 
 export const ErrorState: React.FC<ErrorStateProps> = ({
   title = 'Service Communication Error',
-  message = 'Unable to fetch data from the Land Stack service layer. Please check connectivity or retry.',
+  message = 'Unable to fetch data from the dharaa service layer. Please check connectivity or retry.',
   onRetry,
   className = '',
 }) => {

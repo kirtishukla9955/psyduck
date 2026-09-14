@@ -5,7 +5,7 @@ import { MockConflictService } from '@/api/mock/conflict.mock';
 import { MockTransactionService } from '@/api/mock/transaction.mock';
 import { MockNotificationService } from '@/api/mock/notification.mock';
 
-describe('Land Stack End-to-End Demo Loop: Citizen → Officer → Citizen', () => {
+describe('dharaa End-to-End Demo Loop: Citizen → Officer → Citizen', () => {
   const parcelService = new MockParcelService();
   const conflictService = new MockConflictService();
   const transactionService = new MockTransactionService();

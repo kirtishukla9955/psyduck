@@ -122,7 +122,7 @@ export const router = createBrowserRouter([
             href="/"
             className="px-4 py-2 bg-primary text-white text-xs font-semibold rounded hover:bg-primary-dark"
           >
-            Return to Land Stack
+            Return to dharaa
           </a>
         </div>
       </div>

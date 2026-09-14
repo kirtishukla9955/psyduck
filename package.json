@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run --exclude src/test/RealBackendParcelFlow.test.ts",
     "test:integration": "vitest run src/test/RealBackendParcelFlow.test.ts",

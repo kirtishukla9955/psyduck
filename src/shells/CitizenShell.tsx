@@ -74,7 +74,7 @@ export const CitizenShell: React.FC = () => {
               LS
             </div>
             <div>
-              <div className="text-sm font-extrabold text-primary leading-tight">LAND STACK</div>
+              <div className="text-sm font-extrabold text-primary leading-tight">dharaa</div>
               <div className="text-[10px] text-neutral-500 font-medium">Citizen Portal</div>
             </div>
           </Link>

@@ -39,7 +39,7 @@ export const TERMS_GLOSSARY: Record<TermKey, TermDefinition> = {
     title: 'Mutation (Dakhil Kharij / Patta Transfer)',
     shortDesc: 'The official process of transferring title in revenue records after a property sale or inheritance.',
     detailedDesc:
-      'When property changes hands via sale deed, inheritance, or partition, mutation formally strikes out the old owner’s name and enters the new owner’s name in the Revenue RoR. Land Stack ensures registration and mutation stay synchronized within statutory SLAs.',
+      'When property changes hands via sale deed, inheritance, or partition, mutation formally strikes out the old owner’s name and enters the new owner’s name in the Revenue RoR. dharaa ensures registration and mutation stay synchronized within statutory SLAs.',
     regionalVariant: 'Intiqal (Chandigarh) | Patta Transfer (Tamil Nadu)',
   },
   Encumbrance: {
@@ -89,7 +89,7 @@ export const TERMS_GLOSSARY: Record<TermKey, TermDefinition> = {
     shortDesc: 'The automated engine that cross-reconciles records across departments and flags conflicts.',
     detailedDesc:
       'Connects fragmented departmental databases via ULPIN. When an owner mismatch, mutation SLA breach, or spatial overlap occurs, the Trust Engine generates an auditable conflict record and routes it for verified resolution.',
-    regionalVariant: 'Land Stack DPI Core',
+    regionalVariant: 'dharaa DPI Core',
   },
 };
 

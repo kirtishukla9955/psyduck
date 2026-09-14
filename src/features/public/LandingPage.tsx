@@ -39,7 +39,7 @@ export const LandingPage: React.FC = () => {
         </h1>
 
         <p className="text-base text-neutral-600 max-w-2xl mx-auto leading-relaxed">
-          Land Stack is an integrated GIS-based Digital Public Infrastructure that continuously reconciles records between Revenue, Registration, Survey & Settlement, and Urban Development.
+          dharaa is an integrated GIS-based Digital Public Infrastructure that continuously reconciles records between Revenue, Registration, Survey & Settlement, and Urban Development.
         </p>
 
         {/* Prominent Search Bar */}
@@ -164,22 +164,22 @@ export const LandingPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Differentiation Section: How Land Stack Sits Above Existing Systems */}
+      {/* Differentiation Section: How dharaa Sits Above Existing Systems */}
       <div className="bg-neutral-900 text-white rounded-card border border-neutral-800 p-8 shadow-subtle max-w-5xl mx-auto space-y-6">
         <div className="max-w-2xl">
           <span className="text-xs font-bold uppercase tracking-wider text-teal-400">
             Architectural Differentiation
           </span>
           <h3 className="text-xl font-bold text-white mt-1">
-            Why Land Stack? Does It Replace Existing Systems?
+            Why dharaa? Does It Replace Existing Systems?
           </h3>
           <p className="text-xs text-neutral-300 mt-2 leading-relaxed">
-            Land Stack is a non-disruptive Digital Public Infrastructure (DPI). It does not replace or clone existing state portals. Instead, it operates as a continuous Land Trust Engine that bridges existing legacy systems.
+            dharaa is a non-disruptive Digital Public Infrastructure (DPI). It does not replace or clone existing state portals. Instead, it operates as a continuous Land Trust Engine that bridges existing legacy systems.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
-          {/* DILRMP vs Land Stack */}
+          {/* DILRMP vs dharaa */}
           <div className="bg-neutral-800/80 rounded-lg p-5 border border-neutral-700 space-y-2.5">
             <div className="flex items-center justify-between pb-2 border-b border-neutral-700">
               <span className="font-bold text-teal-300 text-sm">vs. DILRMP</span>
@@ -189,11 +189,11 @@ export const LandingPage: React.FC = () => {
               <strong className="text-white">DILRMP</strong> digitizes individual state revenue systems, but departmental silos (Revenue vs. Registration) remain disconnected.
             </p>
             <div className="p-2.5 bg-neutral-900/90 rounded border border-teal-900/60 text-[11px] text-teal-200">
-              <strong>Land Stack DPI:</strong> Sits above DILRMP outputs and reconciles them across departmental boundaries using ULPIN as the anchor.
+              <strong>dharaa DPI:</strong> Sits above DILRMP outputs and reconciles them across departmental boundaries using ULPIN as the anchor.
             </div>
           </div>
 
-          {/* NAKSHA vs Land Stack */}
+          {/* NAKSHA vs dharaa */}
           <div className="bg-neutral-800/80 rounded-lg p-5 border border-neutral-700 space-y-2.5">
             <div className="flex items-center justify-between pb-2 border-b border-neutral-700">
               <span className="font-bold text-teal-300 text-sm">vs. NAKSHA</span>
@@ -203,11 +203,11 @@ export const LandingPage: React.FC = () => {
               <strong className="text-white">NAKSHA</strong> provides high-resolution drone survey base maps — a mapping layer, not a governance/resolution engine.
             </p>
             <div className="p-2.5 bg-neutral-900/90 rounded border border-teal-900/60 text-[11px] text-teal-200">
-              <strong>Land Stack DPI:</strong> Consumes NAKSHA-grade spatial data as its Base Layer, then overlays rights, encumbrance, and resolution workflows.
+              <strong>dharaa DPI:</strong> Consumes NAKSHA-grade spatial data as its Base Layer, then overlays rights, encumbrance, and resolution workflows.
             </div>
           </div>
 
-          {/* Bhu Bharati (Dharani) vs Land Stack */}
+          {/* Bhu Bharati (Dharani) vs dharaa */}
           <div className="bg-neutral-800/80 rounded-lg p-5 border border-neutral-700 space-y-2.5">
             <div className="flex items-center justify-between pb-2 border-b border-neutral-700">
               <span className="font-bold text-teal-300 text-sm">vs. Bhu Bharati (Dharani)</span>
@@ -217,7 +217,7 @@ export const LandingPage: React.FC = () => {
               <strong className="text-white">Bhu Bharati (ex-Dharani)</strong> was a monolithic portal that faced severe lock-in and had to be rebuilt from scratch.
             </p>
             <div className="p-2.5 bg-neutral-900/90 rounded border border-teal-900/60 text-[11px] text-teal-200">
-              <strong>Land Stack DPI:</strong> State-configurable by design. Common core model with pluggable state adapters per state, avoiding monolithic rebuilds.
+              <strong>dharaa DPI:</strong> State-configurable by design. Common core model with pluggable state adapters per state, avoiding monolithic rebuilds.
             </div>
           </div>
         </div>
