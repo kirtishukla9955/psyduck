@@ -1,4 +1,4 @@
-# LAND STACK — GIS-Based Digital Public Infrastructure for Land Governance
+# dharaa — GIS-Based Digital Public Infrastructure for Land Governance
 
 **Smart India Hackathon (SIH) 2026**  
 **Module:** **P2 — Backend & Land Trust Engine**  
@@ -8,7 +8,7 @@
 
 ## 1. Executive Summary
 
-**LAND STACK (Bhu-DPI)** is an open, interoperable Digital Public Infrastructure for modern land administration and governance. 
+**dharaa (Bhu-DPI)** is an open, interoperable Digital Public Infrastructure for modern land administration and governance. 
 
 This repository houses the **P2: Backend & Trust Engine** core module, providing:
 1. **Deterministic ULPIN Indexing:** 14-digit Unique Land Parcel Identification Numbers generated directly from centroid geometry and state codes.
@@ -121,7 +121,7 @@ cp .env.example .env
 
 The default database connection string in `.env` is:
 ```env
-DATABASE_URL=postgresql://postgres:devpass@localhost:5432/landstack
+DATABASE_URL=postgresql://postgres:devpass@localhost:5432/dharaa
 MUTATION_SLA_DAYS=7
 APPROACHING_SLA_THRESHOLD_DAYS=2
 ```
@@ -131,7 +131,7 @@ Ensure Docker Desktop is running, then execute:
 ```bash
 docker compose up -d
 ```
-*This starts the `landstack-db` container running PostgreSQL 16 with PostGIS enabled on port `5432`.*
+*This starts the `dharaa-db` container running PostgreSQL 16 with PostGIS enabled on port `5432`.*
 
 ### Step 4: Setup Python Virtual Environment
 Navigate to the `backend` directory:
@@ -266,4 +266,4 @@ npm run mock-data:serve
 
 ## 9. License & Project Rights
 
-Developed for **Smart India Hackathon 2026** by the Land Stack Development Team.
+Developed for **Smart India Hackathon 2026** by the dharaa Development Team.

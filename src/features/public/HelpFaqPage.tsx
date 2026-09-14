@@ -34,7 +34,7 @@ export const HelpFaqPage: React.FC = () => {
     {
       term: 'Land Trust Engine',
       definition:
-        'The continuous background reconciliation engine within Land Stack that detects cross-departmental mismatches between Revenue, Registration, Survey, and Urban Development, initiating tracked resolution workflows.',
+        'The continuous background reconciliation engine within dharaa that detects cross-departmental mismatches between Revenue, Registration, Survey, and Urban Development, initiating tracked resolution workflows.',
     },
   ];
 
@@ -48,7 +48,7 @@ export const HelpFaqPage: React.FC = () => {
             <BookOpen className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-neutral-900">Land Stack Knowledge Base & FAQs</h1>
+            <h1 className="text-xl font-bold text-neutral-900">dharaa Knowledge Base & FAQs</h1>
             <p className="text-xs text-neutral-500">
               Architecture, 3 Spatial Layers, and plain-language definitions for key land governance standards
             </p>
@@ -77,7 +77,7 @@ export const HelpFaqPage: React.FC = () => {
                 : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
             }`}
           >
-            Why Land Stack? (System Comparison)
+            Why dharaa? (System Comparison)
           </button>
           <button
             type="button"
@@ -114,32 +114,32 @@ export const HelpFaqPage: React.FC = () => {
           <div className="space-y-4 text-xs">
             <div className="p-4 bg-neutral-50 rounded-lg border border-neutral-200">
               <h3 className="text-sm font-bold text-neutral-900 mb-1">
-                Does Land Stack replace state land portals or national mapping initiatives?
+                Does dharaa replace state land portals or national mapping initiatives?
               </h3>
               <p className="text-neutral-700 leading-relaxed">
-                <strong>No.</strong> Land Stack is an interoperability and trust engine layer built above existing state systems. Land is a State subject under the Constitution of India; rather than forcing states into a single monolithic portal, Land Stack introduces pluggable state adapters.
+                <strong>No.</strong> dharaa is an interoperability and trust engine layer built above existing state systems. Land is a State subject under the Constitution of India; rather than forcing states into a single monolithic portal, dharaa introduces pluggable state adapters.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
               <div className="p-4 bg-white rounded border border-neutral-200 space-y-2">
-                <div className="font-bold text-neutral-900 text-sm">1. DILRMP vs. Land Stack</div>
+                <div className="font-bold text-neutral-900 text-sm">1. DILRMP vs. dharaa</div>
                 <p className="text-neutral-600 leading-relaxed">
-                  <strong>DILRMP</strong> digitizes individual state land record systems in silos, but does not resolve cross-department non-interoperability. Land Stack sits above DILRMP outputs and reconciles Revenue, Registration, Survey, and Urban Development records.
+                  <strong>DILRMP</strong> digitizes individual state land record systems in silos, but does not resolve cross-department non-interoperability. dharaa sits above DILRMP outputs and reconciles Revenue, Registration, Survey, and Urban Development records.
                 </p>
               </div>
 
               <div className="p-4 bg-white rounded border border-neutral-200 space-y-2">
-                <div className="font-bold text-neutral-900 text-sm">2. NAKSHA vs. Land Stack</div>
+                <div className="font-bold text-neutral-900 text-sm">2. NAKSHA vs. dharaa</div>
                 <p className="text-neutral-600 leading-relaxed">
-                  <strong>NAKSHA</strong> provides an urban geospatial mapping base using high-res drone survey data — a mapping layer, not a governance/conflict-resolution engine. Land Stack consumes NAKSHA-grade data as its Base Layer, adding rights and services.
+                  <strong>NAKSHA</strong> provides an urban geospatial mapping base using high-res drone survey data — a mapping layer, not a governance/conflict-resolution engine. dharaa consumes NAKSHA-grade data as its Base Layer, adding rights and services.
                 </p>
               </div>
 
               <div className="p-4 bg-white rounded border border-neutral-200 space-y-2">
-                <div className="font-bold text-neutral-900 text-sm">3. Bhu Bharati (Dharani) vs. Land Stack</div>
+                <div className="font-bold text-neutral-900 text-sm">3. Bhu Bharati (Dharani) vs. dharaa</div>
                 <p className="text-neutral-600 leading-relaxed">
-                  <strong>Bhu Bharati (ex-Dharani)</strong> was a monolithic state-specific portal that suffered lock-in complaints and had to be rebuilt from scratch. Land Stack is state-configurable by design, with a shared core and per-state schema adapters.
+                  <strong>Bhu Bharati (ex-Dharani)</strong> was a monolithic state-specific portal that suffered lock-in complaints and had to be rebuilt from scratch. dharaa is state-configurable by design, with a shared core and per-state schema adapters.
                 </p>
               </div>
             </div>
@@ -150,7 +150,7 @@ export const HelpFaqPage: React.FC = () => {
         {activeTab === 'layers' && (
           <div className="space-y-4 text-xs">
             <p className="text-neutral-600 leading-relaxed">
-              All land information in Land Stack is structured into three foundational layers built around the parcel as the atomic unit, anchored by ULPIN:
+              All land information in dharaa is structured into three foundational layers built around the parcel as the atomic unit, anchored by ULPIN:
             </p>
 
             <div className="space-y-3">
