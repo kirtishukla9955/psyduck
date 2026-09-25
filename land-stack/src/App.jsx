@@ -9,14 +9,12 @@ import MiniMapInset from './components/MiniMapInset';
 
 function App() {
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-navy-900 text-white font-sans selection:bg-accent-cyan/30">
+    <div className="relative w-screen h-screen overflow-hidden bg-slate-950">
       <MapView />
-      
       <TopToolbar />
       <LayersPanel />
       <AnalysisToolsPanel />
       <ParcelExplainPanel />
-      
       <StatusBar />
       <MiniMapInset />
     </div>

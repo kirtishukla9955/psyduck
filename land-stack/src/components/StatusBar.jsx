@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useMapStore } from '../store/mapStore';
 import { Compass } from 'lucide-react';
+import { REGIONS } from '../config/regions';
 
 export default function StatusBar() {
-  const { selectedParcel, hoveredParcelId } = useMapStore();
-  const [coords, setCoords] = useState({ lat: 30.7335, lng: 76.7725 });
-
-  useEffect(() => {
-    // In a full implementation, we'd sync this with map mousemove
-    // For now, it stays static to represent the current center
-  }, []);
-
+  const { selectedParcel, hoveredParcelId, activeRegionKey} = useMapStore();
+  const [lat, lng] = REGIONS[activeRegionKey].center;
+  const coords = { lat, lng };
+  
   return (
     <>
       {/* Bottom Left Readouts (Distance/Area) - Moved up slightly to not clash with leaflet controls */}

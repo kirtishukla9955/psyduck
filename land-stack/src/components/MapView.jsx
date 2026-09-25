@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON, useMap, ZoomControl, ScaleControl, Marker } from 'react-leaflet';
+import { MapContainer, GeoJSON, useMap, ZoomControl, ScaleControl, Marker } from 'react-leaflet';
 import { divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { api } from '../data/api';
 import { useMapStore } from '../store/mapStore';
+import { REGIONS } from '../config/regions';
+import SatelliteLayer from './SatelliteLayer';
 import * as turf from '@turf/turf';
 
 // Helper to create text labels on the map
@@ -31,19 +33,42 @@ function MapController({ selectedParcel }) {
   return null;
 }
 
+// Jumps the map to the chosen state/region whenever it changes.
+// (animate: false on purpose - flying 1000+ km would download hundreds of tiles on the way)
+function RegionController({ region }) {
+  const map = useMap();
+
+  useEffect(() => {
+    map.setView(region.center, region.zoom, { animate: false });
+  }, [region, map]);
+
+  return null;
+}
+
 export default function MapView() {
-  const [parcels, setParcels] = useState(null);
+  const [loaded, setLoaded] = useState({ key: null, data: null });
   const { 
     selectedParcel, 
     setSelectedParcel, 
     layerVisibility,
     hoveredParcelId,
-    setHoveredParcelId 
+    setHoveredParcelId,
+    activeRegionKey,
+    satelliteOpacity
   } = useMapStore();
+  const region = REGIONS[activeRegionKey];
 
+  // Reload the parcels whenever the state changes.
+  // Parcels from the previous state are ignored until the new ones arrive.
+  const parcels = loaded.key === activeRegionKey ? loaded.data : null;
+  const parcelApiUnreachable = parcels?.error === 'API_UNREACHABLE';
   useEffect(() => {
-    api.getParcels().then(data => setParcels(data));
-  }, []);
+    let cancelled = false;
+    api.getParcels(activeRegionKey).then(data => {
+      if (!cancelled) setLoaded({ key: activeRegionKey, data });
+    });
+    return () => { cancelled = true; };
+  }, [activeRegionKey]);
 
   const getZoneColor = (zone) => {
     switch(zone) {
@@ -89,7 +114,7 @@ export default function MapView() {
       if (layerVisibility.utilities_water && feature.properties.additional_layers.utilities.includes('water')) {
          lines.push(
            <GeoJSON 
-             key={`water-${idx}`}
+             key={`${activeRegionKey}-water-${idx}`}
              data={{type: "LineString", coordinates: [coords[0], coords[2]]}} 
              style={{ color: '#00bcd4', weight: 3, dashArray: '5, 5' }} 
            />
@@ -98,7 +123,7 @@ export default function MapView() {
       if (layerVisibility.utilities_power && feature.properties.additional_layers.utilities.includes('power')) {
          lines.push(
            <GeoJSON 
-             key={`power-${idx}`}
+             key={`${activeRegionKey}-power-${idx}`}
              data={{type: "LineString", coordinates: [coords[1], coords[3]]}} 
              style={{ color: '#ffeb3b', weight: 2 }} 
            />
@@ -110,21 +135,29 @@ export default function MapView() {
 
   return (
     <div className="absolute inset-0 z-0 bg-navy-900">
+      {parcelApiUnreachable && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[500] bg-red-900/90 border border-red-500/50 text-red-100 text-xs px-3 py-1.5 rounded-full shadow-lg pointer-events-none">
+          Parcel service unreachable — showing satellite imagery only. Start the backend and refresh.
+        </div>
+      )}
       <MapContainer 
-        center={[30.7335, 76.7725]} 
-        zoom={18} 
+        center={region.center} 
+        zoom={region.zoom} 
         style={{ height: '100%', width: '100%' }}
         zoomControl={false}
         className="cursor-crosshair"
       >
-        <TileLayer
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-          attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-          maxZoom={19}
-        />
+        {/* Must come BEFORE the imagery layer so the map jumps to the new state first, then loads tiles there */}
+        <RegionController region={region} />
+
+        {/* Satellite imagery: base layer, sits under the parcels. Toggle + opacity come from the Layers panel. */}
+        {layerVisibility.satellite && (
+          <SatelliteLayer imagery={region.imagery} opacity={satelliteOpacity} />
+        )}
         
         {parcels && (
           <GeoJSON 
+            key={activeRegionKey}
             data={parcels} 
             style={styleFeature}
             onEachFeature={onEachFeature}
@@ -133,10 +166,15 @@ export default function MapView() {
         
         {renderUtilityLines()}
 
-        {/* Floating Grid Labels (Issue 5) */}
-        <Marker position={[30.7339, 76.7715]} icon={createLabelIcon("Sector 22-A")} interactive={false} />
-        <Marker position={[30.7329, 76.7735]} icon={createLabelIcon("Sector 22-B")} interactive={false} />
-        <Marker position={[30.7342, 76.7732]} icon={createLabelIcon("Block 640")} interactive={false} />
+        {/* Floating grid labels (defined per region in config/regions.js) */}
+        {region.labels.map(label => (
+          <Marker
+            key={`${activeRegionKey}-${label.text}`}
+            position={label.position}
+            icon={createLabelIcon(label.text)}
+            interactive={false}
+          />
+        ))}
 
         <MapController selectedParcel={selectedParcel} />
         <ZoomControl position="bottomright" />

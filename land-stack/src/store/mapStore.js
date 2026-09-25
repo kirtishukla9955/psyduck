@@ -1,3 +1,4 @@
+import { DEFAULT_REGION_KEY } from '../config/regions';
 import { create } from 'zustand';
 
 export const useMapStore = create((set) => ({
@@ -6,8 +7,14 @@ export const useMapStore = create((set) => ({
   
   hoveredParcelId: null,
   setHoveredParcelId: (id) => set({ hoveredParcelId: id }),
+  activeRegionKey: DEFAULT_REGION_KEY,
+    setActiveRegion: (key) => set({ activeRegionKey: key, selectedParcel: null, hoveredParcelId: null }),
+
+  satelliteOpacity: 1,
+    setSatelliteOpacity: (value) => set({ satelliteOpacity: value }),
   
   layerVisibility: {
+    satellite:true,
     boundaries: true,
     zones: true,
     utilities_water: true,

@@ -1,17 +1,20 @@
 """
 Parcel APIs — consumed by:
-- P1 (GIS/Map): Viewport bounding box GeoJSON queries (?bbox=...)
+- P1 (GIS/Map): Region GeoJSON (?region=...) and viewport bounding box queries (?bbox=...)
 - P3 (Citizen Portal): Parcel lookup, title verification, property tax view
 - P4 (Admin Dashboard): Full land parcel inventory and registration
 """
-from typing import Optional, Union, Any
+import json
+from typing import Optional, Any
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 from geoalchemy2.shape import to_shape
 from shapely.geometry import mapping
 
 from app.database import get_db
 from app import crud
+from app.models import Parcel
 from app.services import trust_engine
 from app.schemas import ParcelCreate, ParcelOut, ParcelSummary
 
@@ -39,23 +42,77 @@ def _format_parcel_out(parcel, db: Session) -> ParcelOut:
     )
 
 
+def _region_feature_collection(db: Session, region_key: str, limit: int) -> dict:
+    """
+    Builds a GeoJSON FeatureCollection for one region straight from PostGIS, using
+    ST_AsGeoJSON() for the geometry so coordinate conversion/ordering is handled by
+    PostGIS itself rather than re-implemented in Python.
+
+    owner_name / land_use / ror_data / encumbrance_data are included whenever this row
+    has them (e.g. the seeded demo parcels), but are left null for imported cadastral
+    rows that don't carry ownership — the frontend still joins owner/Record-of-Rights
+    data from data/records.json by ULPIN, exactly as it did before this change.
+    """
+    rows = (
+        db.query(Parcel, func.ST_AsGeoJSON(Parcel.geometry))
+        .filter(Parcel.region_key == region_key)
+        .order_by(Parcel.id)
+        .limit(limit)
+        .all()
+    )
+
+    features = []
+    for p, geojson_str in rows:
+        features.append({
+            "type": "Feature",
+            "geometry": json.loads(geojson_str),
+            "properties": {
+                "ulpin": p.ulpin,
+                "parcel_id": p.parcel_id,
+                "khasra_no": p.khasra_no,
+                "sector": p.sector,
+                "village_or_city": p.village_or_city,
+                "region": p.region_key,
+                "state": p.state,
+                "area_sqm": float(p.area_sqm) if p.area_sqm is not None else None,
+                "survey_agency": p.survey_agency,
+                "survey_date": p.survey_date,
+                "dispute_flag": p.dispute_flag,
+                "boundary_source": p.boundary_source
+                or "Simplified demo rectangle — not a certified cadastral boundary",
+                "owner_name": p.owner_name,
+                "land_use": p.land_use,
+                "ror_data": p.ror_data,
+                "encumbrance_data": p.encumbrance_data,
+            },
+        })
+    return {"type": "FeatureCollection", "features": features}
+
+
 @router.get(
     "",
-    summary="List parcels or query by map bounding box",
+    summary="List parcels, fetch a region's GeoJSON, or query by map bounding box",
     description=(
-        "Dual-mode endpoint:\n"
-        "1. When `bbox` is supplied (minLng,minLat,maxLng,maxLat), returns a GeoJSON FeatureCollection for P1 GIS/Leaflet map.\n"
-        "2. When `bbox` is omitted, returns a paginated list of parcels for P3/P4 citizen and admin portals."
+        "Three modes on the same endpoint:\n"
+        "1. `?region=chandigarh` (or any config/regions.js key) returns a GeoJSON "
+        "FeatureCollection for that region, sourced from PostGIS via ST_AsGeoJSON().\n"
+        "2. `?bbox=minLng,minLat,maxLng,maxLat` returns a GeoJSON FeatureCollection for "
+        "that viewport (used by ad-hoc map queries).\n"
+        "3. With neither, returns a paginated list of parcels for the citizen/admin portals."
     )
 )
 def get_parcels(
+    region: Optional[str] = Query(None, description="Region key from the frontend's config/regions.js, e.g. 'chandigarh', 'tamil_nadu'"),
     bbox: Optional[str] = Query(None, description="Bounding box filter: minLng,minLat,maxLng,maxLat"),
     skip: int = Query(0, ge=0),
-    limit: int = Query(100, ge=1, le=500),
+    limit: int = Query(500, ge=1, le=1000),
     owner_name: Optional[str] = Query(None, description="Search parcels by owner name"),
     state: Optional[str] = Query(None, description="Filter by state code (e.g. CH, PB, HR, TN)"),
     db: Session = Depends(get_db),
 ) -> Any:
+    if region:
+        return _region_feature_collection(db, region, limit)
+
     if bbox:
         try:
             min_lng, min_lat, max_lng, max_lat = map(float, bbox.split(","))

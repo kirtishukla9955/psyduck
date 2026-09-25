@@ -33,9 +33,12 @@ class ParcelCreate(BaseModel):
 
 
 class ParcelOut(BaseModel):
-    ulpin: str = Field(..., description="Unique 14-character Land Parcel Identification Number")
+    ulpin: str = Field(..., description="Unique Land Parcel Identification Number")
     geometry: dict[str, Any] = Field(..., description="GeoJSON Polygon Geometry dict")
-    owner_name: str
+    # Optional: imported cadastral rows (see backend/import_cadastral.py) carry geometry +
+    # survey metadata but no owner — that still comes from the Trust Engine's DepartmentRecord
+    # table, or from the frontend's records.json join, exactly as before this change.
+    owner_name: Optional[str] = None
     area_sqm: Optional[float] = None
     village_or_city: Optional[str] = None
     state: Optional[str] = None

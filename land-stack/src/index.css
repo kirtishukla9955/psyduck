@@ -1,16 +1,6 @@
-@import "tailwindcss";
-
-@theme {
-  --color-navy-900: #0f1a2e;
-  --color-navy-800: #1a2740;
-  --color-navy-700: #2a3b5a;
-  --color-accent-orange: #ff5722;
-  --color-accent-cyan: #00bcd4;
-  --color-zone-residential: #2196f3;
-  --color-zone-commercial: #ffc107;
-  --color-zone-agricultural: #4caf50;
-  --color-zone-industrial: #9c27b0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   margin: 0;
@@ -70,3 +60,4 @@ body {
   margin-bottom: 14rem !important; /* Above the MiniMap Inset */
   margin-right: 1.5rem !important;
 }
+

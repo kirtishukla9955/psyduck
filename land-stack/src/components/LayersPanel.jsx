@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useMapStore } from '../store/mapStore';
-import { Layers, ChevronDown, ChevronRight, Eye, EyeOff } from 'lucide-react';
+import { Layers, ChevronDown, ChevronRight, Eye, EyeOff, Satellite } from 'lucide-react';
+import { REGION_LIST } from '../config/regions';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+
 
 function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -22,7 +24,15 @@ const CheckboxRow = ({ label, checked, onChange, swatch, icon }) => (
 );
 
 export default function LayersPanel() {
-  const { layerVisibility, toggleLayer, setLayerVisibility } = useMapStore();
+  const {
+  layerVisibility,
+  toggleLayer,
+  setLayerVisibility,
+  activeRegionKey,
+  setActiveRegion,
+  satelliteOpacity,
+  setSatelliteOpacity
+} = useMapStore();
   const [expandedGroups, setExpandedGroups] = useState({ networks: true, zones: true });
 
   const toggleGroup = (group) => setExpandedGroups(prev => ({ ...prev, [group]: !prev[group] }));
@@ -42,6 +52,31 @@ export default function LayersPanel() {
       </div>
 
       <div className="p-2 flex flex-col gap-1 max-h-[60vh] overflow-y-auto">
+        <div className="px-2 pb-2 border-b border-white/10">
+          <label className="text-[10px] text-white/50 uppercase font-bold tracking-wider">State / Region</label>
+          <select
+            value={activeRegionKey}
+            onChange={(e) => setActiveRegion(e.target.value)}
+            className="mt-1 w-full bg-navy-800 border border-white/20 rounded px-2 py-1.5 text-sm text-white focus:outline-none focus:border-accent-cyan"
+          >
+            {REGION_LIST.map((r) => <option key={r.key} value={r.key}>{r.name}</option>)}
+          </select>
+        </div>
+
+        <CheckboxRow
+          label="Satellite Imagery"
+          checked={layerVisibility.satellite}
+          onChange={() => toggleLayer('satellite')}
+          icon={<Satellite className="w-4 h-4" />}
+        />
+        {layerVisibility.satellite && (
+          <div className="px-2 pb-2 flex items-center gap-2">
+            <span className="text-[10px] text-white/50 uppercase font-bold tracking-wider">Opacity</span>
+            <input type="range" min="0.2" max="1" step="0.05" value={satelliteOpacity}
+              onChange={(e) => setSatelliteOpacity(Number(e.target.value))}
+              className="flex-1 cursor-pointer" />
+          </div>
+        )}
         
         <CheckboxRow 
           label="Parcel Boundaries" 

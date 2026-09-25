@@ -1,0 +1,326 @@
+[
+  {
+    "stateCode": "AN",
+    "state": "Andaman & Nicobar Islands",
+    "count": 7,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "AP",
+    "state": "Andhra Pradesh",
+    "count": 815,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "AR",
+    "state": "Arunachal Pradesh",
+    "count": 24,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "AS",
+    "state": "Assam",
+    "count": 516,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "BR",
+    "state": "Bihar",
+    "count": 1718,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "CG",
+    "state": "Chhattisgarh",
+    "count": 422,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "CH",
+    "state": "Chandigarh",
+    "count": 18,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "DL",
+    "state": "Delhi (NCT)",
+    "count": 278,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "DN",
+    "state": "Dadra & Nagar Haveli and Daman & Diu",
+    "count": 11,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "GA",
+    "state": "Goa",
+    "count": 25,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "GJ",
+    "state": "Gujarat",
+    "count": 998,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "HP",
+    "state": "Himachal Pradesh",
+    "count": 114,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "HR",
+    "state": "Haryana",
+    "count": 419,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "JH",
+    "state": "Jharkhand",
+    "count": 545,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "JK",
+    "state": "Jammu & Kashmir",
+    "count": 199,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "KA",
+    "state": "Karnataka",
+    "count": 1009,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "KL",
+    "state": "Kerala",
+    "count": 552,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "LA",
+    "state": "Ladakh",
+    "count": 6,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "LD",
+    "state": "Lakshadweep",
+    "count": 2,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "MH",
+    "state": "Maharashtra",
+    "count": 1854,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "ML",
+    "state": "Meghalaya",
+    "count": 50,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "MN",
+    "state": "Manipur",
+    "count": 48,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "MP",
+    "state": "Madhya Pradesh",
+    "count": 1199,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "MZ",
+    "state": "Mizoram",
+    "count": 19,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "NL",
+    "state": "Nagaland",
+    "count": 34,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "OD",
+    "state": "Odisha",
+    "count": 693,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "PB",
+    "state": "Punjab",
+    "count": 458,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "PY",
+    "state": "Puducherry",
+    "count": 22,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "RJ",
+    "state": "Rajasthan",
+    "count": 1131,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "SK",
+    "state": "Sikkim",
+    "count": 11,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "TG",
+    "state": "Telangana",
+    "count": 581,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "TN",
+    "state": "Tamil Nadu",
+    "count": 1191,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "TR",
+    "state": "Tripura",
+    "count": 62,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "UK",
+    "state": "Uttarakhand",
+    "count": 167,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "UP",
+    "state": "Uttar Pradesh",
+    "count": 3296,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  },
+  {
+    "stateCode": "WB",
+    "state": "West Bengal",
+    "count": 1506,
+    "center": {
+      "lat": 0,
+      "lon": 0
+    }
+  }
+]

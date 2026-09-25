@@ -5,6 +5,7 @@ Includes base parcel records, multi-department records, and land mutation lifecy
 from datetime import datetime, timezone
 from geoalchemy2 import Geometry
 from sqlalchemy import (
+    Boolean,
     Column,
     Integer,
     String,
@@ -23,11 +24,15 @@ class Parcel(Base):
     __tablename__ = "parcels"
 
     id = Column(Integer, primary_key=True, index=True)
-    ulpin = Column(String(14), unique=True, index=True, nullable=False)
+    # Widened from 14 to fit source-system identifiers like "IN-CH-017-00101" (imported
+    # cadastral rows) alongside the original 14-char generated codes (demo/seeded rows).
+    ulpin = Column(String(32), unique=True, index=True, nullable=False)
     geometry = Column(Geometry(geometry_type="POLYGON", srid=4326), nullable=False)
 
     area_sqm = Column(Numeric, nullable=True)
-    owner_name = Column(String(200), nullable=False)
+    # Imported cadastral rows don't carry an owner (that still comes from the Trust Engine's
+    # DepartmentRecord table / the frontend's records.json), so this is nullable now.
+    owner_name = Column(String(200), nullable=True)
     village_or_city = Column(String(100), nullable=True)
     state = Column(String(100), nullable=True)
 
@@ -38,6 +43,16 @@ class Parcel(Base):
 
     # --- Use-case layer ---
     property_tax_due = Column(Numeric, default=0)
+
+    # --- Cadastral/survey metadata (added for the PostGIS-backed parcel import) ---
+    region_key = Column(String(50), index=True, nullable=True)  # matches frontend config/regions.js key
+    parcel_id = Column(String(50), nullable=True)                # source system's parcel identifier
+    khasra_no = Column(String(50), nullable=True)                # khasra / survey-subdivision number
+    sector = Column(String(100), nullable=True)                  # sector / village / locality
+    survey_agency = Column(String(200), nullable=True)
+    survey_date = Column(String(20), nullable=True)               # kept as the source's own date string
+    dispute_flag = Column(Boolean, default=False, nullable=False)
+    boundary_source = Column(String(300), nullable=True)          # provenance note for this geometry
 
     created_at = Column(TIMESTAMP, server_default=func.now())
 
@@ -68,13 +83,13 @@ class DepartmentRecord(Base):
     __tablename__ = "department_records"
 
     id = Column(Integer, primary_key=True, index=True)
-    ulpin = Column(String(14), ForeignKey("parcels.ulpin", ondelete="CASCADE"), index=True, nullable=False)
-    department_name = Column(String(100), nullable=False, index=True)  # "Revenue", "Registration", "Survey", "Urban Development"
+    ulpin = Column(String(32), ForeignKey("parcels.ulpin", ondelete="CASCADE"), index=True, nullable=False)
+    department_name = Column(String(100), nullable=False, index=True)
     owner_name = Column(String(200), nullable=False)
     land_use = Column(String(100), nullable=True)
     area_sqm = Column(Numeric, nullable=True)
-    record_status = Column(String(50), default="ACTIVE")  # ACTIVE, PENDING, ARCHIVED
-    record_details = Column(JSON, nullable=True)          # Extra department-specific metadata
+    record_status = Column(String(50), default="ACTIVE")
+    record_details = Column(JSON, nullable=True)
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
 
     parcel = relationship("Parcel", back_populates="department_records")
@@ -89,14 +104,14 @@ class Mutation(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     mutation_id = Column(String(50), unique=True, index=True, nullable=False)
-    ulpin = Column(String(14), ForeignKey("parcels.ulpin", ondelete="CASCADE"), index=True, nullable=False)
+    ulpin = Column(String(32), ForeignKey("parcels.ulpin", ondelete="CASCADE"), index=True, nullable=False)
     old_owner = Column(String(200), nullable=False)
     proposed_new_owner = Column(String(200), nullable=False)
     department = Column(String(100), default="Revenue", nullable=False)
     submitted_at = Column(TIMESTAMP, default=lambda: datetime.now(timezone.utc), nullable=False)
     sla_days = Column(Integer, default=7, nullable=False)
     sla_deadline = Column(TIMESTAMP, nullable=False)
-    status = Column(String(50), default="PENDING", nullable=False)  # PENDING, UNDER_REVIEW, APPROVED, REJECTED
+    status = Column(String(50), default="PENDING", nullable=False)
     resolved_at = Column(TIMESTAMP, nullable=True)
     remarks = Column(String(500), nullable=True)
     created_at = Column(TIMESTAMP, server_default=func.now())

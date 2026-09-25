@@ -7,11 +7,11 @@ export default function SearchBar() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const { setSelectedParcel } = useMapStore();
+  const { setSelectedParcel, activeRegionKey } = useMapStore();
 
   useEffect(() => {
     if (query.length > 2) {
-      api.getParcels().then(data => {
+      api.getParcels(activeRegionKey).then(data => {
         const matches = data.features.filter(f => 
           f.properties.ulpin.toLowerCase().includes(query.toLowerCase()) ||
           f.properties.essential_layers.record_of_rights.owner_name.toLowerCase().includes(query.toLowerCase())
@@ -21,7 +21,7 @@ export default function SearchBar() {
     } else {
       setResults([]);
     }
-  }, [query]);
+  }, [query, activeRegionKey]);
 
   const handleSelect = (feature) => {
     setSelectedParcel(feature);
