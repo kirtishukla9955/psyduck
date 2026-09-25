@@ -1,0 +1,362 @@
+[
+  {
+    "stateCode": "AN",
+    "state": "Andaman & Nicobar Islands",
+    "count": 7,
+    "center": {
+      "lat": 11.69155,
+      "lon": 92.81312
+    },
+    "file": "/data/parcels/AN.json"
+  },
+  {
+    "stateCode": "AP",
+    "state": "Andhra Pradesh",
+    "count": 815,
+    "center": {
+      "lat": 15.67349,
+      "lon": 79.70838
+    },
+    "file": "/data/parcels/AP.json"
+  },
+  {
+    "stateCode": "AR",
+    "state": "Arunachal Pradesh",
+    "count": 24,
+    "center": {
+      "lat": 28.41379,
+      "lon": 94.96605
+    },
+    "file": "/data/parcels/AR.json"
+  },
+  {
+    "stateCode": "AS",
+    "state": "Assam",
+    "count": 516,
+    "center": {
+      "lat": 26.34346,
+      "lon": 92.89806
+    },
+    "file": "/data/parcels/AS.json"
+  },
+  {
+    "stateCode": "BR",
+    "state": "Bihar",
+    "count": 1718,
+    "center": {
+      "lat": 25.92004,
+      "lon": 84.8859
+    },
+    "file": "/data/parcels/BR.json"
+  },
+  {
+    "stateCode": "CG",
+    "state": "Chhattisgarh",
+    "count": 422,
+    "center": {
+      "lat": 21.58359,
+      "lon": 82.13534
+    },
+    "file": "/data/parcels/CG.json"
+  },
+  {
+    "stateCode": "CH",
+    "state": "Chandigarh",
+    "count": 18,
+    "center": {
+      "lat": 30.62629,
+      "lon": 77.09677
+    },
+    "file": "/data/parcels/CH.json"
+  },
+  {
+    "stateCode": "DL",
+    "state": "Delhi (NCT)",
+    "count": 278,
+    "center": {
+      "lat": 28.65789,
+      "lon": 77.43661
+    },
+    "file": "/data/parcels/DL.json"
+  },
+  {
+    "stateCode": "DN",
+    "state": "Dadra & Nagar Haveli and Daman & Diu",
+    "count": 11,
+    "center": {
+      "lat": 20.18974,
+      "lon": 73.26832
+    },
+    "file": "/data/parcels/DN.json"
+  },
+  {
+    "stateCode": "GA",
+    "state": "Goa",
+    "count": 25,
+    "center": {
+      "lat": 15.45497,
+      "lon": 73.94951
+    },
+    "file": "/data/parcels/GA.json"
+  },
+  {
+    "stateCode": "GJ",
+    "state": "Gujarat",
+    "count": 998,
+    "center": {
+      "lat": 22.50564,
+      "lon": 71.15374
+    },
+    "file": "/data/parcels/GJ.json"
+  },
+  {
+    "stateCode": "HP",
+    "state": "Himachal Pradesh",
+    "count": 114,
+    "center": {
+      "lat": 31.96472,
+      "lon": 76.90702
+    },
+    "file": "/data/parcels/HP.json"
+  },
+  {
+    "stateCode": "HR",
+    "state": "Haryana",
+    "count": 419,
+    "center": {
+      "lat": 29.35466,
+      "lon": 76.43049
+    },
+    "file": "/data/parcels/HR.json"
+  },
+  {
+    "stateCode": "JH",
+    "state": "Jharkhand",
+    "count": 545,
+    "center": {
+      "lat": 23.88381,
+      "lon": 85.29207
+    },
+    "file": "/data/parcels/JH.json"
+  },
+  {
+    "stateCode": "JK",
+    "state": "Jammu & Kashmir",
+    "count": 199,
+    "center": {
+      "lat": 33.56344,
+      "lon": 76.45087
+    },
+    "file": "/data/parcels/JK.json"
+  },
+  {
+    "stateCode": "KA",
+    "state": "Karnataka",
+    "count": 1009,
+    "center": {
+      "lat": 15.27219,
+      "lon": 76.00922
+    },
+    "file": "/data/parcels/KA.json"
+  },
+  {
+    "stateCode": "KL",
+    "state": "Kerala",
+    "count": 552,
+    "center": {
+      "lat": 11.19049,
+      "lon": 76.61793
+    },
+    "file": "/data/parcels/KL.json"
+  },
+  {
+    "stateCode": "LA",
+    "state": "Ladakh",
+    "count": 6,
+    "center": {
+      "lat": 34.36489,
+      "lon": 77.92295
+    },
+    "file": "/data/parcels/LA.json"
+  },
+  {
+    "stateCode": "LD",
+    "state": "Lakshadweep",
+    "count": 2,
+    "center": {
+      "lat": 10.46785,
+      "lon": 72.55671
+    },
+    "file": "/data/parcels/LD.json"
+  },
+  {
+    "stateCode": "MH",
+    "state": "Maharashtra",
+    "count": 1854,
+    "center": {
+      "lat": 19.49671,
+      "lon": 75.83221
+    },
+    "file": "/data/parcels/MH.json"
+  },
+  {
+    "stateCode": "ML",
+    "state": "Meghalaya",
+    "count": 50,
+    "center": {
+      "lat": 25.78608,
+      "lon": 91.38895
+    },
+    "file": "/data/parcels/ML.json"
+  },
+  {
+    "stateCode": "MN",
+    "state": "Manipur",
+    "count": 48,
+    "center": {
+      "lat": 24.57946,
+      "lon": 94.03154
+    },
+    "file": "/data/parcels/MN.json"
+  },
+  {
+    "stateCode": "MP",
+    "state": "Madhya Pradesh",
+    "count": 1199,
+    "center": {
+      "lat": 23.69613,
+      "lon": 78.22792
+    },
+    "file": "/data/parcels/MP.json"
+  },
+  {
+    "stateCode": "MZ",
+    "state": "Mizoram",
+    "count": 19,
+    "center": {
+      "lat": 23.39126,
+      "lon": 93.09567
+    },
+    "file": "/data/parcels/MZ.json"
+  },
+  {
+    "stateCode": "NL",
+    "state": "Nagaland",
+    "count": 34,
+    "center": {
+      "lat": 25.70388,
+      "lon": 93.94034
+    },
+    "file": "/data/parcels/NL.json"
+  },
+  {
+    "stateCode": "OD",
+    "state": "Odisha",
+    "count": 693,
+    "center": {
+      "lat": 20.73246,
+      "lon": 85.36133
+    },
+    "file": "/data/parcels/OD.json"
+  },
+  {
+    "stateCode": "PB",
+    "state": "Punjab",
+    "count": 458,
+    "center": {
+      "lat": 30.70169,
+      "lon": 76.1049
+    },
+    "file": "/data/parcels/PB.json"
+  },
+  {
+    "stateCode": "PY",
+    "state": "Puducherry",
+    "count": 22,
+    "center": {
+      "lat": 12.08316,
+      "lon": 80.0643
+    },
+    "file": "/data/parcels/PY.json"
+  },
+  {
+    "stateCode": "RJ",
+    "state": "Rajasthan",
+    "count": 1131,
+    "center": {
+      "lat": 26.8988,
+      "lon": 74.34419
+    },
+    "file": "/data/parcels/RJ.json"
+  },
+  {
+    "stateCode": "SK",
+    "state": "Sikkim",
+    "count": 11,
+    "center": {
+      "lat": 27.41304,
+      "lon": 88.3256
+    },
+    "file": "/data/parcels/SK.json"
+  },
+  {
+    "stateCode": "TG",
+    "state": "Telangana",
+    "count": 581,
+    "center": {
+      "lat": 18.23973,
+      "lon": 79.22251
+    },
+    "file": "/data/parcels/TG.json"
+  },
+  {
+    "stateCode": "TN",
+    "state": "Tamil Nadu",
+    "count": 1191,
+    "center": {
+      "lat": 11.27462,
+      "lon": 78.51411
+    },
+    "file": "/data/parcels/TN.json"
+  },
+  {
+    "stateCode": "TR",
+    "state": "Tripura",
+    "count": 62,
+    "center": {
+      "lat": 23.82189,
+      "lon": 92.0185
+    },
+    "file": "/data/parcels/TR.json"
+  },
+  {
+    "stateCode": "UK",
+    "state": "Uttarakhand",
+    "count": 167,
+    "center": {
+      "lat": 30.1593,
+      "lon": 79.20378
+    },
+    "file": "/data/parcels/UK.json"
+  },
+  {
+    "stateCode": "UP",
+    "state": "Uttar Pradesh",
+    "count": 3296,
+    "center": {
+      "lat": 27.05575,
+      "lon": 81.10852
+    },
+    "file": "/data/parcels/UP.json"
+  },
+  {
+    "stateCode": "WB",
+    "state": "West Bengal",
+    "count": 1506,
+    "center": {
+      "lat": 22.65471,
+      "lon": 87.85115
+    },
+    "file": "/data/parcels/WB.json"
+  }
+]
