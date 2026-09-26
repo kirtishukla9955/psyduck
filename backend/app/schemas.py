@@ -1,8 +1,3 @@
-"""
-Pydantic schemas for request validation and response serialization.
-Designed for clean OpenAPI documentation (/docs) and seamless consumption
-by P1 (GIS/Map), P3 (Citizen Portal), and P4 (Admin Dashboard).
-"""
 from datetime import datetime
 from typing import Optional, Any
 from pydantic import BaseModel, Field
@@ -13,31 +8,49 @@ from pydantic import BaseModel, Field
 # ==========================================
 
 class ParcelCreate(BaseModel):
-    coordinates: list[tuple[float, float]] = Field(
-        ...,
-        description="List of (longitude, latitude) coordinates forming a closed polygon ring"
-    )
+    ulpin: Optional[str] = Field(None, description="Deterministic 14-character ULPIN. Auto-generated if omitted.")
     owner_name: str = Field(..., description="Full legal name of the parcel owner")
-    state_code: str = Field("CH", description="Two-letter state code, e.g. CH, PB, HR, TN")
-    village_or_city: Optional[str] = Field("Chandigarh", description="Village, town, or city")
-    land_use: Optional[str] = Field("Residential", description="Zoning classification")
-    ror_data: Optional[dict[str, Any]] = Field(
-        default_factory=dict,
-        description="Record of Rights data (tenure, khatoni, khasra number)"
-    )
-    encumbrance_data: Optional[dict[str, Any]] = Field(
-        default_factory=dict,
-        description="Encumbrance / mortgage information"
-    )
+    geometry: Optional[Any] = Field(None, description="GeoJSON Polygon, MultiPolygon, Feature, or list of [lng, lat] coordinate pairs")
+    coordinates: Optional[list[Any]] = Field(None, description="Alternative coordinates list for backwards compatibility")
+    area_sqm: Optional[float] = Field(None, description="Parcel area in square meters")
+    area_acres: Optional[float] = Field(None, description="Parcel area in acres")
+    land_use: Optional[str] = Field("Residential", description="Zoning/land use category: Residential, Agricultural, Commercial, Industrial, Forest, Institutional")
+    district: Optional[str] = Field(None, description="District or Tehsil name")
+    village_or_city: Optional[str] = Field(None, description="Village, town, or city")
+    state: Optional[str] = Field(None, description="Full state name")
+    state_code: Optional[str] = Field("CH", description="Two-letter state code, e.g. CH, TN, PB, HR")
+    trust_status: Optional[str] = Field("PENDING_VERIFICATION", description="Trust status: PENDING_VERIFICATION, VERIFIED, FLAGGED, WARNING")
+    notes: Optional[str] = Field(None, description="Administrative notes or remarks")
+    ror_data: Optional[dict[str, Any]] = Field(default_factory=dict, description="Record of Rights data")
+    encumbrance_data: Optional[dict[str, Any]] = Field(default_factory=dict, description="Encumbrance / mortgage information")
     property_tax_due: Optional[float] = Field(0.0, description="Outstanding property tax liability")
+    khasra_no: Optional[str] = Field(None, description="Revenue khasra / survey number")
+    parcel_id: Optional[str] = Field(None, description="Administrative parcel identifier")
+
+
+class ParcelUpdate(BaseModel):
+    owner_name: Optional[str] = Field(None, description="Updated owner name")
+    geometry: Optional[Any] = Field(None, description="Updated GeoJSON geometry or coordinates")
+    area_sqm: Optional[float] = Field(None, description="Updated area in square meters")
+    area_acres: Optional[float] = Field(None, description="Updated area in acres")
+    land_use: Optional[str] = Field(None, description="Updated land use classification")
+    district: Optional[str] = Field(None, description="Updated district name")
+    village_or_city: Optional[str] = Field(None, description="Updated village, town, or city")
+    state: Optional[str] = Field(None, description="Updated state name")
+    state_code: Optional[str] = Field(None, description="Two-letter state code")
+    trust_status: Optional[str] = Field(None, description="Updated trust status")
+    notes: Optional[str] = Field(None, description="Administrative notes or remarks")
+    ror_data: Optional[dict[str, Any]] = Field(None, description="Updated RoR data")
+    encumbrance_data: Optional[dict[str, Any]] = Field(None, description="Updated encumbrance details")
+    property_tax_due: Optional[float] = Field(None, description="Updated tax due")
+    dispute_flag: Optional[bool] = Field(None, description="Flag indicating active dispute")
+    khasra_no: Optional[str] = Field(None, description="Revenue khasra / survey number")
+    parcel_id: Optional[str] = Field(None, description="Administrative parcel identifier")
 
 
 class ParcelOut(BaseModel):
     ulpin: str = Field(..., description="Unique Land Parcel Identification Number")
     geometry: dict[str, Any] = Field(..., description="GeoJSON Polygon Geometry dict")
-    # Optional: imported cadastral rows (see backend/import_cadastral.py) carry geometry +
-    # survey metadata but no owner — that still comes from the Trust Engine's DepartmentRecord
-    # table, or from the frontend's records.json join, exactly as before this change.
     owner_name: Optional[str] = None
     area_sqm: Optional[float] = None
     village_or_city: Optional[str] = None
@@ -48,18 +61,26 @@ class ParcelOut(BaseModel):
     property_tax_due: float = 0.0
     trust_status: str = Field("VERIFIED", description="Calculated Trust Engine status: VERIFIED, WARNING, FLAGGED")
     active_conflicts_count: int = Field(0, description="Number of unresolved conflicts detected")
+    khasra_no: Optional[str] = None
+    parcel_id: Optional[str] = None
+    dispute_flag: Optional[bool] = False
+    centroid_lat: Optional[float] = None
+    centroid_lon: Optional[float] = None
+    satellite_metrics: Optional[dict[str, Any]] = None
 
     model_config = {"from_attributes": True}
 
 
 class ParcelSummary(BaseModel):
     ulpin: str
-    owner_name: str
+    owner_name: Optional[str] = None
     area_sqm: Optional[float] = None
     land_use: Optional[str] = None
     village_or_city: Optional[str] = None
     state: Optional[str] = None
     trust_status: str = "VERIFIED"
+    centroid_lat: Optional[float] = None
+    centroid_lon: Optional[float] = None
     created_at: Optional[datetime] = None
 
     model_config = {"from_attributes": True}

@@ -1,9 +1,4 @@
-"""
-SQLAlchemy models for Land Stack (Bhu-DPI) Backend & Trust Engine.
-Includes base parcel records, multi-department records, and land mutation lifecycle models.
-"""
-from datetime import datetime, timezone
-from geoalchemy2 import Geometry
+﻿from datetime import datetime, timezone
 from sqlalchemy import (
     Boolean,
     Column,
@@ -13,50 +8,75 @@ from sqlalchemy import (
     JSON,
     TIMESTAMP,
     ForeignKey,
+    Text,
     func,
 )
 from sqlalchemy.orm import relationship
 
-from app.database import Base
+from app.database import Base, DATABASE_URL
+
+if DATABASE_URL.startswith("sqlite"):
+    from sqlalchemy.types import TypeDecorator
+    from geoalchemy2.elements import WKTElement
+    from geoalchemy2.shape import to_shape
+
+    class SQLiteGeometry(TypeDecorator):
+        impl = Text
+        cache_ok = True
+
+        def process_bind_param(self, value, dialect):
+            if value is None:
+                return None
+            if isinstance(value, str):
+                return value
+            if hasattr(value, "desc"):
+                s = to_shape(value)
+                return s.wkt
+            if hasattr(value, "wkt"):
+                return value.wkt
+            return str(value)
+
+        def process_result_value(self, value, dialect):
+            if value is None:
+                return None
+            return WKTElement(value, srid=4326)
+
+    GeometryColumnType = SQLiteGeometry
+else:
+    from geoalchemy2 import Geometry
+    GeometryColumnType = Geometry(geometry_type="POLYGON", srid=4326)
 
 
 class Parcel(Base):
     __tablename__ = "parcels"
 
     id = Column(Integer, primary_key=True, index=True)
-    # Widened from 14 to fit source-system identifiers like "IN-CH-017-00101" (imported
-    # cadastral rows) alongside the original 14-char generated codes (demo/seeded rows).
     ulpin = Column(String(32), unique=True, index=True, nullable=False)
-    geometry = Column(Geometry(geometry_type="POLYGON", srid=4326), nullable=False)
+    geometry = Column(GeometryColumnType, nullable=False)
 
     area_sqm = Column(Numeric, nullable=True)
-    # Imported cadastral rows don't carry an owner (that still comes from the Trust Engine's
-    # DepartmentRecord table / the frontend's records.json), so this is nullable now.
     owner_name = Column(String(200), nullable=True)
     village_or_city = Column(String(100), nullable=True)
     state = Column(String(100), nullable=True)
 
-    # --- Essential Public Infrastructure Layers ---
-    ror_data = Column(JSON, nullable=True)          # Record of Rights: tenure, ownership history
-    encumbrance_data = Column(JSON, nullable=True)  # Mortgage/loan status, lender info
-    land_use = Column(String(100), nullable=True)   # Zoning: Residential, Commercial, Agricultural, etc.
-
-    # --- Use-case layer ---
+    ror_data = Column(JSON, nullable=True)
+    encumbrance_data = Column(JSON, nullable=True)
+    land_use = Column(String(100), nullable=True)
     property_tax_due = Column(Numeric, default=0)
 
-    # --- Cadastral/survey metadata (added for the PostGIS-backed parcel import) ---
-    region_key = Column(String(50), index=True, nullable=True)  # matches frontend config/regions.js key
-    parcel_id = Column(String(50), nullable=True)                # source system's parcel identifier
-    khasra_no = Column(String(50), nullable=True)                # khasra / survey-subdivision number
-    sector = Column(String(100), nullable=True)                  # sector / village / locality
+    region_key = Column(String(50), index=True, nullable=True)
+    parcel_id = Column(String(50), nullable=True)
+    khasra_no = Column(String(50), nullable=True)
+    sector = Column(String(100), nullable=True)
     survey_agency = Column(String(200), nullable=True)
-    survey_date = Column(String(20), nullable=True)               # kept as the source's own date string
+    survey_date = Column(String(20), nullable=True)
     dispute_flag = Column(Boolean, default=False, nullable=False)
-    boundary_source = Column(String(300), nullable=True)          # provenance note for this geometry
+    boundary_source = Column(String(300), nullable=True)
+    centroid_lat = Column(Numeric(10, 7), index=True, nullable=True)
+    centroid_lon = Column(Numeric(10, 7), index=True, nullable=True)
 
     created_at = Column(TIMESTAMP, server_default=func.now())
 
-    # --- Relationships ---
     department_records = relationship(
         "DepartmentRecord",
         back_populates="parcel",
@@ -72,14 +92,6 @@ class Parcel(Base):
 
 
 class DepartmentRecord(Base):
-    """
-    Simulates multi-department records for land governance:
-    - Revenue Department (ROR / Jamabandi)
-    - Registration Department (Sub-Registrar deed records)
-    - Survey & Land Records Department (Cadastral / GIS survey)
-    - Urban Development / Municipal Authority
-    Used by the Trust Engine to detect Owner Name Mismatch anomalies.
-    """
     __tablename__ = "department_records"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -96,10 +108,6 @@ class DepartmentRecord(Base):
 
 
 class Mutation(Base):
-    """
-    Tracks parcel ownership transfer requests (Mutations) and monitors
-    compliance against statutory SLA deadlines (e.g. 7-day guarantee).
-    """
     __tablename__ = "mutations"
 
     id = Column(Integer, primary_key=True, index=True)

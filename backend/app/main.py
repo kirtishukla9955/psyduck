@@ -43,8 +43,10 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://localhost:5173",
+        "http://localhost:5500",
         "http://127.0.0.1:3000",
         "http://127.0.0.1:5173",
+        "http://127.0.0.1:5500",
         # PLACEHOLDER: Replace with your actual production Netlify deployment URL once deployed
         "https://YOUR-NETLIFY-URL-HERE.netlify.app",
     ],

@@ -1,0 +1,50 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.class
+*.so
+.Python
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+*/venv/*
+backend/venv/
+
+# Local databases & SQLite runtime files
+database/dev_backend.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Environment variables & secrets
+.env
+.env.*
+*.env
+.env.local
+backend/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE & logs
+*.log
+.vscode/
+.idea/
+
+# Local scratch & temporary media storage
+.tempmediaStorage/
+scratch/
+
+# Scratch & inspection scripts
+database/inspect_i18n.*
+database/audit_keys.*
+database/analyze_keys.py
+database/extract_en_keys.py
+database/test_api_endpoints.py
+database/en_master_keys.json
