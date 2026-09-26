@@ -48,3 +48,7 @@ database/analyze_keys.py
 database/extract_en_keys.py
 database/test_api_endpoints.py
 database/en_master_keys.json
+
+# Local design documentation
+DESIGN_SYSTEM.md
+frontend/admin-dashboard/DESIGN_SYSTEM.md

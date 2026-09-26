@@ -268,6 +268,54 @@
 
         // APPLICATION STATE
         let conflictsData = [];
+
+        // Translation Helper Functions for Dynamic Content
+        let currentDetailConflictId = 8; // Default active conflict
+
+        function getTypeTranslation(item) {
+            if (!item) return "";
+            if (window.DharaaI18n) {
+                if (item.type === "spatial_overlap") {
+                    if (item.id === 8) return window.DharaaI18n.t("type_live_gis_discrepancy");
+                    return window.DharaaI18n.t("type_spatial_overlap");
+                }
+                if (item.type === "area_mismatch") return window.DharaaI18n.t("type_area_mismatch");
+                if (item.type === "owner_mismatch") return window.DharaaI18n.t("type_owner_mismatch");
+                if (item.type === "encumbrance_dispute") return window.DharaaI18n.t("type_encumbrance_dispute");
+                if (item.type === "overdue_mutation") return window.DharaaI18n.t("type_mutation_sla");
+                if (item.type === "land_use_drift") return window.DharaaI18n.t("type_land_use_drift");
+            }
+            return item.typeLabel || item.type;
+        }
+
+        function getStageTranslation(stage) {
+            if (!stage) return "";
+            if (!window.DharaaI18n) return stage;
+            const s = stage.toLowerCase();
+            if (s.includes("detect")) return window.DharaaI18n.t("step_detected").replace(/^\d+\.\s*/, "");
+            if (s.includes("assign")) return window.DharaaI18n.t("step_assigned").replace(/^\d+\.\s*/, "");
+            if (s.includes("review")) return window.DharaaI18n.t("step_review").replace(/^\d+\.\s*/, "");
+            if (s.includes("harmoniz") || s.includes("resolv")) return window.DharaaI18n.t("step_harmonized").replace(/^\d+\.\s*/, "");
+            return stage;
+        }
+
+        function getSiloTranslation(silo) {
+            if (!silo) return "";
+            if (!window.DharaaI18n) return silo;
+            const s = silo.toLowerCase();
+            if (s.includes("rev")) return window.DharaaI18n.t("silo_revenue");
+            if (s.includes("reg") || s.includes("sro")) return window.DharaaI18n.t("silo_registration");
+            if (s.includes("surv") || s.includes("cadastral")) return window.DharaaI18n.t("silo_survey");
+            if (s.includes("urb") || s.includes("ulb")) return window.DharaaI18n.t("silo_urban");
+            return silo;
+        }
+
+        window.reRenderActiveDetailView = function() {
+            if (currentDetailConflictId !== null) {
+                openDetailView(currentDetailConflictId, false);
+            }
+        };
+
         let currentRole = 'officer'; // 'officer' | 'admin' | 'policymaker'
         let currentOpenRowId = null;
         let activeWorkflowStep = 3; // 1: Detected, 2: Assigned, 3: Under Review, 4: Resolved
@@ -275,21 +323,36 @@
 
         // INITIALIZATION
         document.addEventListener("DOMContentLoaded", async () => {
+            if (window.DharaaI18n) {
+                window.DharaaI18n.init();
+            }
             conflictsData = await loadConflicts();
             filterQueue();
             updateNotificationCount();
             initCounters();
             setTrustScore(48);
             renderIcons();
+            if (window.DharaaServices) {
+                console.info("DHARAA Service Layer initialized:", Object.keys(window.DharaaServices));
+            }
         });
+
+
+        // MULTILINGUAL LANGUAGE SWITCHER HANDLER
+        function changeLanguage(lang) {
+            if (window.DharaaI18n) {
+                window.DharaaI18n.setLanguage(lang);
+            }
+        }
 
         // RENDER QUEUE TABLE
         function renderQueueTable(data) {
             const tbody = document.getElementById("queueTableBody");
+            if (!tbody) return;
             tbody.innerHTML = "";
 
             if (data.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 32px; color: var(--slate-400);">No conflicts match the selected filter criteria.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 32px; color: var(--slate-400);">${window.DharaaI18n ? window.DharaaI18n.t("empty_filter_message") : "No conflicts match the selected filter criteria."}</td></tr>`;
                 return;
             }
 
@@ -306,25 +369,38 @@
                     toggleRowAccordion(item.id);
                 };
 
+                const tCritical = window.DharaaI18n ? window.DharaaI18n.t('severity_critical') : 'CRITICAL';
+                const tMajor = window.DharaaI18n ? window.DharaaI18n.t('severity_major') : 'MAJOR';
+                const tModerate = window.DharaaI18n ? window.DharaaI18n.t('severity_moderate') : 'MODERATE';
+                const tSeveritySuffix = window.DharaaI18n ? window.DharaaI18n.t('severity_suffix') : 'SEVERITY';
+
                 const severityBadge = item.severity === 'critical'
-                    ? `<span class="badge badge-critical"><i data-lucide="shield-alert" style="width:13px;height:13px;"></i> CRITICAL</span>`
+                    ? `<span class="badge badge-critical"><i data-lucide="shield-alert" style="width:13px;height:13px;"></i> ${tCritical} ${tSeveritySuffix}</span>`
                     : item.severity === 'major'
-                        ? `<span class="badge badge-major"><i data-lucide="alert-circle" style="width:13px;height:13px;"></i> MAJOR</span>`
-                        : `<span class="badge badge-moderate">MODERATE</span>`;
+                        ? `<span class="badge badge-major"><i data-lucide="alert-circle" style="width:13px;height:13px;"></i> ${tMajor} ${tSeveritySuffix}</span>`
+                        : `<span class="badge badge-moderate">${tModerate} ${tSeveritySuffix}</span>`;
 
                 const stateBadge = item.state === 'CH'
                     ? `<span class="badge badge-state-ch">CH UT</span>`
                     : `<span class="badge badge-state-tn">TN</span>`;
 
+                const tBreached = window.DharaaI18n ? window.DharaaI18n.t("sla_breached") : "Breached";
+                const tAgo = window.DharaaI18n ? window.DharaaI18n.t("sla_ago") : "ago";
+                const tLeft = window.DharaaI18n ? window.DharaaI18n.t("sla_left") : "left";
+
                 const slaDisplay = item.slaHours < 0
-                    ? `<span class="sla-timer breached"><i data-lucide="alert-octagon" style="width:16px;height:16px;"></i> Breached (${Math.abs(item.slaHours)}h ago)</span>`
+                    ? `<span class="sla-timer breached"><i data-lucide="alert-octagon" style="width:16px;height:16px;"></i> ${tBreached} (${Math.abs(item.slaHours)}h ${tAgo})</span>`
                     : item.slaHours <= 24
-                        ? `<span class="sla-timer warning"><i data-lucide="clock" style="width:16px;height:16px;"></i> ${item.slaHours}h left</span>`
-                        : `<span class="sla-timer normal">${item.slaHours}h left</span>`;
+                        ? `<span class="sla-timer warning"><i data-lucide="clock" style="width:16px;height:16px;"></i> ${item.slaHours}h ${tLeft}</span>`
+                        : `<span class="sla-timer normal">${item.slaHours}h ${tLeft}</span>`;
+
+                const itemTypeLabel = getTypeTranslation(item);
+                const itemStageLabel = getStageTranslation(item.stage);
+                const tUnassigned = window.DharaaI18n ? window.DharaaI18n.t("unassigned") : "Unassigned";
 
                 tr.innerHTML = `
           <td>
-            <i data-lucide="${currentOpenRowId === item.id || (item.id === 8 && currentOpenRowId === null) ? 'chevron-down' : 'chevron-right'}" 
+            <i data-lucide="${currentOpenRowId === item.id || (item.id === 8 && currentOpenRowId === null) ? 'chevron-down' : 'chevron-right'}"
                id="chevron-${item.id}" style="width: 18px; height: 18px; color: var(--slate-400);"></i>
           </td>
           <td>
@@ -335,25 +411,25 @@
             </div>
           </td>
           <td>
-            <div style="font-weight: 500; color: var(--slate-800); font-size: 15px;">${item.typeLabel}</div>
+            <div style="font-weight: 500; color: var(--slate-800); font-size: 15px;">${itemTypeLabel}</div>
           </td>
           <td>
             <div style="font-size: 13px; color: var(--slate-600); display: flex; gap: 5px; flex-wrap: wrap;">
-              ${item.silos.map(s => `<span style="background:var(--slate-100); padding:2px 8px; border-radius:4px; font-size:12.5px;">${s}</span>`).join('')}
+              ${item.silos.map(s => `<span style="background:var(--slate-100); padding:2px 8px; border-radius:4px; font-size:12.5px;">${getSiloTranslation(s)}</span>`).join('')}
             </div>
           </td>
           <td>${severityBadge}</td>
           <td>${slaDisplay}</td>
           <td>
-            <div style="font-size: 14.5px; font-weight: 600; color: var(--slate-700);">${item.stage}</div>
+            <div style="font-size: 14.5px; font-weight: 600; color: var(--slate-700);">${itemStageLabel}</div>
             <div style="font-size: 13px; color: var(--slate-500); display: flex; align-items: center; gap: 5px; margin-top: 3px;">
               <i data-lucide="user" style="width: 14px; height: 14px; color: var(--slate-400);"></i>
-              <span class="officer-name-display">${item.assignedOfficer || 'Unassigned'}</span>
+              <span class="officer-name-display">${item.assignedOfficer || tUnassigned}</span>
             </div>
           </td>
           <td style="text-align: right;">
             <button class="btn-action" style="padding: 6px 12px; font-size: 14px; display: inline-flex; align-items: center; gap: 6px;" onclick="openDetailView(${item.id})">
-              <i data-lucide="external-link" style="width: 15px; height: 15px;"></i> Inspect
+              <i data-lucide="external-link" style="width: 15px; height: 15px;"></i> ${window.DharaaI18n ? window.DharaaI18n.t("btn_inspect") : "Inspect"}
             </button>
           </td>
         `;
@@ -362,50 +438,60 @@
                 const expTr = document.createElement("tr");
                 expTr.className = `expansion-drawer ${item.id === 8 && currentOpenRowId === null ? 'is-open' : item.id === currentOpenRowId ? 'is-open' : ''}`;
                 expTr.id = `drawer-${item.id}`;
+
+                const tDrawerTitle = window.DharaaI18n ? window.DharaaI18n.t("drawer_snapshot_title") : "Cross-Departmental Record Discrepancy Snapshot";
+                const tDrawerApi = window.DharaaI18n ? window.DharaaI18n.t("drawer_api_validated") : "Auto-validated via Open Land API v2.4";
+                const tDeptRev = window.DharaaI18n ? window.DharaaI18n.t("dept_revenue") : "1. Revenue Registry";
+                const tDeptReg = window.DharaaI18n ? window.DharaaI18n.t("dept_registration") : "2. Registration (SRO)";
+                const tDeptSurv = window.DharaaI18n ? window.DharaaI18n.t("dept_survey") : "3. Cadastral Survey";
+                const tDeptUrb = window.DharaaI18n ? window.DharaaI18n.t("dept_urban") : "4. Urban Dev (ULB)";
+                const tRootCause = window.DharaaI18n ? window.DharaaI18n.t("drawer_root_cause_prefix") : "Root Cause: SRO deed executed without verifying real-time Cadastral GIS geo-fence.";
+                const tAssignedLbl = window.DharaaI18n ? window.DharaaI18n.t("assigned_officer_label") : "Assigned:";
+
                 expTr.innerHTML = `
           <td colspan="8" style="padding: 0;">
             <div class="drawer-content">
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div style="font-size: 14px; font-weight: 600; color: var(--navy-900);">
-                  Cross-Departmental Record Discrepancy Snapshot &bull; <span class="mono">${item.ulpin}</span>
+                  ${tDrawerTitle} &bull; <span class="mono">${item.ulpin}</span>
                 </div>
-                <div style="font-size: 13px; color: var(--slate-500);">Auto-validated via Open Land API v2.4</div>
+                <div style="font-size: 13px; color: var(--slate-500);">${tDrawerApi}</div>
               </div>
 
               <div class="dept-reconciliation-grid">
                 <div class="dept-cell">
-                  <div class="dept-cell-header"><span>1. Revenue Registry</span><i data-lucide="book" style="width:15px;height:15px;"></i></div>
+                  <div class="dept-cell-header"><span>${tDeptRev}</span><i data-lucide="book" style="width:15px;height:15px;"></i></div>
                   <div class="dept-cell-value" style="font-size: 13.5px;">${item.details.revenue}</div>
                 </div>
                 <div class="dept-cell">
-                  <div class="dept-cell-header"><span>2. Registration (SRO)</span><i data-lucide="file-check" style="width:15px;height:15px;"></i></div>
+                  <div class="dept-cell-header"><span>${tDeptReg}</span><i data-lucide="file-check" style="width:15px;height:15px;"></i></div>
                   <div class="dept-cell-value" style="font-size: 13.5px;">${item.details.registration}</div>
                 </div>
                 <div class="dept-cell">
-                  <div class="dept-cell-header"><span>3. Cadastral Survey</span><i data-lucide="compass" style="width:15px;height:15px;"></i></div>
+                  <div class="dept-cell-header"><span>${tDeptSurv}</span><i data-lucide="compass" style="width:15px;height:15px;"></i></div>
                   <div class="dept-cell-value ${item.type === 'spatial_overlap' ? 'mismatch' : ''}" style="font-size: 13.5px;">${item.details.survey}</div>
                 </div>
                 <div class="dept-cell">
-                  <div class="dept-cell-header"><span>4. Urban Dev (ULB)</span><i data-lucide="building" style="width:15px;height:15px;"></i></div>
+                  <div class="dept-cell-header"><span>${tDeptUrb}</span><i data-lucide="building" style="width:15px;height:15px;"></i></div>
                   <div class="dept-cell-value" style="font-size: 13.5px;">${item.details.urban}</div>
                 </div>
               </div>
 
               <div class="drawer-actions">
                 <div style="font-size: 13px; color: var(--slate-500);">
-                  Root Cause: SRO deed executed without verifying real-time Cadastral GIS geo-fence. &bull; <strong>Assigned:</strong> ${item.assignedOfficer || 'Unassigned'}
+                  ${tRootCause} &bull; <strong>${tAssignedLbl}</strong> ${item.assignedOfficer || tUnassigned}
                 </div>
                 <div style="display: flex; gap: 8px;">
                   ${currentRole === 'admin' ? `
                   <button class="btn-action" style="font-size: 14px; padding: 7px 14px; background: #e0f2fe; color: var(--navy-900); border-color: #bae6fd;" onclick="openAssignModal(${item.id})">
-                    <i data-lucide="user-plus" style="width: 15px; height: 15px; color: var(--navy-600);"></i> Assign
+                    <i data-lucide="user-plus" style="width: 15px; height: 15px; color: var(--navy-600);"></i> ${window.DharaaI18n ? window.DharaaI18n.t("btn_assign") : "Assign"}
                   </button>
                   ` : ''}
                   <button class="btn-action" style="font-size: 14px; padding: 7px 14px;" onclick="openOrderModal(${item.id})">
-                    <i data-lucide="send" style="width: 15px; height: 15px;"></i> Order Joint Field Notice
+                    <i data-lucide="send" style="width: 15px; height: 15px;"></i> ${window.DharaaI18n ? window.DharaaI18n.t("btn_order_notice") : "Order Joint Field Notice"}
                   </button>
                   <button class="btn-action btn-primary" style="font-size: 14px; padding: 7px 14px;" onclick="openDetailView(${item.id})">
-                    Open Full Workflow Stepper &rarr;
+                    ${window.DharaaI18n ? window.DharaaI18n.t("btn_open_stepper") : "Open Full Workflow Stepper &rarr;"}
                   </button>
                 </div>
               </div>
@@ -464,24 +550,40 @@
                 activeNavItem.classList.add("active");
             }
 
+            // PHASE 3: Initialize or resize GIS Cadastral Leaflet map
+            if (tabName === 'gis' && window.gisService) {
+                window.gisService.initOrResizeMap();
+            }
+
             renderIcons();
         }
 
         // DETAIL VIEW LOADER
-        function openDetailView(id) {
+        function openDetailView(id, shouldSwitchTab = true) {
             const conflict = conflictsData.find(c => c.id === id) || conflictsData[0];
+            currentDetailConflictId = conflict.id;
 
-            document.getElementById("detailUlpin").textContent = `ULPIN: ${conflict.ulpin}`;
-            document.getElementById("detailSummary").textContent = `${conflict.typeLabel} — Involves ${conflict.silos.join(" + ")} across ${conflict.khasra}.`;
+            const detailUlpin = document.getElementById("detailUlpin");
+            if (detailUlpin) detailUlpin.textContent = `ULPIN: ${conflict.ulpin}`;
+
+            const localizedType = getTypeTranslation(conflict);
+            const localizedSilos = conflict.silos.map(s => getSiloTranslation(s)).join(" + ");
+            const tInvolves = window.DharaaI18n ? window.DharaaI18n.t("summary_involves") : "Involves";
+            const tAcross = window.DharaaI18n ? window.DharaaI18n.t("summary_across") : "across";
+            const detailSummary = document.getElementById("detailSummary");
+            if (detailSummary) detailSummary.textContent = `${localizedType} — ${tInvolves} ${localizedSilos} ${tAcross} ${conflict.khasra}.`;
 
             const sevBadge = document.getElementById("detailSeverity");
-            sevBadge.textContent = `${conflict.severity.toUpperCase()} SEVERITY`;
-            sevBadge.className = `badge ${conflict.severity === 'critical' ? 'badge-critical' : conflict.severity === 'major' ? 'badge-major' : 'badge-moderate'}`;
+            if (sevBadge) {
+                const tSev = window.DharaaI18n ? window.DharaaI18n.t("severity_" + conflict.severity) : conflict.severity.toUpperCase();
+                const tSevSuffix = window.DharaaI18n ? window.DharaaI18n.t("severity_suffix") : "SEVERITY";
+                sevBadge.textContent = `${tSev} ${tSevSuffix}`;
+                sevBadge.className = `badge ${conflict.severity === 'critical' ? 'badge-critical' : conflict.severity === 'major' ? 'badge-major' : 'badge-moderate'}`;
+            }
 
             activeWorkflowStep = conflict.stepIndex || 2;
             updateStepperDisplay();
 
-            // Dynamic Trust Score calculation from conflict data & workflow progress
             let targetScore;
             if (activeWorkflowStep === 4) {
                 targetScore = 98;
@@ -496,7 +598,6 @@
             }
             setTrustScore(targetScore);
 
-            // Update Cadastral Map hazard overlay display
             const poly = document.getElementById("hazardPolygon");
             const txt = document.getElementById("hazardText");
             if (poly && txt) {
@@ -509,8 +610,11 @@
                 }
             }
 
-            switchTab('detail');
-            showToast(`Loaded resolution dossier for ${conflict.ulpin}`);
+            if (shouldSwitchTab) {
+                switchTab('detail');
+                const tLoaded = window.DharaaI18n ? window.DharaaI18n.t("toast_dossier_loaded") : "Loaded resolution dossier for";
+                showToast(`${tLoaded} ${conflict.ulpin}`);
+            }
         }
 
         // WORKFLOW STEPPER ANIMATION
@@ -519,21 +623,36 @@
             const track = document.getElementById("stepperTrack");
 
             const progressPercentages = { 1: "0%", 2: "33%", 3: "66%", 4: "100%" };
-            track.style.width = progressPercentages[activeWorkflowStep];
+            if (track) track.style.width = progressPercentages[activeWorkflowStep];
+
+            const stepKeys = {
+                1: { title: "step_detected", desc: "step_detected_desc" },
+                2: { title: "step_assigned", desc: "step_assigned_desc" },
+                3: { title: "step_review", desc: "step_review_desc" },
+                4: { title: "step_harmonized", desc: "step_harmonized_desc" }
+            };
 
             steps.forEach(s => {
                 const el = document.getElementById(`step${s}`);
+                if (!el) return;
                 el.className = "step-item";
                 const circle = el.querySelector(".step-circle");
 
                 if (s < activeWorkflowStep) {
                     el.classList.add("completed");
-                    circle.innerHTML = `<i data-lucide="check" style="width:20px;height:20px;"></i>`;
+                    if (circle) circle.innerHTML = `<i data-lucide="check" style="width:20px;height:20px;"></i>`;
                 } else if (s === activeWorkflowStep) {
                     el.classList.add("current");
-                    circle.innerHTML = `${s}`;
+                    if (circle) circle.innerHTML = `${s}`;
                 } else {
-                    circle.innerHTML = `${s}`;
+                    if (circle) circle.innerHTML = `${s}`;
+                }
+
+                if (window.DharaaI18n) {
+                    const titleEl = el.querySelector(".step-title");
+                    const descEl = el.querySelector(".step-meta");
+                    if (titleEl) titleEl.textContent = window.DharaaI18n.t(stepKeys[s].title);
+                    if (descEl) descEl.textContent = window.DharaaI18n.t(stepKeys[s].desc);
                 }
             });
 
@@ -583,12 +702,12 @@
                 trailBox.insertBefore(node, trailBox.firstChild);
 
                 if (activeWorkflowStep === 4) {
-                    showToast("DHARAA Trust Engine: Parcel harmonized & locked to Golden Registry (Trust Index 98/100).");
+                    showToast(window.DharaaI18n ? window.DharaaI18n.t("toast_harmonized_success") : "DHARAA Trust Engine: Parcel harmonized & locked to Golden Registry.");
                 } else {
-                    showToast(`Workflow advanced: Step ${activeWorkflowStep} (${stepNames[activeWorkflowStep]})`);
+                    showToast(`${window.DharaaI18n ? window.DharaaI18n.t("toast_workflow_advanced") : "Workflow advanced:"} Step ${activeWorkflowStep} (${stepNames[activeWorkflowStep]})`);
                 }
             } else {
-                showToast("Case is already in 'Resolved & Harmonized' status.");
+                showToast(window.DharaaI18n ? window.DharaaI18n.t("toast_already_resolved") : "Case is already in 'Resolved & Harmonized' status.");
             }
         }
 
@@ -608,11 +727,13 @@
             const offset = circumference - (val / 100) * circumference;
             gaugeArc.style.strokeDashoffset = offset;
 
+            const tTrustLbl = window.DharaaI18n ? window.DharaaI18n.t("trust_index_label") : "Trust Index:";
             if (val > 80) {
                 gaugeArc.style.stroke = "var(--emerald-600)";
                 gaugeVal.style.color = "var(--emerald-700)";
                 if (trustTitle) {
-                    trustTitle.textContent = `Trust Index: Harmonized (Gold Registry — ${val}/100)`;
+                    const tHarm = window.DharaaI18n ? window.DharaaI18n.t("trust_harmonized") : "Harmonized (Gold Registry)";
+                    trustTitle.textContent = `${tTrustLbl} ${tHarm} (${val}/100)`;
                     trustTitle.style.color = "var(--emerald-700)";
                 }
                 if (trustBadge) {
@@ -620,16 +741,18 @@
                     trustBadge.style.background = "var(--emerald-50)";
                     trustBadge.style.color = "var(--emerald-700)";
                     trustBadge.style.borderColor = "#a7f3d0";
-                    trustBadge.innerHTML = `<i data-lucide="shield-check" style="width:13px;height:13px;"></i> GOLDEN RECORD COMMITTED`;
+                    const tBadgeHarm = window.DharaaI18n ? window.DharaaI18n.t("badge_golden_record") : "GOLDEN RECORD COMMITTED";
+                    trustBadge.innerHTML = `<i data-lucide="shield-check" style="width:13px;height:13px;"></i> ${tBadgeHarm}`;
                 }
                 if (trustDesc) {
-                    trustDesc.textContent = customDesc || "All 4 departments (Revenue, Registration, Cadastral GIS, Urban ULB) harmonized with zero variance. Golden Record committed to Registry.";
+                    trustDesc.textContent = customDesc || (window.DharaaI18n ? window.DharaaI18n.t("desc_golden_record") : "All 4 departments (Revenue, Registration, Cadastral GIS, Urban ULB) harmonized with zero variance. Golden Record committed to Registry.");
                 }
             } else if (val > 60) {
                 gaugeArc.style.stroke = "var(--amber-500)";
                 gaugeVal.style.color = "var(--amber-600)";
                 if (trustTitle) {
-                    trustTitle.textContent = `Trust Index: Under Review (${val}/100)`;
+                    const tReview = window.DharaaI18n ? window.DharaaI18n.t("trust_under_review") : "Under Review";
+                    trustTitle.textContent = `${tTrustLbl} ${tReview} (${val}/100)`;
                     trustTitle.style.color = "var(--amber-700)";
                 }
                 if (trustBadge) {
@@ -637,16 +760,18 @@
                     trustBadge.style.background = "";
                     trustBadge.style.color = "";
                     trustBadge.style.borderColor = "";
-                    trustBadge.innerHTML = `<i data-lucide="alert-circle" style="width:13px;height:13px;"></i> FIELD REVIEW ACTIVE`;
+                    const tBadgeReview = window.DharaaI18n ? window.DharaaI18n.t("badge_field_review") : "FIELD REVIEW ACTIVE";
+                    trustBadge.innerHTML = `<i data-lucide="alert-circle" style="width:13px;height:13px;"></i> ${tBadgeReview}`;
                 }
                 if (trustDesc) {
-                    trustDesc.textContent = customDesc || "Active reconciliation pipeline. Discrepancy identified between statutory datasets awaiting nodal resolution.";
+                    trustDesc.textContent = customDesc || (window.DharaaI18n ? window.DharaaI18n.t("desc_field_review") : "Active reconciliation pipeline. Discrepancy identified between statutory datasets awaiting nodal resolution.");
                 }
             } else {
                 gaugeArc.style.stroke = "var(--red-500)";
                 gaugeVal.style.color = "var(--red-600)";
                 if (trustTitle) {
-                    trustTitle.textContent = `Trust Index: Compromised (${val}/100)`;
+                    const tComp = window.DharaaI18n ? window.DharaaI18n.t("trust_compromised") : "Compromised";
+                    trustTitle.textContent = `${tTrustLbl} ${tComp} (${val}/100)`;
                     trustTitle.style.color = "var(--red-700)";
                 }
                 if (trustBadge) {
@@ -654,10 +779,11 @@
                     trustBadge.style.background = "";
                     trustBadge.style.color = "";
                     trustBadge.style.borderColor = "";
-                    trustBadge.innerHTML = `<i data-lucide="shield-alert" style="width:13px;height:13px;"></i> MUTATION ON HOLD`;
+                    const tBadgeHold = window.DharaaI18n ? window.DharaaI18n.t("badge_mutation_hold") : "MUTATION ON HOLD";
+                    trustBadge.innerHTML = `<i data-lucide="shield-alert" style="width:13px;height:13px;"></i> ${tBadgeHold}`;
                 }
                 if (trustDesc) {
-                    trustDesc.textContent = customDesc || "Mutation hold triggered. Land Trust Engine flagged -52 sq.yd spatial deviation against surveyed Cadastre.";
+                    trustDesc.textContent = customDesc || (window.DharaaI18n ? window.DharaaI18n.t("desc_mutation_hold") : "Mutation hold triggered. Land Trust Engine flagged -52 sq.yd spatial deviation against surveyed Cadastre.");
                 }
             }
 
@@ -677,23 +803,42 @@
                 if (poly) poly.style.display = "block";
                 if (txt) txt.style.display = "block";
                 if (btn) {
-                    btn.innerHTML = `<i data-lucide="layers" style="width: 16px; height: 16px; color: var(--navy-600);"></i> <span>Drone Resurvey Diff (Active)</span>`;
+                    btn.innerHTML = `<i data-lucide="layers" style="width: 16px; height: 16px; color: var(--navy-600);"></i> <span>${window.DharaaI18n ? window.DharaaI18n.t("btn_drone_diff") : "Drone Resurvey Diff (Active)"}</span>`;
                     btn.style.background = "";
                     btn.style.color = "";
                 }
-                showToast("Cadastral DGPS Drone overlay enabled.");
+                showToast(window.DharaaI18n ? window.DharaaI18n.t("toast_overlay_enabled") : "Cadastral DGPS Drone overlay enabled.");
             } else {
                 if (poly) poly.style.display = "none";
                 if (txt) txt.style.display = "none";
                 if (btn) {
-                    btn.innerHTML = `<i data-lucide="layers" style="width: 16px; height: 16px; color: var(--slate-400);"></i> <span>Drone Resurvey Diff (Hidden)</span>`;
+                    btn.innerHTML = `<i data-lucide="layers" style="width: 16px; height: 16px; color: var(--slate-400);"></i> <span>${window.DharaaI18n ? window.DharaaI18n.t("btn_hide_overlay") : "Drone Resurvey Diff (Hidden)"}</span>`;
                     btn.style.background = "var(--slate-100)";
                     btn.style.color = "var(--slate-500)";
                 }
-                showToast("Cadastral DGPS Drone overlay hidden.");
+                showToast(window.DharaaI18n ? window.DharaaI18n.t("toast_overlay_hidden") : "Cadastral DGPS Drone overlay hidden.");
             }
             renderIcons();
         }
+
+        // ACCESSIBILITY TEXT RESIZER CONTROLLER
+        let currentFontScale = 100;
+        function setFontResizer(action) {
+            if (action === 'increase') {
+                if (currentFontScale < 120) currentFontScale += 5;
+            } else if (action === 'decrease') {
+                if (currentFontScale > 85) currentFontScale -= 5;
+            } else {
+                currentFontScale = 100;
+            }
+            document.documentElement.style.fontSize = `${currentFontScale}%`;
+            document.querySelectorAll('.btn-resizer').forEach(btn => btn.classList.remove('active'));
+            if (action === 'reset') {
+                const resetBtn = document.querySelector('.btn-resizer[onclick*="reset"]');
+                if (resetBtn) resetBtn.classList.add('active');
+            }
+        }
+        window.setFontResizer = setFontResizer;
 
         // ROLE SWITCHER LOGIC (DRIVEN BY currentRole)
         function switchRole(role, evt) {
@@ -713,12 +858,29 @@
             const detailNav = document.querySelector('.side-nav .nav-item[data-tab="detail"]');
             const coreCategory = document.getElementById("coreWorkflowsCategory");
 
+            const headerAddBtn = document.getElementById("headerAddNewParcelBtn");
+            const gisAddBtn = document.getElementById("gisAddNewParcelBtn");
+
             if (role === 'officer') {
                 if (queueNav) queueNav.style.display = '';
                 if (detailNav) detailNav.style.display = '';
                 if (coreCategory) coreCategory.style.display = '';
-                showToast("Switched to Nodal Officer View (Filtered for Harvinder Singh, Field Kanungo)");
-                if (badge) badge.innerHTML = `<i data-lucide="map-pin" style="width: 17px; height: 17px;"></i><span>Assigned: <strong>Harvinder Singh (Kanungo)</strong></span>`;
+                if (headerAddBtn) headerAddBtn.style.display = 'inline-flex';
+                if (gisAddBtn) gisAddBtn.style.display = 'inline-flex';
+                showToast(window.DharaaI18n ? window.DharaaI18n.t("toast_switched_officer") : "Switched to Nodal Officer View");
+                if (badge) {
+                    badge.innerHTML = `
+                        <div class="officer-card-avatar">
+                            <i data-lucide="user-check" style="width: 17px; height: 17px;"></i>
+                            <span class="officer-session-dot" title="Active DHARAA Session"></span>
+                        </div>
+                        <div class="officer-card-info">
+                            <div class="officer-card-name">Harvinder Singh</div>
+                            <div class="officer-card-designation">Kanungo / Revenue Inspector</div>
+                            <div class="officer-card-jurisdiction">Tehsil: Sriperumbudur, Dist: Kanchipuram</div>
+                        </div>
+                    `;
+                }
 
                 const currentActiveTab = document.querySelector(".view-container.active");
                 if (currentActiveTab && currentActiveTab.id === "tab-analytics") {
@@ -728,15 +890,43 @@
                 if (queueNav) queueNav.style.display = '';
                 if (detailNav) detailNav.style.display = '';
                 if (coreCategory) coreCategory.style.display = '';
-                showToast("Switched to District Admin View (Full Queue & Officer Reassignment)");
-                if (badge) badge.innerHTML = `<i data-lucide="shield" style="width: 17px; height: 17px;"></i><span>District: <strong>Chandigarh + Chengalpattu</strong></span>`;
+                if (headerAddBtn) headerAddBtn.style.display = 'inline-flex';
+                if (gisAddBtn) gisAddBtn.style.display = 'inline-flex';
+                showToast(window.DharaaI18n ? window.DharaaI18n.t("toast_switched_admin") : "Switched to District Admin View");
+                if (badge) {
+                    badge.innerHTML = `
+                        <div class="officer-card-avatar" style="background: rgba(30, 64, 175, 0.4); border-color: rgba(96, 165, 250, 0.5);">
+                            <i data-lucide="shield" style="width: 17px; height: 17px; color: #60a5fa;"></i>
+                            <span class="officer-session-dot" title="Active DHARAA Session"></span>
+                        </div>
+                        <div class="officer-card-info">
+                            <div class="officer-card-name">Dr. Rajesh Varma, IAS</div>
+                            <div class="officer-card-designation">District Collector & District Magistrate</div>
+                            <div class="officer-card-jurisdiction">Dist: Kanchipuram &amp; UT Chandigarh</div>
+                        </div>
+                    `;
+                }
             } else if (role === 'policymaker') {
-                // Decision-makers shouldn't see raw case queues
+                // Decision-makers shouldn't see raw case queues or parcel creation
                 if (queueNav) queueNav.style.display = 'none';
                 if (detailNav) detailNav.style.display = 'none';
                 if (coreCategory) coreCategory.style.display = 'none';
-                showToast("Switched to Decision Maker View (Statewide DPI Health & Hotspots)");
-                if (badge) badge.innerHTML = `<i data-lucide="award" style="width: 17px; height: 17px;"></i><span>National DPI: <strong>DoLR Apex View</strong></span>`;
+                if (headerAddBtn) headerAddBtn.style.display = 'none';
+                if (gisAddBtn) gisAddBtn.style.display = 'none';
+                showToast(window.DharaaI18n ? window.DharaaI18n.t("toast_switched_policymaker") : "Switched to Decision Maker View");
+                if (badge) {
+                    badge.innerHTML = `
+                        <div class="officer-card-avatar" style="background: rgba(180, 83, 9, 0.4); border-color: rgba(251, 191, 36, 0.5);">
+                            <i data-lucide="award" style="width: 17px; height: 17px; color: #fde047;"></i>
+                            <span class="officer-session-dot" title="Active DHARAA Session"></span>
+                        </div>
+                        <div class="officer-card-info">
+                            <div class="officer-card-name">Smt. Ananya Sen</div>
+                            <div class="officer-card-designation">Joint Secretary (Land Reforms), DoLR</div>
+                            <div class="officer-card-jurisdiction">Ministry of Rural Development, New Delhi</div>
+                        </div>
+                    `;
+                }
                 switchTab('analytics');
             }
 
@@ -857,7 +1047,7 @@
                 }
             }, 120);
 
-            showToast(`Focused ${alerts.length} critical SLA breaches and anomaly alerts.`);
+            showToast(`${window.DharaaI18n ? window.DharaaI18n.t("toast_focused_alerts") : "Focused critical SLA breaches and anomaly alerts."} (${alerts.length})`);
         }
 
         // SIMULATE REAL-TIME ANOMALY INGESTION
@@ -918,7 +1108,7 @@
         }
         function confirmModalAction() {
             closeModal();
-            showToast("Joint Field Notice issued under Land Revenue Code. Citizen notified via SMS.");
+            showToast(window.DharaaI18n ? window.DharaaI18n.t("toast_order_issued") : "Joint Field Notice issued under Land Revenue Code.");
         }
 
         // ADMIN REASSIGNMENT MODAL HANDLERS
@@ -975,5 +1165,5 @@
 
             closeAssignModal();
             filterQueue();
-            showToast(`Reassigned ${conflict.ulpin} to ${newOfficer} (${newStage})`);
+            showToast(`${window.DharaaI18n ? window.DharaaI18n.t("toast_reassigned") : "Reassigned"} ${conflict.ulpin} → ${newOfficer}`);
         }
