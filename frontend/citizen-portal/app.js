@@ -78,7 +78,7 @@ if (!window.lucide) {
 }
 
 // =============================================================================
-// 2. APPLICATION STATE
+// 2. APPLICATION STATE & I18N BRIDGES
 // =============================================================================
 let currentCitizenKey = 'gurpreet'; // 'gurpreet' | 'ramesh' | 'annamalai'
 let currentCitizen = null;
@@ -87,6 +87,13 @@ let activeParcel = null;
 let selectedTxRefNo = null;
 let activeTab = 'home';
 let toastTimeout = null;
+
+function t(key, fallback = null) {
+    if (window.DharaaI18n && typeof window.DharaaI18n.t === 'function') {
+        return window.DharaaI18n.t(key, fallback);
+    }
+    return fallback !== null ? fallback : key;
+}
 
 // =============================================================================
 // 3. INITIALIZATION
@@ -100,6 +107,23 @@ async function initCitizenPortal() {
         currentCitizen = await loadCitizenProfile(currentCitizenKey);
         linkedParcels = await loadCitizenParcels(currentCitizenKey);
         activeParcel = linkedParcels[0] || (await loadParcelDetail("CH-04-0012-8821-9041"));
+
+        // Initialize Centralized i18n Engine & Language Selector
+        if (window.DharaaI18n) {
+            window.DharaaI18n.initI18n();
+            initLanguageSelector();
+            window.DharaaI18n.onLanguageChange(() => {
+                updateCitizenHeader();
+                renderHomeDashboard();
+                renderSearchResults();
+                renderGlossary();
+                renderProfileView();
+                if (activeParcel) {
+                    loadAndDisplayParcel(activeParcel.ulpin);
+                }
+                renderIcons();
+            });
+        }
 
         // Update UI state
         updateCitizenHeader();
@@ -183,10 +207,16 @@ function renderHomeDashboard() {
     const primaryParcel = linkedParcels[0] || mockParcels[0];
     if (primaryParcel.trustScore !== null) {
         document.getElementById("statTrustScore").textContent = primaryParcel.trustScore;
-        document.getElementById("statTrustLabel").textContent = primaryParcel.verificationLabel;
+        const statusMap = {
+            'verified': t('status_verified', "100% Registry Consensus"),
+            'conflict': t('status_conflict', "Conflict Detected — Spatial Overlap"),
+            'pending': t('status_pending', "Verification In Progress"),
+            'unavailable': t('status_unavailable', "SVAMITVA Resurvey in Progress")
+        };
+        document.getElementById("statTrustLabel").textContent = statusMap[primaryParcel.verificationStatus] || primaryParcel.verificationLabel;
     } else {
         document.getElementById("statTrustScore").textContent = "N/A";
-        document.getElementById("statTrustLabel").textContent = "SVAMITVA Resurvey in Progress";
+        document.getElementById("statTrustLabel").textContent = t('status_unavailable', "SVAMITVA Resurvey in Progress");
     }
 
     // SLA Timer
@@ -195,11 +225,11 @@ function renderHomeDashboard() {
         const tx = primaryParcel.activeTransaction;
         if (tx.slaDaysRemaining !== undefined) {
             if (tx.slaDaysRemaining < 0) {
-                slaEl.textContent = `${Math.abs(tx.slaDaysRemaining)}d Overdue`;
+                slaEl.textContent = `${Math.abs(tx.slaDaysRemaining)}d ${t('sla_overdue_breach', 'Overdue')}`;
             } else if (tx.slaDaysRemaining === 0) {
-                slaEl.textContent = `${tx.slaHoursRemaining}h`;
+                slaEl.textContent = `${tx.slaHoursRemaining}h ${t('sla_hours_remaining', 'left')}`;
             } else {
-                slaEl.textContent = `${tx.slaDaysRemaining}d`;
+                slaEl.textContent = `${tx.slaDaysRemaining}d ${t('sla_days_remaining', 'left')}`;
             }
         } else {
             slaEl.textContent = `${Math.abs(tx.slaHoursRemaining)}h`;
@@ -221,7 +251,7 @@ function renderHomeDashboard() {
                             <i data-lucide="alert-circle" style="width: 20px; height: 20px;"></i>
                         </div>
                         <div>
-                            <div style="font-weight: 700; color: #1e3a8a; font-size: 14.5px;">Action Required by Citizen: ${pa.title}</div>
+                            <div style="font-weight: 700; color: #1e3a8a; font-size: 14.5px;">${t('action_required', 'Action Required by Citizen')}: ${pa.title}</div>
                             <div style="font-size: 13px; color: #3b82f6; margin-top: 2px;">
                                 Target ULPIN: <span class="mono" style="font-weight: 600;">${pa.ulpin}</span> &bull; Scheduled / Due: <strong>${pa.deadline}</strong> &bull; ${pa.description}
                             </div>
@@ -266,12 +296,12 @@ function renderHomeDashboard() {
         card.className = "parcel-card-item";
 
         const statusBadge = p.verificationStatus === 'verified'
-            ? `<span class="badge badge-verified"><i data-lucide="check-circle" style="width:13px;height:13px;"></i> VERIFIED</span>`
+            ? `<span class="badge badge-verified"><i data-lucide="check-circle" style="width:13px;height:13px;"></i> ${t('status_verified', 'VERIFIED')}</span>`
             : p.verificationStatus === 'conflict'
-                ? `<span class="badge badge-critical"><i data-lucide="alert-circle" style="width:13px;height:13px;"></i> CONFLICT DETECTED</span>`
+                ? `<span class="badge badge-critical"><i data-lucide="alert-circle" style="width:13px;height:13px;"></i> ${t('status_conflict', 'CONFLICT DETECTED')}</span>`
                 : p.verificationStatus === 'unavailable'
-                    ? `<span class="badge badge-unavailable"><i data-lucide="info" style="width:13px;height:13px;"></i> UNAVAILABLE (LAL DORA)</span>`
-                    : `<span class="badge badge-major"><i data-lucide="clock" style="width:13px;height:13px;"></i> PENDING REVIEW</span>`;
+                    ? `<span class="badge badge-unavailable"><i data-lucide="info" style="width:13px;height:13px;"></i> ${t('status_unavailable', 'UNAVAILABLE')}</span>`
+                    : `<span class="badge badge-major"><i data-lucide="clock" style="width:13px;height:13px;"></i> ${t('status_pending', 'PENDING REVIEW')}</span>`;
 
         const trustValHtml = p.trustScore !== null
             ? `<span class="meta-val" style="font-weight: 700; color: ${p.trustScore >= 80 ? 'var(--emerald-600)' : 'var(--red-600)'};">${p.trustScore} / 100</span>`
@@ -293,11 +323,11 @@ function renderHomeDashboard() {
 
             <div class="parcel-meta-grid">
                 <div class="parcel-meta-cell">
-                    <span class="meta-label">Recorded Land Area</span>
+                    <span class="meta-label">${t('area_label', 'Recorded Land Area')}</span>
                     <span class="meta-val">${p.area.localDisplay}</span>
                 </div>
                 <div class="parcel-meta-cell">
-                    <span class="meta-label">Consensus Trust Score</span>
+                    <span class="meta-label">${t('trust_score_label', 'Consensus Trust Score')}</span>
                     ${trustValHtml}
                 </div>
                 <div class="parcel-meta-cell">
@@ -312,10 +342,10 @@ function renderHomeDashboard() {
                 </div>
                 <div style="display: flex; gap: 8px;">
                     <button class="btn-action" style="font-size: 13.5px; padding: 6px 12px;" onclick="loadAndDisplayParcel('${p.ulpin}', true)">
-                        <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> Inspect Dossier
+                        <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> ${t('btn_view_details', 'Inspect Dossier')}
                     </button>
                     <button class="btn-action btn-primary" style="font-size: 13.5px; padding: 6px 12px;" onclick="inspectOwnershipForParcel('${p.ulpin}')">
-                        <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i> Check Trust Status
+                        <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i> ${t('btn_track_mutation', 'Check Trust Status')}
                     </button>
                 </div>
             </div>
@@ -357,16 +387,16 @@ async function loadAndDisplayParcel(ulpin, switchTabToParcel = false) {
     const badgeEl = document.getElementById("detailStatusBadge");
     if (parcel.verificationStatus === 'verified') {
         badgeEl.className = "badge badge-verified";
-        badgeEl.textContent = "VERIFIED — 100% CONSENSUS";
+        badgeEl.textContent = t('status_verified', "VERIFIED — 100% CONSENSUS");
     } else if (parcel.verificationStatus === 'conflict') {
         badgeEl.className = "badge badge-critical";
-        badgeEl.textContent = "CONFLICT DETECTED";
+        badgeEl.textContent = t('status_conflict', "CONFLICT DETECTED");
     } else if (parcel.verificationStatus === 'unavailable') {
         badgeEl.className = "badge badge-unavailable";
-        badgeEl.textContent = "UNAVAILABLE — SVAMITVA RESURVEY";
+        badgeEl.textContent = t('status_unavailable', "UNAVAILABLE — SVAMITVA RESURVEY");
     } else {
         badgeEl.className = "badge badge-major";
-        badgeEl.textContent = "PENDING VERIFICATION";
+        badgeEl.textContent = t('status_pending', "PENDING VERIFICATION");
     }
 
     // State Badge
@@ -974,21 +1004,21 @@ function renderTransactionTracker(parcel) {
                 slaContainer.innerHTML = `
                     <span class="sla-timer breached">
                         <i data-lucide="alert-octagon" style="width: 15px; height: 15px;"></i>
-                        <span>SLA Breached by ${Math.abs(tx.slaDaysRemaining)}d (${Math.abs(tx.slaHoursRemaining)}h) — Escalated to Appellate Officer</span>
+                        <span>${t('sla_overdue_breach', 'SLA Breached')} by ${Math.abs(tx.slaDaysRemaining)}d (${Math.abs(tx.slaHoursRemaining)}h) — Escalated</span>
                     </span>
                 `;
             } else if (tx.slaDaysRemaining === 0) {
                 slaContainer.innerHTML = `
                     <span class="sla-timer warning">
                         <i data-lucide="clock" style="width: 15px; height: 15px;"></i>
-                        <span>${tx.slaHoursRemaining} Hours Remaining (Statutory SLA Window)</span>
+                        <span>${tx.slaHoursRemaining} ${t('sla_hours_remaining', 'Hours Remaining')} (Statutory SLA Window)</span>
                     </span>
                 `;
             } else {
                 slaContainer.innerHTML = `
                     <span class="sla-timer normal">
                         <i data-lucide="clock" style="width: 15px; height: 15px;"></i>
-                        <span>${tx.slaDaysRemaining} Days Remaining (${tx.slaHoursRemaining}h)</span>
+                        <span>${tx.slaDaysRemaining} ${t('sla_days_remaining', 'Days Remaining')} (${tx.slaHoursRemaining}h)</span>
                     </span>
                 `;
             }
@@ -997,21 +1027,21 @@ function renderTransactionTracker(parcel) {
                 slaContainer.innerHTML = `
                     <span class="sla-timer breached">
                         <i data-lucide="alert-octagon" style="width: 15px; height: 15px;"></i>
-                        <span>SLA Breached by ${Math.abs(tx.slaHoursRemaining)}h (Escalated)</span>
+                        <span>${t('sla_overdue_breach', 'SLA Breached')} by ${Math.abs(tx.slaHoursRemaining)}h (Escalated)</span>
                     </span>
                 `;
             } else if (tx.slaHoursRemaining <= 24) {
                 slaContainer.innerHTML = `
                     <span class="sla-timer warning">
                         <i data-lucide="clock" style="width: 15px; height: 15px;"></i>
-                        <span>${tx.slaHoursRemaining}h statutory SLA remaining</span>
+                        <span>${tx.slaHoursRemaining}h ${t('sla_hours_remaining', 'remaining')}</span>
                     </span>
                 `;
             } else {
                 slaContainer.innerHTML = `
                     <span class="sla-timer normal">
                         <i data-lucide="clock" style="width: 15px; height: 15px;"></i>
-                        <span>${tx.slaHoursRemaining}h remaining</span>
+                        <span>${tx.slaHoursRemaining}h ${t('sla_hours_remaining', 'remaining')}</span>
                     </span>
                 `;
             }
@@ -1023,15 +1053,17 @@ function renderTransactionTracker(parcel) {
     document.getElementById("citizenStepperTrack").style.width = progressWidths[tx.stepIndex || 3];
 
     const stepLabels = [
-        { num: 1, title: "1. Filed", meta: tx.stages && tx.stages[0] ? tx.stages[0].date : "Auto-Triggered" },
-        { num: 2, title: "2. Under Verification", meta: tx.stages && tx.stages[1] ? tx.stages[1].status : "In Progress" },
-        { num: 3, title: "3. Field Inspection", meta: tx.stages && tx.stages[2] ? tx.stages[2].status : "Pending" },
-        { num: 4, title: "4. Approved / Rejected", meta: tx.stages && tx.stages[3] ? tx.stages[3].status : "Statutory Order" }
+        { num: 1, title: `1. ${t('stage_filed', 'Filed')}`, meta: tx.stages && tx.stages[0] ? tx.stages[0].date : "Auto-Triggered" },
+        { num: 2, title: `2. ${t('stage_verification', 'Under Verification')}`, meta: tx.stages && tx.stages[1] ? tx.stages[1].status : "In Progress" },
+        { num: 3, title: `3. ${t('stage_field_inspection', 'Field Inspection')}`, meta: tx.stages && tx.stages[2] ? tx.stages[2].status : "Pending" },
+        { num: 4, title: `4. ${t('stage_approved', 'Approved / Rejected')}`, meta: tx.stages && tx.stages[3] ? tx.stages[3].status : "Statutory Order" }
     ];
 
     for (let i = 1; i <= 4; i++) {
         const stepEl = document.getElementById(`cstep${i}`);
+        const titleEl = document.getElementById(`cstep${i}Title`);
         const metaEl = document.getElementById(`cstep${i}Meta`);
+        if (titleEl) titleEl.textContent = stepLabels[i - 1].title;
         if (metaEl) metaEl.textContent = stepLabels[i - 1].meta;
 
         if (i < tx.stepIndex) {
@@ -1497,10 +1529,7 @@ function renderProfileView() {
 
     // Initialize Preferences
     if (currentCitizen.preferences) {
-        const lang = currentCitizen.preferences.language || 'en';
-        document.querySelectorAll('.lang-pill').forEach(btn => btn.classList.remove('active'));
-        const activeLangBtn = document.getElementById(`langBtn${lang.charAt(0).toUpperCase() + lang.slice(1)}`);
-        if (activeLangBtn) activeLangBtn.classList.add('active');
+        updateLanguageSelectorUI();
 
         const smsToggle = document.getElementById('prefSmsToggle');
         if (smsToggle) smsToggle.checked = currentCitizen.preferences.smsAlerts !== false;
@@ -1510,20 +1539,172 @@ function renderProfileView() {
     }
 }
 
+// =============================================================================
+// 14b. CENTRALIZED LANGUAGE SELECTOR & I18N BRIDGES
+// =============================================================================
+function initLanguageSelector() {
+    renderLanguageDropdownList();
+    populateProfileLanguageSelect();
+    updateLanguageSelectorUI();
+
+    // Close language dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+        const wrapper = document.getElementById("langSelectorWrapper");
+        const menu = document.getElementById("langDropdownMenu");
+        if (wrapper && menu && !wrapper.contains(e.target)) {
+            menu.classList.remove("show");
+            const btn = document.getElementById("langSelectorBtn");
+            if (btn) btn.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            const menu = document.getElementById("langDropdownMenu");
+            if (menu && menu.classList.contains("show")) {
+                menu.classList.remove("show");
+                const btn = document.getElementById("langSelectorBtn");
+                if (btn) {
+                    btn.setAttribute("aria-expanded", "false");
+                    btn.focus();
+                }
+            }
+        }
+    });
+}
+
+function toggleLanguageDropdown(e) {
+    if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+    const menu = document.getElementById("langDropdownMenu");
+    const btn = document.getElementById("langSelectorBtn");
+    if (!menu) return;
+
+    const isOpen = menu.classList.contains("show");
+    if (isOpen) {
+        menu.classList.remove("show");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+    } else {
+        menu.classList.add("show");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+        const searchInput = document.getElementById("langSearchInput");
+        if (searchInput) {
+            searchInput.value = "";
+            filterLanguageList("");
+            setTimeout(() => searchInput.focus(), 50);
+        }
+    }
+}
+
+function filterLanguageList(query) {
+    const list = document.getElementById("langDropdownList");
+    if (!list) return;
+    const cleanQuery = (query || "").toLowerCase().trim();
+    const items = list.querySelectorAll(".lang-menu-item");
+    items.forEach(item => {
+        const text = item.getAttribute("data-search") || item.textContent.toLowerCase();
+        if (!cleanQuery || text.includes(cleanQuery)) {
+            item.style.display = "flex";
+        } else {
+            item.style.display = "none";
+        }
+    });
+}
+
+function renderLanguageDropdownList() {
+    const list = document.getElementById("langDropdownList");
+    if (!list || !window.DharaaI18n) return;
+
+    const languages = window.DharaaI18n.getAllLanguages();
+    const currentCode = window.DharaaI18n.getLanguage();
+
+    list.innerHTML = languages.map(lang => {
+        const isActive = lang.code === currentCode;
+        const isRtl = lang.dir === 'rtl';
+        const tagText = lang.code === 'en' ? 'Default' : isRtl ? 'RTL • Sch 8' : 'Sch 8';
+        const searchKeywords = `${lang.name.toLowerCase()} ${lang.native.toLowerCase()} ${lang.code}`;
+        return `
+            <button type="button" class="lang-menu-item ${isActive ? 'active' : ''}" 
+                    role="menuitem"
+                    data-code="${lang.code}" 
+                    data-search="${searchKeywords}"
+                    onclick="setPortalLanguage('${lang.code}')">
+                <div class="lang-item-names">
+                    <span class="lang-item-native">${lang.native}</span>
+                    <span class="lang-item-english">${lang.name}</span>
+                </div>
+                <span class="lang-item-tag">${tagText}</span>
+            </button>
+        `;
+    }).join("");
+}
+
+function populateProfileLanguageSelect() {
+    const select = document.getElementById("profileLanguageSelect");
+    if (!select || !window.DharaaI18n) return;
+
+    const languages = window.DharaaI18n.getAllLanguages();
+    const currentCode = window.DharaaI18n.getLanguage();
+
+    select.innerHTML = languages.map(lang => {
+        const isRtl = lang.dir === 'rtl' ? ' (RTL)' : '';
+        return `<option value="${lang.code}" ${lang.code === currentCode ? 'selected' : ''}>${lang.native} — ${lang.name}${isRtl}</option>`;
+    }).join("");
+}
+
+function updateLanguageSelectorUI() {
+    if (!window.DharaaI18n) return;
+    const currentCode = window.DharaaI18n.getLanguage();
+    const meta = window.DharaaI18n.getLanguageMeta(currentCode);
+
+    // Update header button label
+    const nameEl = document.getElementById("langSelectorCurrentName");
+    if (nameEl) {
+        nameEl.textContent = meta ? meta.native : 'English';
+    }
+
+    // Update dropdown items active class
+    const list = document.getElementById("langDropdownList");
+    if (list) {
+        list.querySelectorAll(".lang-menu-item").forEach(item => {
+            item.classList.toggle("active", item.getAttribute("data-code") === currentCode);
+        });
+    }
+
+    // Update profile select
+    const select = document.getElementById("profileLanguageSelect");
+    if (select) {
+        select.value = currentCode;
+    }
+
+    // Update profile quick pills
+    document.querySelectorAll(".lang-pill").forEach(pill => {
+        pill.classList.toggle("active", pill.getAttribute("data-lang") === currentCode);
+    });
+}
+
 function setPortalLanguage(lang) {
+    if (!window.DharaaI18n) return;
+    window.DharaaI18n.setLanguage(lang);
+
     if (currentCitizen && currentCitizen.preferences) {
         currentCitizen.preferences.language = lang;
     }
-    document.querySelectorAll('.lang-pill').forEach(btn => btn.classList.remove('active'));
-    const activeLangBtn = document.getElementById(`langBtn${lang.charAt(0).toUpperCase() + lang.slice(1)}`);
-    if (activeLangBtn) activeLangBtn.classList.add('active');
 
-    const labels = {
-        'en': 'English',
-        'hi': 'हिन्दी (Hindi)',
-        'ta': 'தமிழ் (Tamil)'
-    };
-    showToast(`Portal display language preference saved: ${labels[lang] || lang}`);
+    updateLanguageSelectorUI();
+
+    // Close dropdown
+    const menu = document.getElementById("langDropdownMenu");
+    const btn = document.getElementById("langSelectorBtn");
+    if (menu) menu.classList.remove("show");
+    if (btn) btn.setAttribute("aria-expanded", "false");
+
+    const meta = window.DharaaI18n.getLanguageMeta(lang);
+    const toastPrefix = t('toast_lang_saved', "Portal display language updated to");
+    showToast(`${toastPrefix}: ${meta ? meta.native + ' (' + meta.name + ')' : lang}`);
 }
 
 function handlePreferenceToggle(channel, isChecked) {

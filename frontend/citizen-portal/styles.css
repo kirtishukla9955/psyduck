@@ -1,13 +1,11 @@
 /**
  * DHARAA — P3 Citizen Portal Stylesheet
- * Extends the authoritative GovTech Design System (:root tokens & components)
- * established in frontend/admin-dashboard/styles.css.
+ * Standalone GovTech Design System (:root tokens & components) aligned with P4 Admin Dashboard.
+ * Zero external CSS dependencies.
  */
 
-@import url('../admin-dashboard/styles.css');
-
 /* =============================================================================
-   0. TOKEN SYSTEM FALLBACKS (Guarantees visual integrity across all server paths)
+   0. TOKEN SYSTEM (Authoritative GovTech Design System Specification)
    ============================================================================= */
 :root {
     /* Base Surfaces */
@@ -62,6 +60,287 @@
     --shadow-md:            0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
     --shadow-lg:            0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
     --radius:               8px;
+}
+
+/* =============================================================================
+   0.1 GOVTECH BASE RESET & APP SHELL (Matching P4 Admin Design System)
+   ============================================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 18px;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    background-color: var(--bg-canvas);
+    color: var(--slate-900);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+.lucide,
+[data-lucide] {
+    vertical-align: middle;
+}
+
+/* TOP GOVERNANCE IDENTIFICATION RIBBON */
+.top-gov-ribbon {
+    background: var(--navy-950);
+    color: #94a3b8;
+    font-size: 13.5px;
+    padding: 7px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gov-flag-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #e2e8f0;
+}
+
+.tricolor-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #ff9933 33%, #ffffff 33%, #ffffff 66%, #138808 66%);
+    display: inline-block;
+}
+
+/* STICKY PRIMARY APP HEADER */
+.app-header {
+    background: var(--navy-900);
+    color: #fff;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.brand-title-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+.brand-tag {
+    background: var(--teal-700);
+    color: #ccfbf1;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.brand-sub {
+    font-size: 13px;
+    color: #93c5fd;
+    font-weight: 400;
+}
+
+/* MAIN LAYOUT WRAPPER */
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 24px 28px 48px;
+    gap: 24px;
+}
+
+.view-container {
+    display: none;
+    animation: fadeIn 0.25s ease forwards;
+}
+
+.view-container.active {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* =============================================================================
+   0.2 GOVTECH LANGUAGE SELECTOR (Eighth Schedule 22 Languages)
+   ============================================================================= */
+.lang-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-selector-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    color: #e2e8f0;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.lang-selector-btn:hover,
+.lang-selector-btn:focus-visible {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(56, 189, 248, 0.5);
+    color: #ffffff;
+    outline: none;
+}
+
+.lang-selector-text {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lang-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 300px;
+    background: #0c2340;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 28px -4px rgba(7, 21, 39, 0.6), 0 8px 10px -4px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 100;
+    animation: modalPop 0.15s ease-out;
+}
+
+.lang-dropdown-menu.show {
+    display: flex;
+}
+
+.lang-dropdown-search {
+    position: relative;
+    padding: 2px;
+}
+
+.lang-dropdown-search input {
+    width: 100%;
+    padding: 7px 10px 7px 32px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+    font-family: inherit;
+}
+
+.lang-dropdown-search input:focus {
+    border-color: #38bdf8;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.lang-dropdown-search i,
+.lang-dropdown-search svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.lang-dropdown-list {
+    max-height: 320px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-right: 2px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--slate-600) transparent;
+}
+
+.lang-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 10px;
+    border-radius: 5px;
+    color: #cbd5e1;
+    font-size: 13.5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.12s ease;
+    width: 100%;
+    font-family: inherit;
+}
+
+.lang-menu-item:hover,
+.lang-menu-item:focus-visible {
+    background: rgba(255, 255, 255, 0.14);
+    color: #38bdf8;
+    outline: none;
+}
+
+.lang-menu-item.active {
+    background: var(--navy-800);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.lang-native-name {
+    font-weight: 600;
+}
+
+.lang-eng-name {
+    font-size: 12px;
+    color: #94a3b8;
 }
 
 /* =============================================================================
@@ -1845,3 +2124,187 @@ input:checked + .slider-round:before {
         padding: 0 !important;
     }
 }
+
+/* =============================================================================
+   21. RTL COMPREHENSIVE ADAPTATIONS (Urdu, Sindhi, Kashmiri)
+   ============================================================================= */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] body {
+    text-align: right;
+}
+
+/* Ensure numbers, ULPIN, survey codes, coordinates, and hashes stay LTR */
+[dir="rtl"] .mono,
+[dir="rtl"] .ulpin-highlight,
+[dir="rtl"] .khasra-badge,
+[dir="rtl"] code {
+    direction: ltr !important;
+    unicode-bidi: embed !important;
+    display: inline-block;
+    text-align: left;
+}
+
+/* Header & Ribbon in RTL */
+[dir="rtl"] .top-gov-ribbon,
+[dir="rtl"] .app-header {
+    direction: rtl;
+}
+
+[dir="rtl"] .header-left {
+    flex-direction: row;
+}
+
+[dir="rtl"] .header-right-tools {
+    flex-direction: row;
+}
+
+/* Language Dropdown in RTL */
+[dir="rtl"] .lang-dropdown-menu {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .lang-dropdown-search input {
+    padding: 7px 32px 7px 10px;
+    text-align: right;
+}
+
+[dir="rtl"] .lang-dropdown-search i,
+[dir="rtl"] .lang-dropdown-search svg {
+    left: auto;
+    right: 10px;
+}
+
+[dir="rtl"] .lang-menu-item {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+/* Navigation & Tabs */
+[dir="rtl"] .c-nav-link {
+    flex-direction: row;
+}
+
+/* Metric Cards accent line on right */
+[dir="rtl"] .metric-card::before {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .metric-top,
+[dir="rtl"] .metric-value,
+[dir="rtl"] .metric-sub {
+    direction: rtl;
+}
+
+/* Hero & Search */
+[dir="rtl"] .citizen-hero-search-card {
+    text-align: right;
+}
+
+[dir="rtl"] .hero-search-box {
+    flex-direction: row;
+}
+
+[dir="rtl"] .search-input-wrap i,
+[dir="rtl"] .search-input-wrap svg {
+    left: auto;
+    right: 12px;
+}
+
+[dir="rtl"] .search-input {
+    padding: 9px 38px 9px 12px;
+    text-align: right;
+}
+
+/* Stepper progression in RTL */
+[dir="rtl"] .stepper-container {
+    direction: rtl;
+}
+
+[dir="rtl"] .stepper-track-fill {
+    left: auto;
+    right: 20px;
+}
+
+/* Data Tables */
+[dir="rtl"] .conflict-table th,
+[dir="rtl"] .conflict-table td {
+    text-align: right;
+}
+
+/* Modals */
+[dir="rtl"] .modal-header {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .modal-close-btn {
+    left: 16px;
+    right: auto;
+}
+
+/* Toast */
+[dir="rtl"] .toast-popup {
+    right: auto;
+    left: 24px;
+}
+
+/* Preference Rows */
+[dir="rtl"] .pref-row {
+    flex-direction: row-reverse;
+}
+
+/* Buttons with icons */
+[dir="rtl"] .btn-action,
+[dir="rtl"] .profile-switcher-btn,
+[dir="rtl"] .citizen-identity-pill {
+    flex-direction: row;
+}
+
+/* =============================================================================
+   22. INDIC MULTILINGUAL TEXT WRAPPING & RESPONSIVENESS
+   ============================================================================= */
+.c-nav-link,
+.btn-action,
+.badge,
+.hero-title,
+.hero-sub,
+.metric-top,
+.step-title {
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+.c-nav-link {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .c-nav-link {
+        font-size: 13.5px;
+        padding: 10px 12px;
+    }
+
+    .lang-selector-text {
+        max-width: 90px;
+    }
+
+    .app-header {
+        padding: 10px 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .header-right-tools {
+        gap: 8px;
+    }
+
+    .lang-dropdown-menu {
+        width: 270px;
+    }
+}
+

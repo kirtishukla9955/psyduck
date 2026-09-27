@@ -19,7 +19,7 @@ This directory contains the completed **Citizen Portal** frontend module (P3) fo
   $$\text{1. Filed} \longrightarrow \text{2. Under Verification} \longrightarrow \text{3. Field Inspection} \longrightarrow \text{4. Approved / Rejected}$$
 - **Days and Hours SLA Countdown**: Real-time statutory Right to Public Service Guarantee countdowns (`X Days Remaining`, `X Hours Remaining`, `SLA Overdue by Xd (Breached & Escalated)`).
 - **Document & Statutory Compliance Checklist**: Received vs. pending status indicator for each statutory document required for mutation, with action buttons to submit affirmations or upload missing records.
-- **Citizen Preferences & I18n Ready**: Language preferences (`en`, `hi`, `ta`) and SMS/WhatsApp statutory alert notification toggles.
+- **Citizen Preferences & 22-Language Multilingual Support**: Comprehensive i18n covering all 22 Eighth Schedule languages of the Constitution of India + English, with dynamic RTL (Right-to-Left) rendering for Urdu (`ur`), Sindhi (`sd`), and Kashmiri (`ks`), bidirectional safety for technical ULPIN/coordinates, and SMS/WhatsApp alert channels.
 - **Cadastral GIS Boundary Integration (P1 Seam)**: Swappable boundary adapter (`p1GisAdapter.js`) rendering surveyed boundaries, coordinate vertices, adjacent parcels, and red hatched encroachment overlays.
 
 ---
@@ -29,7 +29,8 @@ This directory contains the completed **Citizen Portal** frontend module (P3) fo
 ```
 frontend/citizen-portal/
 ├── index.html         # Semantic HTML5 layout, GovTech design system markup, 12-stage citizen views
-├── styles.css         # Extends ../admin-dashboard/styles.css with mobile-first citizen layouts and fallback tokens
+├── styles.css         # Standalone GovTech design system styles, RTL mirroring engine, responsive layouts
+├── i18n.js            # Centralized 22 Eighth Schedule languages + English translation dictionary & RTL engine
 ├── app.js             # View controller, state machine, progressive disclosure, stepper & modal logic
 ├── data.js            # Normalized mock datasets, multi-department records, and async API loaders
 ├── p1GisAdapter.js    # Clean boundary interface adapter for P1 GIS team

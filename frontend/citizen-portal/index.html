@@ -16,8 +16,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Design System Stylesheet & Citizen Portal Extensions -->
-    <link rel="stylesheet" href="../admin-dashboard/styles.css">
+    <!-- Standalone GovTech Citizen Portal Stylesheet (Zero P4 Dependency) -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -27,9 +26,9 @@
     <header class="top-gov-ribbon">
         <div class="gov-flag-mark">
             <span class="tricolor-dot"></span>
-            <span>Department of Land Resources &bull; Ministry of Rural Development</span>
+            <span data-i18n="gov_ribbon_dept">Department of Land Resources &bull; Ministry of Rural Development</span>
         </div>
-        <div>Project DHARAA (Land Stack) &bull; Citizen Public Interface</div>
+        <div data-i18n="gov_ribbon_proj">Project DHARAA (Land Stack) &bull; Citizen Public Interface</div>
     </header>
 
     <!-- 2. STICKY APP HEADER -->
@@ -39,13 +38,31 @@
                 <div class="brand-name">
                     <i data-lucide="layers" style="width: 24px; height: 24px; color: #38bdf8;"></i>
                     <span>DHARAA</span>
-                    <span class="brand-tag">CITIZEN PORTAL</span>
+                    <span class="brand-tag" data-i18n="brand_portal_tag">CITIZEN PORTAL</span>
                 </div>
-                <span class="brand-sub">Unified Parcel Transparency, Ownership Verification & Mutation Tracking</span>
+                <span class="brand-sub" data-i18n="brand_portal_sub">Unified Parcel Transparency, Ownership Verification & Mutation Tracking</span>
             </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="header-right-tools" style="display: flex; align-items: center; gap: 10px;">
+            <!-- LANGUAGE SELECTOR DROPDOWN (Supports all 22 Eighth Schedule Languages) -->
+            <div class="lang-dropdown-wrapper" id="langSelectorWrapper">
+                <button type="button" class="lang-selector-btn" id="langSelectorBtn" aria-haspopup="true" aria-expanded="false" onclick="toggleLanguageDropdown(event)" title="Select Portal Language">
+                    <i data-lucide="globe" style="width: 15px; height: 15px; color: #38bdf8;"></i>
+                    <span class="lang-selector-text" id="langSelectorCurrentName">English</span>
+                    <i data-lucide="chevron-down" style="width: 13px; height: 13px; color: #94a3b8;"></i>
+                </button>
+                <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu" aria-label="Languages">
+                    <div class="lang-dropdown-search">
+                        <i data-lucide="search" style="width: 14px; height: 14px; color: #94a3b8;"></i>
+                        <input type="text" id="langSearchInput" data-i18n-placeholder="search_language_placeholder" placeholder="Search 22 Indian languages..." oninput="filterLanguageList(this.value)" autocomplete="off">
+                    </div>
+                    <div class="lang-dropdown-list" id="langDropdownList">
+                        <!-- Populated dynamically via DharaaI18n -->
+                    </div>
+                </div>
+            </div>
+
             <!-- CITIZEN PROFILE PILL -->
             <div class="citizen-identity-pill" id="citizenPill" onclick="openAuthModal()" title="Click to switch citizen profile">
                 <span class="citizen-avatar" id="citizenAvatarLetter">G</span>
@@ -56,7 +73,7 @@
             <!-- PROFILE / DEMO IDENTITY SWITCHER -->
             <button class="profile-switcher-btn" onclick="openAuthModal()" title="Demo Switcher">
                 <i data-lucide="user-check" style="width: 15px; height: 15px;"></i>
-                <span>Switch Citizen</span>
+                <span data-i18n="btn_switch_citizen">Switch Citizen</span>
             </button>
 
             <!-- NOTIFICATIONS BELL -->
@@ -72,40 +89,40 @@
         <div class="citizen-nav-inner">
             <a class="c-nav-link active" data-tab="home" onclick="switchTab('home')">
                 <i data-lucide="inbox" style="width: 17px; height: 17px;"></i>
-                <span>Home Dashboard</span>
+                <span data-i18n="nav_home">My Land Holdings</span>
             </a>
             <a class="c-nav-link" data-tab="search" onclick="switchTab('search')">
                 <i data-lucide="search" style="width: 17px; height: 17px;"></i>
-                <span>Search Parcel</span>
+                <span data-i18n="nav_search">Public Land Search</span>
             </a>
             <a class="c-nav-link" data-tab="parcel" onclick="switchTab('parcel')">
                 <i data-lucide="file-text" style="width: 17px; height: 17px;"></i>
-                <span>Parcel Details</span>
+                <span data-i18n="nav_parcel">Parcel Details & GIS</span>
             </a>
             <a class="c-nav-link" data-tab="verification" onclick="switchTab('verification')">
                 <i data-lucide="shield-check" style="width: 17px; height: 17px;"></i>
-                <span>Ownership Trust</span>
+                <span data-i18n="nav_verification">Ownership Verification</span>
             </a>
             <a class="c-nav-link" data-tab="transactions" onclick="switchTab('transactions')">
                 <i data-lucide="git-pull-request" style="width: 17px; height: 17px;"></i>
-                <span>Mutation Tracking</span>
+                <span data-i18n="nav_transactions">Mutations & Transactions</span>
             </a>
             <a class="c-nav-link" data-tab="requests" onclick="switchTab('requests')">
                 <i data-lucide="send" style="width: 17px; height: 17px;"></i>
-                <span>Service Requests</span>
+                <span data-i18n="nav_requests">Service Requests</span>
                 <span class="c-nav-badge" id="requestsCountBadge">1</span>
             </a>
             <a class="c-nav-link" data-tab="notifications" onclick="switchTab('notifications')">
                 <i data-lucide="bell" style="width: 17px; height: 17px;"></i>
-                <span>Notifications</span>
+                <span data-i18n="nav_notifications">Notifications</span>
             </a>
             <a class="c-nav-link" data-tab="glossary" onclick="switchTab('glossary')">
                 <i data-lucide="book-open" style="width: 17px; height: 17px;"></i>
-                <span>Land Terms & Help</span>
+                <span data-i18n="nav_glossary">Land Glossary</span>
             </a>
             <a class="c-nav-link" data-tab="profile" onclick="switchTab('profile')">
                 <i data-lucide="user" style="width: 17px; height: 17px;"></i>
-                <span>My Profile</span>
+                <span data-i18n="nav_profile">Citizen Profile</span>
             </a>
         </div>
     </nav>
@@ -119,13 +136,14 @@
                 
                 <!-- HERO SEARCH ENTRY CARD -->
                 <div class="citizen-hero-search-card">
-                    <div class="hero-title">Verify Any Land Parcel in Seconds</div>
-                    <div class="hero-sub">
-                        Enter a Unique Land Parcel Identification Number (ULPIN), Khasra, or Patta number to inspect multi-departmental consensus across Revenue, SRO Deeds, and Cadastral GIS.
+                    <div class="hero-title" data-i18n="hero_title">Welcome to Citizen Land Record Transparency Portal</div>
+                    <div class="hero-sub" data-i18n="hero_sub">
+                        Verify title authenticity, track multi-departmental consensus (Revenue, SRO, Survey GIS & ULB), and monitor real-time statutory mutation SLAs.
                     </div>
                     <form class="hero-search-box" onsubmit="handleHeroSearch(event)">
                         <input type="text" id="heroSearchInput" class="hero-search-input mono"
-                            placeholder="Enter 14-digit ULPIN (e.g. CH-04-0012-8821-9041)" required autocomplete="off">
+                            data-i18n-placeholder="hero_search_placeholder"
+                            placeholder="Enter 14-digit ULPIN (e.g. CH-04-0012-8821-9041) or Khasra / Survey Number..." required autocomplete="off">
                         <select id="heroStateFilter" class="hero-state-filter">
                             <option value="ALL">All States / UTs</option>
                             <option value="CH">Chandigarh (UT)</option>
@@ -133,7 +151,7 @@
                         </select>
                         <button type="submit" class="hero-search-btn">
                             <i data-lucide="search" style="width: 18px; height: 18px;"></i>
-                            <span>Inspect Parcel</span>
+                            <span data-i18n="btn_search">Verify Parcel</span>
                         </button>
                     </form>
                     <div class="hero-quick-chips">
@@ -154,7 +172,7 @@
                 <div class="metric-grid">
                     <div class="metric-card teal">
                         <div class="metric-top">
-                            <span>Linked Land Parcels</span>
+                            <span data-i18n="stat_linked_parcels">Linked Land Holdings</span>
                             <i data-lucide="map-pin" style="width: 19px; height: 19px; color: var(--teal-600);"></i>
                         </div>
                         <div class="metric-value">
@@ -168,7 +186,7 @@
 
                     <div class="metric-card amber">
                         <div class="metric-top">
-                            <span>Ownership Trust Index</span>
+                            <span data-i18n="stat_trust_score">Overall Land Trust Score</span>
                             <i data-lucide="shield-alert" style="width: 19px; height: 19px; color: var(--amber-600);"></i>
                         </div>
                         <div class="metric-value">
@@ -183,7 +201,7 @@
 
                     <div class="metric-card red">
                         <div class="metric-top">
-                            <span>Active Mutation SLA</span>
+                            <span data-i18n="stat_pending_mutations">Active Mutation Tracker</span>
                             <i data-lucide="clock" style="width: 19px; height: 19px; color: var(--red-500);"></i>
                         </div>
                         <div class="metric-value">
@@ -198,7 +216,7 @@
 
                     <div class="metric-card navy">
                         <div class="metric-top">
-                            <span>Service Requests</span>
+                            <span data-i18n="nav_requests">Service Requests</span>
                             <i data-lucide="send" style="width: 19px; height: 19px; color: var(--navy-600);"></i>
                         </div>
                         <div class="metric-value">
@@ -247,8 +265,8 @@
                         <div class="toolbar-left">
                             <i data-lucide="layers" style="width: 20px; height: 20px; color: var(--navy-700);"></i>
                             <div>
-                                <strong style="font-size: 16px; color: var(--navy-900);">My Linked Land Parcels</strong>
-                                <div style="font-size: 13px; color: var(--slate-500);">Parcels legally indexed to your authenticated Aadhaar / Land Holder profile</div>
+                                <strong style="font-size: 16px; color: var(--navy-900);" data-i18n="holdings_title">Your Verified Land Holdings & Active Parcels</strong>
+                                <div style="font-size: 13px; color: var(--slate-500);" data-i18n="holdings_sub">All land parcels linked to your verified Aadhaar / e-KYC credentials across revenue jurisdictions.</div>
                             </div>
                         </div>
                         <div class="toolbar-right">
@@ -710,20 +728,27 @@
 
                         <div class="pref-row">
                             <div>
-                                <div class="pref-title">Portal Display Language (I18n Seam)</div>
-                                <div class="pref-sub">Select preferred language for statutory land notices and Record of Rights extracts</div>
+                                <div class="pref-title" data-i18n="pref_lang_title">Portal Display Language</div>
+                                <div class="pref-sub" data-i18n="pref_lang_sub">Select preferred language for statutory land notices and Record of Rights extracts</div>
                             </div>
-                            <div class="lang-btn-group">
-                                <button type="button" class="lang-pill active" id="langBtnEn" onclick="setPortalLanguage('en')">English</button>
-                                <button type="button" class="lang-pill" id="langBtnHi" onclick="setPortalLanguage('hi')">हिन्दी (Hindi)</button>
-                                <button type="button" class="lang-pill" id="langBtnTa" onclick="setPortalLanguage('ta')">தமிழ் (Tamil)</button>
+                            <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
+                                <select id="profileLanguageSelect" class="filter-select" onchange="setPortalLanguage(this.value)" style="min-width: 220px; font-weight: 500;">
+                                    <!-- Populated dynamically via DharaaI18n -->
+                                </select>
+                                <div class="lang-btn-group" id="profileQuickLangPills">
+                                    <button type="button" class="lang-pill active" id="langBtnEn" onclick="setPortalLanguage('en')" data-lang="en">English</button>
+                                    <button type="button" class="lang-pill" id="langBtnHi" onclick="setPortalLanguage('hi')" data-lang="hi">हिन्दी (Hindi)</button>
+                                    <button type="button" class="lang-pill" id="langBtnTa" onclick="setPortalLanguage('ta')" data-lang="ta">தமிழ் (Tamil)</button>
+                                    <button type="button" class="lang-pill" id="langBtnPa" onclick="setPortalLanguage('pa')" data-lang="pa">ਪੰਜਾਬੀ (Punjabi)</button>
+                                    <button type="button" class="lang-pill" id="langBtnUr" onclick="setPortalLanguage('ur')" data-lang="ur">اردو (Urdu)</button>
+                                </div>
                             </div>
                         </div>
 
                         <div class="pref-row">
                             <div>
-                                <div class="pref-title">Statutory SMS & Telemetry Alerts</div>
-                                <div class="pref-sub">Receive instant SMS alerts when mutation SLAs or field demarcation dates are scheduled</div>
+                                <div class="pref-title" data-i18n="pref_sms_title">Statutory SMS & Telemetry Alerts</div>
+                                <div class="pref-sub" data-i18n="pref_sms_sub">Receive instant SMS alerts when mutation SLAs or field demarcation dates are scheduled</div>
                             </div>
                             <label class="switch-toggle">
                                 <input type="checkbox" id="prefSmsToggle" checked onchange="handlePreferenceToggle('sms', this.checked)">
@@ -733,8 +758,8 @@
 
                         <div class="pref-row">
                             <div>
-                                <div class="pref-title">WhatsApp Digital Records Gateway</div>
-                                <div class="pref-sub">Send certified Non-Encumbrance Certificates and RoR extracts directly to verified WhatsApp</div>
+                                <div class="pref-title" data-i18n="pref_wa_title">WhatsApp Digital Records Gateway</div>
+                                <div class="pref-sub" data-i18n="pref_wa_sub">Send certified Non-Encumbrance Certificates and RoR extracts directly to verified WhatsApp</div>
                             </div>
                             <label class="switch-toggle">
                                 <input type="checkbox" id="prefWaToggle" checked onchange="handlePreferenceToggle('whatsapp', this.checked)">
@@ -752,23 +777,23 @@
     <nav class="mobile-bottom-nav">
         <a class="m-nav-item active" data-tab="home" onclick="switchTab('home')">
             <i data-lucide="inbox"></i>
-            <span>Home</span>
+            <span data-i18n="nav_home">Home</span>
         </a>
         <a class="m-nav-item" data-tab="search" onclick="switchTab('search')">
             <i data-lucide="search"></i>
-            <span>Search</span>
+            <span data-i18n="nav_search">Search</span>
         </a>
         <a class="m-nav-item" data-tab="parcel" onclick="switchTab('parcel')">
             <i data-lucide="file-text"></i>
-            <span>Parcel</span>
+            <span data-i18n="nav_parcel">Parcel</span>
         </a>
         <a class="m-nav-item" data-tab="transactions" onclick="switchTab('transactions')">
             <i data-lucide="git-pull-request"></i>
-            <span>Track</span>
+            <span data-i18n="nav_transactions">Track</span>
         </a>
         <a class="m-nav-item" data-tab="requests" onclick="switchTab('requests')">
             <i data-lucide="send"></i>
-            <span>Requests</span>
+            <span data-i18n="nav_requests">Requests</span>
             <span class="m-nav-badge" id="mRequestsCountBadge">1</span>
         </a>
     </nav>
@@ -962,6 +987,7 @@
     <!-- MODULE SCRIPTS -->
     <script src="data.js"></script>
     <script src="p1GisAdapter.js"></script>
+    <script src="i18n.js"></script>
     <script src="app.js"></script>
 </body>
 
