@@ -121,7 +121,7 @@ cp .env.example .env
 
 The default database connection string in `.env` is:
 ```env
-DATABASE_URL=postgresql://postgres:devpass@localhost:5432/dharaa
+DATABASE_URL=postgresql://postgres:devpass@localhost:5432/landstack
 MUTATION_SLA_DAYS=7
 APPROACHING_SLA_THRESHOLD_DAYS=2
 ```
@@ -131,7 +131,7 @@ Ensure Docker Desktop is running, then execute:
 ```bash
 docker compose up -d
 ```
-*This starts the `dharaa-db` container running PostgreSQL 16 with PostGIS enabled on port `5432`.*
+*This starts the `landstack-db` container running PostgreSQL 16 with PostGIS enabled on port `5432`.*
 
 ### Step 4: Setup Python Virtual Environment
 Navigate to the `backend` directory:
