@@ -1,4 +1,4 @@
-﻿from datetime import datetime, timezone
+from datetime import datetime, timezone
 from sqlalchemy import (
     Boolean,
     Column,
@@ -126,3 +126,19 @@ class Mutation(Base):
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
 
     parcel = relationship("Parcel", back_populates="mutations")
+
+
+class CitizenGrievance(Base):
+    __tablename__ = "citizen_grievances"
+
+    id = Column(Integer, primary_key=True, index=True)
+    tracking_id = Column(String(50), unique=True, index=True, nullable=False)
+    ulpin = Column(String(32), ForeignKey("parcels.ulpin", ondelete="CASCADE"), index=True, nullable=False)
+    citizen_name = Column(String(200), nullable=True)
+    phone = Column(String(50), nullable=True)
+    discrepancy_type = Column(String(100), nullable=False)
+    description = Column(String(1000), nullable=True)
+    status = Column(String(50), default="PENDING")
+    created_at = Column(TIMESTAMP, server_default=func.now())
+
+    parcel = relationship("Parcel", backref="grievances")

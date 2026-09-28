@@ -33,19 +33,7 @@ const conflictService = {
      */
     async createConflict(payload) {
         const client = (typeof window !== 'undefined' && window.apiClient) ? window.apiClient : apiClient;
-        try {
-            return await client.post('/conflicts', payload);
-        } catch (err) {
-            console.warn("Backend unavailable, using mock fallback for POST /conflicts", err);
-            // Mock fallback response
-            return {
-                id: Math.floor(Math.random() * 1000) + 100,
-                status: 'success',
-                message: 'Grievance recorded successfully (Mock)',
-                ulpin: payload.ulpin,
-                trackingId: 'GRV-' + Math.floor(Math.random() * 10000)
-            };
-        }
+        return await client.post('/conflicts', payload);
     }
 };
 

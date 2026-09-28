@@ -281,6 +281,26 @@ def get_system_conflicts(db: Session) -> SystemConflictSummary:
             elif c.conflict_type == "OVERDUE_MUTATION":
                 overdue_mutations_count += 1
 
+    grievances = crud.list_grievances(db)
+    for g in grievances:
+        if g.status == "PENDING":
+            all_conflicts.append(ConflictReport(
+                ulpin=g.ulpin,
+                has_conflict=True,
+                conflict_type="CITIZEN_GRIEVANCE",
+                severity="MEDIUM",
+                involved_departments=["Public Portal"],
+                conflicting_values={
+                    "tracking_id": g.tracking_id,
+                    "discrepancy_type": g.discrepancy_type,
+                    "citizen_name": g.citizen_name,
+                    "phone": g.phone
+                },
+                status="FLAGGED",
+                details=f"Citizen Reported: {g.description}",
+                timestamp=g.created_at
+            ))
+
     return SystemConflictSummary(
         total_conflicts=len(all_conflicts),
         owner_mismatches_count=owner_mismatches_count,

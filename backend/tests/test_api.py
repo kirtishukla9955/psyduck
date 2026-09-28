@@ -156,3 +156,51 @@ def test_conflict_parcel_endpoint():
             assert data["severity"] == "HIGH"
 
     app.dependency_overrides.clear()
+
+
+def test_post_grievance_and_get_conflicts():
+    """POST /conflicts -> 200 OK, GET /conflicts -> includes the grievance"""
+    mock_db = MagicMock()
+    app.dependency_overrides[get_db] = lambda: mock_db
+
+    poly = Polygon([(76.78, 30.74), (76.781, 30.74), (76.781, 30.741), (76.78, 30.741), (76.78, 30.74)])
+    mock_parcel = MagicMock(ulpin="01928475819202", geometry=from_shape(poly, srid=4326), owner_name="Priya Singh")
+
+    # Mock create_grievance
+    mock_grievance = MagicMock(
+        id=1,
+        tracking_id="GRV-0001",
+        ulpin="01928475819202",
+        citizen_name="John Doe",
+        phone="555-0192",
+        discrepancy_type="Area Mismatch",
+        description="The area is wrong",
+        status="PENDING",
+        created_at=datetime.now(timezone.utc)
+    )
+
+    with patch("app.crud.get_parcel_by_ulpin", return_value=mock_parcel):
+        with patch("app.crud.create_grievance", return_value=mock_grievance):
+            response = client.post("/conflicts", json={
+                "ulpin": "01928475819202",
+                "name": "John Doe",
+                "phone": "555-0192",
+                "type": "Area Mismatch",
+                "description": "The area is wrong"
+            })
+            assert response.status_code == 200
+            data = response.json()
+            assert data["tracking_id"] == "GRV-0001"
+            assert data["citizen_name"] == "John Doe"
+
+    # Now test if get_system_conflicts returns it (by mocking list_grievances and list_parcels)
+    with patch("app.crud.list_parcels", return_value=[]):
+        with patch("app.crud.list_grievances", return_value=[mock_grievance]):
+            response = client.get("/conflicts")
+            assert response.status_code == 200
+            data = response.json()
+            assert data["total_conflicts"] == 1
+            assert data["conflicts"][0]["conflict_type"] == "CITIZEN_GRIEVANCE"
+            assert data["conflicts"][0]["conflicting_values"]["tracking_id"] == "GRV-0001"
+
+    app.dependency_overrides.clear()

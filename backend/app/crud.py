@@ -274,3 +274,37 @@ def update_mutation(
     db.commit()
     db.refresh(mutation)
     return mutation
+
+
+# ==========================================
+# CITIZEN GRIEVANCE CRUD
+# ==========================================
+
+from app.models import CitizenGrievance
+
+def create_grievance(
+    db: Session,
+    ulpin: str,
+    citizen_name: Optional[str] = None,
+    phone: Optional[str] = None,
+    discrepancy_type: str = "OTHER",
+    description: Optional[str] = None
+) -> CitizenGrievance:
+    count = db.query(func.count(CitizenGrievance.id)).scalar() or 0
+    tracking_id = f"GRV-{(count + 1):04d}"
+
+    grievance = CitizenGrievance(
+        tracking_id=tracking_id,
+        ulpin=ulpin,
+        citizen_name=citizen_name,
+        phone=phone,
+        discrepancy_type=discrepancy_type,
+        description=description
+    )
+    db.add(grievance)
+    db.commit()
+    db.refresh(grievance)
+    return grievance
+
+def list_grievances(db: Session, limit: int = 100) -> list[CitizenGrievance]:
+    return db.query(CitizenGrievance).order_by(CitizenGrievance.created_at.desc()).limit(limit).all()

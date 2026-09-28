@@ -9,10 +9,30 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app import crud
 from app.services import trust_engine
-from app.schemas import ConflictReport, SystemConflictSummary
+from app.schemas import ConflictReport, SystemConflictSummary, GrievanceCreate, GrievanceOut
 
 router = APIRouter(prefix="/conflicts", tags=["conflicts"])
 
+@router.post(
+    "",
+    response_model=GrievanceOut,
+    summary="Report a citizen grievance",
+    description="Registers a land discrepancy reported by a citizen."
+)
+def create_conflict(payload: GrievanceCreate, db: Session = Depends(get_db)):
+    parcel = crud.get_parcel_by_ulpin(db, payload.ulpin)
+    if not parcel:
+        raise HTTPException(status_code=404, detail=f"Parcel with ULPIN '{payload.ulpin}' not found")
+    
+    grievance = crud.create_grievance(
+        db=db,
+        ulpin=payload.ulpin,
+        citizen_name=payload.name,
+        phone=payload.phone,
+        discrepancy_type=payload.type,
+        description=payload.description
+    )
+    return grievance
 
 @router.get(
     "",

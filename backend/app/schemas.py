@@ -191,3 +191,28 @@ class LoanCheckResponse(BaseModel):
     overlapping_ulpins: list[str]
     decision: str
     reason: str
+
+
+# ==========================================
+# CITIZEN GRIEVANCE SCHEMAS
+# ==========================================
+
+class GrievanceCreate(BaseModel):
+    ulpin: str
+    name: Optional[str] = None
+    phone: Optional[str] = None
+    type: str = Field(..., description="Type of discrepancy")
+    description: Optional[str] = None
+
+class GrievanceOut(BaseModel):
+    id: int
+    tracking_id: str
+    ulpin: str
+    citizen_name: Optional[str] = None
+    phone: Optional[str] = None
+    discrepancy_type: str
+    description: Optional[str] = None
+    status: str
+    created_at: datetime
+
+    model_config = {"from_attributes": True}

@@ -259,10 +259,42 @@
             }
         ];
 
-        // API-READY SEAM
-        // To switch from mock dataset to backend API, simply swap the line below for:
-        // const res = await fetch('/api/conflicts'); return await res.json();
         async function loadConflicts() {
+            try {
+                if (window.conflictService && window.conflictService.getConflicts) {
+                    const res = await window.conflictService.getConflicts();
+                    if (res && res.conflicts) {
+                        const apiConflicts = res.conflicts.map((c, i) => ({
+                            id: 1000 + i,
+                            ulpin: c.ulpin,
+                            state: "CH",
+                            stateLabel: "Chandigarh",
+                            khasra: "Khasra -",
+                            type: c.conflict_type.toLowerCase(),
+                            typeLabel: c.conflict_type.replace(/_/g, ' '),
+                            silos: c.involved_departments || [],
+                            severity: c.severity ? c.severity.toLowerCase() : "moderate",
+                            score: c.severity === 'HIGH' ? 85 : 50,
+                            slaHours: 24,
+                            slaStatus: "normal",
+                            stage: "Reported",
+                            stepIndex: 1,
+                            assignedOfficer: "Pending Assignment",
+                            isNew: true,
+                            details: {
+                                revenue: c.details,
+                                registration: "-",
+                                survey: "-",
+                                urban: "-"
+                            },
+                            trackingId: c.conflicting_values?.tracking_id
+                        }));
+                        return [...apiConflicts, ...mockConflicts];
+                    }
+                }
+            } catch (e) {
+                console.warn("Failed to fetch conflicts from API, using mock", e);
+            }
             return Promise.resolve(mockConflicts);
         }
 
@@ -1262,26 +1294,53 @@ window.switchPortalMode = function(mode) {
     }
 };
 
-window.handleCitizenSearch = function(event) {
+window.handleCitizenSearch = async function(event) {
     event.preventDefault();
     const input = document.getElementById('citizenSearchInput').value.trim();
     if (!input) return;
     
-    // Show toast for searching
     showToast("Querying Land Trust Registry for " + input + "...");
     
-    setTimeout(() => {
-        // Fallback to hardcoded details if parcel not in gisService yet
-        const parcel = {
-            ulpin: input,
-            khasra: input === 'CH-04-0012-8821-9041' ? 'Khasra 142/2' : 'Survey 44/2',
-            owner: input === 'TN-04-3420-2921-7744' ? 'Rajendran P.' : 'Gurpreet Singh',
-            area: '450 sq.yd',
-            status: input === 'CH-04-0012-8821-9041' ? 'disputed' : 'clear'
-        };
-        
-        showCitizenParcel(parcel);
-    }, 600);
+    try {
+        let backendParcel = null;
+        if (window.parcelService) {
+            try {
+                backendParcel = await window.parcelService.getParcelByUlpin(input);
+            } catch (err) {
+                // Not found by ULPIN, try by owner name if it's an API error
+                if (err && err.status === 404) {
+                    const searchRes = await window.parcelService.getParcels({ owner_name: input });
+                    if (searchRes && searchRes.length > 0) {
+                        // Grab the first one and fetch its full details
+                        backendParcel = await window.parcelService.getParcelByUlpin(searchRes[0].ulpin);
+                    }
+                } else {
+                    throw err;
+                }
+            }
+        }
+
+        if (backendParcel) {
+            const mappedParcel = {
+                ulpin: backendParcel.ulpin,
+                khasra: backendParcel.khasra_no || "N/A",
+                owner: backendParcel.owner_name || "Unknown",
+                area: backendParcel.area_sqm ? backendParcel.area_sqm + " sqm" : "Unknown",
+                type: backendParcel.land_use || "Agricultural",
+                status: (backendParcel.trust_status === 'VERIFIED' && !backendParcel.dispute_flag && backendParcel.active_conflicts_count === 0) ? 'clear' : 'disputed',
+                lat: backendParcel.centroid_lat,
+                lng: backendParcel.centroid_lon
+            };
+            showCitizenParcel(mappedParcel);
+        } else {
+            showToast("No record found for this ULPIN or Owner Name.", "error");
+            document.getElementById("citizenRorCard").style.display = "none";
+        }
+    } catch (err) {
+        console.error("Citizen search failed:", err);
+        showToast("No record found for this ULPIN or Owner Name.", "error");
+        document.getElementById("citizenRorCard").style.display = "none";
+    }
 };
 
 window.citizenQuickSearch = function(ulpin) {
@@ -1379,51 +1438,17 @@ window.submitDiscrepancy = async function(event) {
     };
     
     if (window.conflictService && window.conflictService.createConflict) {
-        const res = await window.conflictService.createConflict(payload);
-        showToast("Grievance Tracking Number: " + (res.trackingId || "GRV-SUCCESS"), "success");
-        closeDiscrepancyModal();
-        
-        // Ensure it shows up in Admin queue if mock fallback provides id
-        if (window.filterQueue) { // We can safely assume conflictsData exists as it's global in app.js if we access it right?
-            // Actually conflictsData is locally scoped in the IIFE or DOMContentLoaded. Let's see. 
-            // conflictsData was `let conflictsData = [];` at the global block of app.js. So we can access it, maybe? Wait, let's just append to it if accessible.
-            // Oh, conflictsData is defined outside DOMContentLoaded in app.js! `let conflictsData = [];` is inside app.js at the top level.
-            try {
-                // If conflictsData is accessible globally
-                // Actually `let conflictsData` at top level makes it global in browser, except if it's an ES module. But app.js is not an ES module.
-                // Wait, it says `let conflictsData = [];` in app.js.
-                // It is globally scoped. So we can push.
-                // It is not globally attached to window though, just a let variable. But we can't easily access `conflictsData` from here if we append this script to app.js, because we are appending at the end of app.js in the same scope, so we can access it!
-                conflictsData.unshift({
-                    id: res.id || Math.floor(Math.random() * 1000) + 100,
-                    ulpin: payload.ulpin,
-                    state: "CH",
-                    stateLabel: "Chandigarh",
-                    khasra: "Khasra " + Math.floor(Math.random()*100),
-                    type: payload.type,
-                    typeLabel: "Citizen Grievance",
-                    silos: ["Public Portal"],
-                    severity: "moderate",
-                    score: 50,
-                    slaHours: 24,
-                    slaStatus: "normal",
-                    stage: "Reported",
-                    stepIndex: 1,
-                    assignedOfficer: "Pending Assignment",
-                    isNew: true,
-                    details: {
-                        revenue: "Citizen Reported: " + payload.description,
-                        registration: "-",
-                        survey: "-",
-                        urban: "-"
-                    }
-                });
-                
-                // Re-render queue table if we're in admin mode, or when we switch back
-                filterQueue(); 
-            } catch(e) {
-                console.warn("Could not inject into conflictsData directly", e);
+        try {
+            const res = await window.conflictService.createConflict(payload);
+            showToast("Grievance Tracking Number: " + (res.tracking_id || res.trackingId || "GRV-SUCCESS"), "success");
+            closeDiscrepancyModal();
+            
+            if (typeof loadConflicts === 'function') {
+                conflictsData = await loadConflicts();
+                if (typeof filterQueue === 'function') filterQueue();
             }
+        } catch (err) {
+            showToast("Failed to submit grievance", "error");
         }
     } else {
         showToast("Tracking ID: GRV-12345 (Service missing)", "success");
