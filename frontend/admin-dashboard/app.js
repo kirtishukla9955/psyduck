@@ -1284,27 +1284,14 @@ window.switchPortalMode = function(mode) {
         
     } else {
         if(citizenPortal) citizenPortal.style.display = 'none';
-        
-        // Move map back to admin GIS tab if it was moved
-        const gisContainer = document.getElementById("tab-gis");
-        const mapWrapper = document.getElementById("citMapProxy")?.querySelector(".map-wrapper");
-        if (gisContainer && mapWrapper) {
-            const gisToolbar = gisContainer.querySelector(".gis-gov-toolbar-wrapper");
-            if (gisToolbar) {
-                gisToolbar.insertAdjacentElement('afterend', mapWrapper);
-            } else {
-                gisContainer.appendChild(mapWrapper);
-            }
-        }
-        
         switchTab('queue'); // Switch back to admin queue by default
     }
     
     // Trigger map resize if it's currently rendered inside the citizen portal
-    if (window.gisService && window.gisService.map) {
+    if (mode === 'CITIZEN' && window.citizenMap) {
         setTimeout(() => {
             if(window.google && window.google.maps) {
-                google.maps.event.trigger(window.gisService.map, 'resize');
+                google.maps.event.trigger(window.citizenMap, 'resize');
             }
         }, 100);
     }
@@ -1344,8 +1331,10 @@ window.handleCitizenSearch = async function(event) {
                 area: backendParcel.area_sqm ? backendParcel.area_sqm + " sqm" : "Unknown",
                 type: backendParcel.land_use || "Agricultural",
                 status: (backendParcel.trust_status === 'VERIFIED' && !backendParcel.dispute_flag && backendParcel.active_conflicts_count === 0) ? 'clear' : 'disputed',
+                isMortgaged: Boolean(backendParcel.encumbrance_data?.mortgaged),
                 lat: backendParcel.centroid_lat,
-                lng: backendParcel.centroid_lon
+                lng: backendParcel.centroid_lon,
+                geometry: backendParcel.geometry
             };
             showCitizenParcel(mappedParcel);
         } else {
@@ -1365,7 +1354,7 @@ window.citizenQuickSearch = function(ulpin) {
     handleCitizenSearch({ preventDefault: () => {} });
 };
 
-window.showCitizenParcel = function(parcel) {
+window.showCitizenParcel = async function(parcel) {
     const rorCard = document.getElementById("citizenRorCard");
     const mapContainer = document.getElementById("citizenMapContainer");
     if(rorCard) rorCard.style.display = "block";
@@ -1402,32 +1391,102 @@ window.showCitizenParcel = function(parcel) {
         }
     }
     
-    // Relocate map
-    const gisContainer = document.getElementById("tab-gis");
+    // Independent map logic for Citizen Portal
     const citMapProxy = document.getElementById("citMapProxy");
-    if (gisContainer && citMapProxy) {
-        const actualMapDiv = gisContainer.querySelector('.map-wrapper');
-        if (actualMapDiv) {
-            citMapProxy.appendChild(actualMapDiv);
-            if (window.gisService && window.gisService.map && window.google && window.google.maps) {
-                google.maps.event.trigger(window.gisService.map, 'resize');
-                
-                // Set color
-                if (window.gisService.parcelPolygons) {
-                    window.gisService.parcelPolygons.forEach(polygon => {
-                        const polyStatus = polygon.get('status');
-                        let color = '#22c55e'; // clear
-                        if(polyStatus === 'disputed' || polyStatus === 'conflict') color = '#dc2626';
-                        else if(polyStatus === 'mortgaged') color = '#f59e0b';
-                        
-                        polygon.setOptions({
-                            strokeColor: color,
-                            fillColor: color
-                        });
-                    });
+    if (citMapProxy && parcel.geometry) {
+        // Ensure Google Maps API is loaded
+        if (!window.google || !window.google.maps) {
+            try {
+                if (window.gisService && typeof window.gisService.loadGoogleMapsApi === 'function') {
+                    await window.gisService.loadGoogleMapsApi();
                 }
+            } catch (err) {
+                console.warn("Could not load Google Maps API for citizen portal", err);
             }
         }
+
+        if (window.google && window.google.maps) {
+            // Only initialize map once, reuse thereafter
+            if (!window.citizenMap) {
+                window.citizenMap = new google.maps.Map(citMapProxy, {
+                    center: { lat: 30.7412, lng: 76.7885 },
+                    zoom: 16,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    fullscreenControl: true,
+                    zoomControl: true,
+                    clickableIcons: false
+                });
+                window.citizenMap.data.setStyle((feature) => {
+                    const isMortgaged = feature.getProperty('isMortgaged');
+                    const isDispute = feature.getProperty('status') === 'disputed';
+                    let color = '#059669'; // Green clear
+                    if (isDispute) color = '#dc2626'; // Red
+                    else if (isMortgaged) color = '#d97706'; // Amber
+                    return {
+                        strokeColor: color,
+                        strokeWeight: 3,
+                        strokeOpacity: 0.9,
+                        fillColor: color,
+                        fillOpacity: 0.35,
+                        zIndex: 10,
+                        clickable: false
+                    };
+                });
+            }
+            
+            const map = window.citizenMap;
+            google.maps.event.trigger(map, 'resize');
+            
+            // Clear previous features
+            map.data.forEach((feature) => {
+                map.data.remove(feature);
+            });
+
+            // Add this parcel
+            map.data.addGeoJson({
+                type: 'Feature',
+                geometry: parcel.geometry,
+                properties: {
+                    status: parcel.status,
+                    isMortgaged: parcel.isMortgaged
+                }
+            });
+
+            // Fit bounds
+            const bounds = new google.maps.LatLngBounds();
+            const processRing = (ring) => {
+                if (Array.isArray(ring)) {
+                    ring.forEach(pt => {
+                        const lat = Number(pt[1]);
+                        const lng = Number(pt[0]);
+                        if (!isNaN(lat) && !isNaN(lng)) {
+                            bounds.extend(new google.maps.LatLng(lat, lng));
+                        }
+                    });
+                }
+            };
+            
+            if (parcel.geometry.type === 'Polygon') {
+                (parcel.geometry.coordinates || []).forEach(processRing);
+            } else if (parcel.geometry.type === 'MultiPolygon') {
+                (parcel.geometry.coordinates || []).forEach(poly => {
+                    (poly || []).forEach(processRing);
+                });
+            }
+            
+            if (!bounds.isEmpty()) {
+                map.fitBounds(bounds, { top: 40, bottom: 40, left: 40, right: 40 });
+            } else if (parcel.lat && parcel.lng) {
+                map.setCenter({ lat: parcel.lat, lng: parcel.lng });
+                map.setZoom(17);
+            }
+        } else {
+            citMapProxy.innerHTML = '<div style="display:flex; height:100%; align-items:center; justify-content:center; color:#64748b; background:#f8fafc; border-radius:12px;">Map API failed to load</div>';
+        }
+    } else if (citMapProxy && !parcel.geometry) {
+        citMapProxy.innerHTML = '<div style="display:flex; height:100%; align-items:center; justify-content:center; color:#64748b; background:#f8fafc; border-radius:12px;">Map not available for this record</div>';
     }
     
     const discUlpin = document.getElementById("discUlpin");
