@@ -144,7 +144,7 @@ const apiClient = {
      */
     async checkHealth() {
         try {
-            const res = await this.get('/', null, { timeoutMs: 3000 });
+            const res = await this.get('/', null, { timeoutMs: 45000 });
             return { available: true, data: res };
         } catch (err) {
             return { available: false, error: err.message, isNetworkError: err.isNetworkError };

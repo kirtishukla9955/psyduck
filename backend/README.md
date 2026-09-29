@@ -105,6 +105,7 @@ The default database connection string in `.env` is:
 DATABASE_URL=postgresql://postgres:devpass@localhost:5432/dharaa
 MUTATION_SLA_DAYS=7
 APPROACHING_SLA_THRESHOLD_DAYS=2
+ALLOWED_ORIGINS=https://dharaa01.netlify.app,http://localhost:3000
 ```
 
 ### Step 3: Start PostGIS Database via Docker

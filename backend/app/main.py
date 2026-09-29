@@ -37,19 +37,28 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+import os
+
 # Permissive local dev & production CORS allowlist (wildcard '*' is invalid with allow_credentials=True)
+default_origins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://localhost:5500",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5500",
+    "https://dharaa01.netlify.app",
+]
+
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS")
+if allowed_origins_env:
+    allowed_origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
+else:
+    allowed_origins = default_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://localhost:5500",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:5500",
-        # PLACEHOLDER: Replace with your actual production Netlify deployment URL once deployed
-        "https://YOUR-NETLIFY-URL-HERE.netlify.app",
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

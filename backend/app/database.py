@@ -11,10 +11,16 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 backend_dir = Path(__file__).resolve().parent.parent
 load_dotenv(backend_dir / ".env")
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://postgres:devpass@localhost:5432/landstack"
-)
+import logging
+logger = logging.getLogger(__name__)
+
+db_url_env = os.getenv("DATABASE_URL")
+if db_url_env:
+    DATABASE_URL = db_url_env
+    print(f"[INFO] Using DATABASE_URL from environment.")
+else:
+    DATABASE_URL = "postgresql://postgres:devpass@localhost:5432/landstack"
+    print(f"[WARNING] DATABASE_URL environment variable is NOT set. Falling back to default: {DATABASE_URL}")
 
 engine_kwargs = {}
 if DATABASE_URL.startswith("sqlite"):

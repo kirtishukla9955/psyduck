@@ -4,8 +4,13 @@
  */
 
 const DharaaConfig = {
-    // Configurable backend base URL (defaults to standard local FastAPI port)
-    API_BASE_URL: 'http://localhost:8000',
+    // Configurable backend base URL (environment-aware)
+    API_BASE_URL: (function() {
+        if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+            return 'http://localhost:8000';
+        }
+        return 'https://dharaa-backend-b0lt.onrender.com';
+    })(),
 
     /**
      * Google Maps Browser API Key (Configurable)
